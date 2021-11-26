@@ -658,6 +658,7 @@
     <Compile Include="F_Module\WorldObject.cs" />
     <Compile Include="F_Output\Clipboard.cs" />
     <Compile Include="F_Output\CustomConsole.cs" />
+    <Compile Include="F_Ui\AvatarList.cs" />
     <Compile Include="F_Ui\Kai\DPUIElement.cs" />
     <Compile Include="F_Ui\Extensions.cs" />
     <Compile Include="F_Ui\HighlightsFXSetup.cs" />
@@ -667,6 +668,7 @@
     <Compile Include="F_Ui\Kai\QMCache.cs" />
     <Compile Include="F_Ui\Kai\QMPage.cs" />
     <Compile Include="F_Ui\Kai\QMTab.cs" />
+    <Compile Include="F_Ui\Kai\UICache.cs" />
     <Compile Include="F_Ui\UiManager.cs" />
     <Compile Include="F_Ui\UiPath.cs" />
     <Compile Include="F_Ui\Unnecessary.cs" />
