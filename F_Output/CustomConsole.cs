@@ -18,7 +18,7 @@ namespace Versa.F_Output
         private static ConsoleColor GetRandomConsoleColor()
         {
             var consoleColors = Enum.GetValues(typeof(ConsoleColor));
-            return (ConsoleColor)consoleColors.GetValue(_random.Next(consoleColors.Length));
+            return (ConsoleColor)consoleColors.GetValue(_random.Next(1,consoleColors.Length));
         }
         internal static void Console(bool isdebugmode, string text)
         {
