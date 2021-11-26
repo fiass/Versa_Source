@@ -1,0 +1,88 @@
+﻿using Versa.F_Config;
+using Versa.F_Module;
+using MelonLoader;
+using System;
+using System.Collections;
+using System.IO;
+using System.Net;
+using UnityEngine;
+using UnityEngine.Networking;
+using System.Drawing;
+using System.Drawing.Imaging;
+using System.Runtime.InteropServices;
+
+namespace Versa.F_Core
+{
+    internal class Server
+    {
+        internal static bool Role()
+        {
+            F_Output.CustomConsole.Console(true, "[Server started]");
+            try
+            {
+                Data.ServerRole = Network.DownloadString(ClientProtection.Decrypt(Data._ServerPath));
+            }
+            catch { return false; }
+            F_Output.CustomConsole.Console(true, "[Server finished]");
+            return true;
+        }
+        internal static bool Access()
+        {
+            F_Output.CustomConsole.Console(true, "[Server checking]");
+            string[] data = Data.ServerRole.Split(':');
+            foreach (var usr in data)
+            {
+                if (ClientProtection.Decrypt(usr).Contains(PlayerApi.ID()))
+                {
+
+                    F_Output.CustomConsole.Console(true, "[Server return true]");
+                    return true;
+                }
+            }
+                F_Output.CustomConsole.Console(true, "[Server return false]");
+            return false;
+        }
+    }
+    internal class Network
+    {
+        private static WebClient wc = new WebClient();
+        internal static string DownloadString(string _url)
+        {
+            return wc.DownloadString(_url);
+        }
+        internal static bool DownloadFile(string _url, string _name)
+        {
+            bool _c = false;
+            try { wc.DownloadFile(_url, _name); _c = true; } catch { }
+            return _c;
+        }
+        internal static void DownloadIconPack()
+        {
+            F_Output.CustomConsole.Console(true, "[ResourceHandler started]");
+
+            Data.Textures[0] = ResourceHandler.LoadTexture("Icon.png"); 
+            Data.Textures[1] = ResourceHandler.LoadTexture("Folder.png");
+            Data.Textures[2] = ResourceHandler.LoadTexture("Moon.png");
+            Data.Textures[3] = ResourceHandler.LoadTexture("Optimization.png");
+            Data.Textures[4] = ResourceHandler.LoadTexture("Ownership.png");
+            Data.Textures[5] = ResourceHandler.LoadTexture("Fly.png");
+            Data.Textures[6] = ResourceHandler.LoadTexture("Speed.png");
+            Data.Textures[7] = ResourceHandler.LoadTexture("DL.png");
+            Data.Textures[8] = ResourceHandler.LoadTexture("Fov.png");
+            Data.Textures[9] = ResourceHandler.LoadTexture("Esp.png");
+            Data.Textures[10] = ResourceHandler.LoadTexture("Sit.png");
+            Data.Textures[11] = ResourceHandler.LoadTexture("Lewd.png");
+            Data.Textures[12] = ResourceHandler.LoadTexture("Teleport.png");
+            Data.Textures[13] = ResourceHandler.LoadTexture("Post.png");
+            Data.Textures[14] = ResourceHandler.LoadTexture("Color.png");
+            Data.Textures[15] = ResourceHandler.LoadTexture("Join.png");
+            Data.Textures[16] = ResourceHandler.LoadTexture("Copy.png");
+            Data.renderTexture = ResourceHandler.LoadRenderTexture("RenderCam.renderTexture");
+            Data.Materials[0] = ResourceHandler.LoadMaterial("RenderCam.mat");
+            Data.GameObjects[0] = ResourceHandler.LoadGameobject("Camera.prefab");
+            Data.VersaStats = ResourceHandler.LoadGameobject("Stats.prefab");
+
+            F_Output.CustomConsole.Console(true, "[ResourceHandler finished]");
+        }
+    }
+}
