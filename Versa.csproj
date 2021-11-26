@@ -635,7 +635,6 @@
     <Compile Include="F_Core\Network.cs" />
     <Compile Include="F_Core\OneSecUpdate.cs" />
     <Compile Include="F_Core\PlayerApi.cs" />
-    <Compile Include="F_Core\PlayerStatus.cs" />
     <Compile Include="F_Core\Prefs.cs" />
     <Compile Include="F_Core\Switch.cs" />
     <Compile Include="F_Core\UiApi.cs" />
