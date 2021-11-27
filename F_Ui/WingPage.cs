@@ -37,7 +37,8 @@ namespace Versa.F_Ui
                 Object.Destroy(content.GetChild(i).gameObject);
             transform.GetComponentInChildren<TMPro.TextMeshProUGUI>().text = name;
 
-        closeButton = transform.GetComponentInChildren<Button>();
+           
+            closeButton = transform.GetComponentInChildren<Button>();
         closeButton.gameObject.name = "Close_"+name;
         closeButton.onClick = new Button.ButtonClickedEvent();
         closeButton.onClick.AddListener(new System.Action(() =>
@@ -60,6 +61,7 @@ namespace Versa.F_Ui
              GameObject.Destroy(openButton.gameObject.transform.Find("Container/Icon").gameObject.GetComponent<StyleElement>());
              SetIcon(openButton.gameObject.transform.Find("Container/Icon").gameObject.GetComponent<Image>(), Data.Textures[0]);
              openButton.gameObject.name = "Open_"+name;
+             openButton.gameObject.GetComponent<VRC.UI.Elements.Tooltips.UiTooltip>().field_Public_String_0 = "Versa UI";
              openButton.onClick = new Button.ButtonClickedEvent();
              openButton.onClick.AddListener(new System.Action(() => {
                 transform.gameObject.SetActive(true);
@@ -86,7 +88,7 @@ namespace Versa.F_Ui
                 Object.Destroy(content.GetChild(i).gameObject);
             transform.GetComponentInChildren<TMPro.TextMeshProUGUI>().text = name;
 
-           closeButton = transform.GetComponentInChildren<Button>();
+            closeButton = transform.GetComponentInChildren<Button>();
            closeButton.gameObject.name = "Close_"+name;
            closeButton.onClick = new Button.ButtonClickedEvent();
            closeButton.onClick.AddListener(new System.Action(() =>
@@ -108,6 +110,7 @@ namespace Versa.F_Ui
             GameObject.Destroy(openButton.gameObject.transform.Find("Container/Icon").gameObject.GetComponent<StyleElement>());
             SetIcon(openButton.gameObject.transform.Find("Container/Icon").gameObject.GetComponent<Image>(), Data.Textures[1]);
             openButton.gameObject.name = "Open_" + name;
+            openButton.gameObject.GetComponent<VRC.UI.Elements.Tooltips.UiTooltip>().field_Public_String_0 = "Versa UI";
             openButton.GetComponent<RectTransform>().sizeDelta = new Vector2(420, 144);
             openButton.transform.localPosition = new Vector3(0, 320 - (index * 120), transform.transform.localPosition.z);
             openButton.onClick = new Button.ButtonClickedEvent();

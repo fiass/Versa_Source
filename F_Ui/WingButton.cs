@@ -54,7 +54,7 @@ namespace Versa.F_Ui
             transform.transform.localPosition = new Vector3(0, pos, transform.transform.localPosition.z);
            
             (text = transform.GetComponentInChildren<TMPro.TextMeshProUGUI>()).text = name;
-
+            transform.GetComponent<VRC.UI.Elements.Tooltips.UiTooltip>().field_Public_String_0 = "Don't know what the function is?\n Versa => Settings => Documentation";
             Button button = transform.GetComponent<Button>();
             button.onClick = new Button.ButtonClickedEvent();
             button.onClick.AddListener(onClick);
@@ -79,6 +79,7 @@ namespace Versa.F_Ui
             transform.transform.localPosition = new Vector3(0, 320 - (index * 120), transform.transform.localPosition.z);
 
             (text = transform.GetComponentInChildren<TMPro.TextMeshProUGUI>()).text = name;
+            transform.GetComponent<VRC.UI.Elements.Tooltips.UiTooltip>().field_Public_String_0 = "Don't know what the function is?\n Versa => Settings => Documentation";
         }
     }
 }
