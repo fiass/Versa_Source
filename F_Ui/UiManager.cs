@@ -47,7 +47,7 @@ namespace Versa.F_Ui
                         CustomConsole.Console(true, "Menu was open");
                         Initialize();
                         Core.MenuInitialized();
-                        new AvatarList("<color=#00ccff>Versa</color>", -1);
+                        AvatarList.Create();
                         _a = false;
                     }
                 }

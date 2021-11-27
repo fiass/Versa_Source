@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -20,11 +21,15 @@ namespace Versa.F_Core
         
         internal static void OnApplicationStart()
         {
+            //Storage of data
+            if (!Directory.Exists("Versa"))
+                Directory.CreateDirectory("Versa");
             CustomConsole.Console(true, "[OnApplicationStart]");
             System.Console.ForegroundColor = ConsoleColor.White;
             CustomConsole.Console("Versa ready.",ConsoleColor.Green, CustomConsole.Info);
             CustomConsole.Console($"Versa Server is {Server.Role()}.", ConsoleColor.Green, CustomConsole.Info);
             ResourceHandler.Start();
+            Database.SetupDatabase();
         }
         internal static void OnUpdate()
         {
