@@ -52,7 +52,7 @@ namespace Versa.F_Module
                 {
                     _Can = false;
                     _lst.Clear();
-                    CustomConsole.Console(e.Message);
+                    CustomConsole.Console(true,"WorldObject.cs [Coroutine] "+e.Message);
                 }
                 yield return new WaitForSeconds(0.1f);
             }

@@ -32,7 +32,7 @@ namespace Versa.F_Ui
     internal class UiManager
     {
         static bool animation = false;
-        
+
         internal static IEnumerator CreateStateListener()
         {
             bool _a = true;
@@ -51,7 +51,7 @@ namespace Versa.F_Ui
                     }
                 }
                 catch (Exception e)
-                { CustomConsole.Console(true, e.Message); }
+                { CustomConsole.Console(true, "UiManager.cs [CreateStateListener] "+ e.Message); }
                 yield return new WaitForSeconds(0.5f);
             }
         }
@@ -62,7 +62,7 @@ namespace Versa.F_Ui
             {
                 var LaunchPad = UiPath.Canvas_QuickMenu_Clone.AddComponent<StateListener>();
                 var SelectedUser = GameApi.Menu_SelectedUser_Local.AddComponent<StateListener>();
-               
+
                 SelectedUser.OnEnabledMethod = () =>
                 {
                     ForceClone.UnlockCloneAvatar();
@@ -72,7 +72,7 @@ namespace Versa.F_Ui
 
                 SelectedUser.OnDisableMethod = () =>
                 {
-                   try { CameraPreview.DestroyRender();  } catch { }
+                    try { CameraPreview.DestroyRender(); } catch { }
                     CustomConsole.Console(true, "SelectedUser Close");
                 };
                 LaunchPad.OnEnabledMethod = () =>
@@ -89,9 +89,9 @@ namespace Versa.F_Ui
                     CustomConsole.Console(true, "LaunchPad Close");
                 };
             }
-            catch
+            catch(Exception e)
             {
-                CustomConsole.Console(true, "UiManager<Initialize>");
+                CustomConsole.Console(true, "UiManager.cs [Initialize] " + e.Message);
             }
         }
         internal static void ApplyData()
@@ -103,11 +103,12 @@ namespace Versa.F_Ui
             Prefs.String.Save("strafeSpeed", PlayerApi.MyVRCPlayer().gameObject.GetComponent<GamelikeInputController>().field_Public_Single_1.ToString());
             Prefs.String.Save("walkSpeed", PlayerApi.MyVRCPlayer().gameObject.GetComponent<GamelikeInputController>().field_Public_Single_2.ToString());
             GenerateUi.IniUi();
-           
+            new AvatarList("<color=#00ccff>Versa Favorite</color>", -1);
+
         }
         internal static Color StringToColor(string color)
         {
-            switch(color.ToLower())
+            switch (color.ToLower())
             {
                 case "red":
                     return Color.red;
@@ -143,8 +144,8 @@ namespace Versa.F_Ui
                     Prefs.String.Save("Highlights", _a);
                 }
             }
-            catch(Exception e)
-            { CustomConsole.Console(true, e.Message); }
+            catch (Exception e)
+            { CustomConsole.Console(true, "UiManager.cs [SelectColor] "+ e.Message); }
         }
         internal static IEnumerator LogoAnimation()
         {
@@ -174,6 +175,6 @@ namespace Versa.F_Ui
                 yield return new WaitForSeconds(0.1f);
             }
         }
-        
+
     }
 }

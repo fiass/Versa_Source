@@ -33,10 +33,9 @@ namespace Versa.F_Module
                     CustomConsole.Console(true, $"client.IsBusy = [{Your_Link}]");
                     await Task.Delay(1000);
                 }
-                client.Dispose();
                 CustomConsole.Console("VRCA Downloaded");
 
-            }catch(Exception e){ CustomConsole.Console(true, "VRCA.cs: " + e.Message); }
+            }catch(Exception e){ CustomConsole.Console(true, "VRCA.cs [DownloadSelect] " + e.Message); }
         }
         internal async static void DownloadMe()
         {
@@ -56,11 +55,10 @@ namespace Versa.F_Module
                     CustomConsole.Console(true, $"client.IsBusy = [{Your_Link}]");
                     await Task.Delay(1000);
                 }
-                client.Dispose();
                 CustomConsole.Console("VRCA Downloaded");
 
             }
-            catch (Exception e) { CustomConsole.Console(true, "VRCA.cs: " + e.Message); }
+            catch (Exception e) { CustomConsole.Console(true, "VRCA.cs [DownloadMe] " + e.Message); }
         }
     }
 }

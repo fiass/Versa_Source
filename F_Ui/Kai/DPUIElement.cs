@@ -12,7 +12,6 @@ namespace Versa.F_Ui
     internal class DPUIElement
     {
         protected GameObject UIObject { get; set; }
-
         internal void Destroy()
         {
             try

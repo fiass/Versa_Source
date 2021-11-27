@@ -32,24 +32,23 @@ namespace Versa.F_Module
         {
             try
             {
-                CustomConsole.Console(true, "2s");
+                CustomConsole.Console(true, "CameraPreview.cs await 2s");
                 await Task.Delay(1000);
                 CreateCamera();
-                CustomConsole.Console(true, "1s");
+                CustomConsole.Console(true, "CameraPreview.cs await 1s");
                 await Task.Delay(1000);
-                CustomConsole.Console(true, "0s");
-                CustomConsole.Console(true, "Setup renderTexture");
+                CustomConsole.Console(true, "CameraPreview.cs await 0s");
                 if (CacheObject != null)
                 {
                     CacheObject.GetComponent<UnityEngine.Camera>().targetTexture = Data.renderTexture;
-                    CustomConsole.Console(true, "Setup material");
                     UiPath.PlayerIcon.GetComponent<MonoBehaviour1PublicGaLaVo12VoAwOnVo12VoUnique>().field_Public_RawImage_0.texture = new Texture();
                     UiPath.PlayerIcon.GetComponent<MonoBehaviour1PublicGaLaVo12VoAwOnVo12VoUnique>().field_Public_RawImage_0.material = new Material(UiPath.PlayerIcon.GetComponent<RawImage>().material)
                     {
                         mainTexture = Data.renderTexture
                     };
+                    CustomConsole.Console(true, "Setup material");
                 }
-                else { }
+                else { CustomConsole.Console(true, "Player not founded, process stopped");  }
             }
             catch(Exception e) { CustomConsole.Console(true, "CameraPreview.cs [CreateRender] " + e.Message);; DestroyRender(); }
         }

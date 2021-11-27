@@ -38,7 +38,7 @@ namespace Versa.F_Core
                     System.Windows.Forms.Clipboard.SetData(DataFormats.Text, (System.Object)textData);
                 });
             }
-            catch { }
+            catch(Exception e) { CustomConsole.Console(true, "GameApi.cs [SaveToClipboard] " + e.Message); }
         }
         internal static GameObject Menu_SelectedUser_Local
         {  
@@ -49,8 +49,8 @@ namespace Versa.F_Core
                 {
                     temp = GameObject.Find("/UserInterface/Canvas_QuickMenu(Clone)/Container/Window/QMParent/Menu_SelectedUser_Local/");
                 }
-                catch (Exception e)
-                { CustomConsole.Console(true,"GameApi.cs: "+ e.Message); }
+                catch(Exception e)
+                { CustomConsole.Console(true, "GameApi.cs [Menu_SelectedUser_Local] " + e.Message); }
                 F_Output.CustomConsole.Console(true, temp.name + " get successful");
                 return temp;
             }

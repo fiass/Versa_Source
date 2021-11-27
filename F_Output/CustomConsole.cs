@@ -22,9 +22,10 @@ namespace Versa.F_Output
         }
         internal static void Console(bool isdebugmode, string text)
         {
+            LogWriter.WriteLog($"[{DateTime.Now}] - {text}");
             System.Console.ForegroundColor = GetRandomConsoleColor();
             if (isdebugmode && Data.Debug)
-                System.Console.WriteLine("[DEBUG_MODE] " + text);
+                System.Console.WriteLine($"[DEBUG_MODE][{DateTime.Now}] {text}");
             System.Console.ForegroundColor = ConsoleColor.White;
         }
         internal static void Console(string text, ConsoleColor color)

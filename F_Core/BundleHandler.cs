@@ -10,7 +10,7 @@ using Versa.F_Output;
 
 namespace Versa.F_Core
 {
-    internal class ResourceHandler 
+    internal class ResourceHandler
     {
         internal static AssetBundle Bundle { get; set; }
         internal static void Start()
@@ -60,7 +60,7 @@ namespace Versa.F_Core
         {
             Texture2D texture2D = Bundle.LoadAsset(texture, Il2CppType.Of<Texture2D>()).Cast<Texture2D>();
             texture2D.hideFlags |= HideFlags.DontUnloadUnusedAsset;
-            CustomConsole.Console(true,$"Loaded: {texture}");
+            CustomConsole.Console(true, $"Loaded: {texture}");
             return texture2D;
         }
         internal static RenderTexture LoadRenderTexture(string texture)
@@ -70,6 +70,6 @@ namespace Versa.F_Core
             CustomConsole.Console(true, $"Loaded: {texture}");
             return renderTexture;
         }
-       
+
     }
 }

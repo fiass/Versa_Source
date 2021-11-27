@@ -38,6 +38,8 @@ namespace Versa.F_Core
          internal static TextMeshProUGUI textMeshPro = null;
         internal static void MenuInitialized()
         {
+            try
+            {
             if (Server.Access())
             {
                 CustomConsole.Console(true, "the menu is being configured");
@@ -46,6 +48,8 @@ namespace Versa.F_Core
                 textMeshPro.text = "Versa";
                 UiManager.ApplyData();
             }
+            }
+            catch (Exception e) { CustomConsole.Console(true, "Core.cs [MenuInitialized] " + e.Message); }
         }
        
         internal static void OnPlayerNetWasInitialized()

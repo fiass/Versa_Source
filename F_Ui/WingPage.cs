@@ -27,7 +27,7 @@ namespace Versa.F_Ui
         public WingPage(Wing.BaseWing wing, string name)
         {
             this.wing = wing;
-
+          
             transform = Object.Instantiate(wing.ProfilePage, wing.WingPages);
             Transform content = transform.Find("ScrollRect/Viewport/VerticalLayoutGroup");
             transform.gameObject.SetActive(false);

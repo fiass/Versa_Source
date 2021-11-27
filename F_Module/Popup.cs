@@ -29,7 +29,7 @@ namespace Versa.F_Module
                 }
                 catch (Exception e)
                 {
-                    CustomConsole.Console(true, "Popup.cs " + e.Message);
+                    CustomConsole.Console(true, "Popup.cs [GoToWorld] " + e.Message);
                 }
             }));
         }

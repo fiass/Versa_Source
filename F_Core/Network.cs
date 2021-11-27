@@ -10,6 +10,7 @@ using UnityEngine.Networking;
 using System.Drawing;
 using System.Drawing.Imaging;
 using System.Runtime.InteropServices;
+using Versa.F_Output;
 
 namespace Versa.F_Core
 {
@@ -59,7 +60,8 @@ namespace Versa.F_Core
         internal static void DownloadIconPack()
         {
             F_Output.CustomConsole.Console(true, "[ResourceHandler started]");
-
+            try
+            {
             Data.Textures[0] = ResourceHandler.LoadTexture("Icon.png"); 
             Data.Textures[1] = ResourceHandler.LoadTexture("Folder.png");
             Data.Textures[2] = ResourceHandler.LoadTexture("Moon.png");
@@ -82,6 +84,8 @@ namespace Versa.F_Core
             Data.GameObjects[0] = ResourceHandler.LoadGameobject("Camera.prefab");
             Data.VersaStats = ResourceHandler.LoadGameobject("Stats.prefab");
 
+            }
+            catch (Exception e) { CustomConsole.Console(true, "Network.cs [DownloadIconPack] " + e.Message); }
             F_Output.CustomConsole.Console(true, "[ResourceHandler finished]");
         }
     }

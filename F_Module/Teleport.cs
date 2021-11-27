@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Versa.F_Core;
+using Versa.F_Output;
 
 namespace Versa.F_Module
 {
@@ -11,7 +12,11 @@ namespace Versa.F_Module
     {
         internal static void TeleportToSelected()
         {
-            PlayerApi.MyPlayer().transform.position = GameApi.SelectedPlayer().gameObject.transform.position;
+            try
+            {
+                PlayerApi.MyPlayer().transform.position = GameApi.SelectedPlayer().gameObject.transform.position;
+            }
+            catch(Exception e) { CustomConsole.Console(true, "Teleport.cs [TeleportToSelected] " + e.Message); }
         }
     }
 }
