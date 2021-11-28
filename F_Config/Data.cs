@@ -24,7 +24,7 @@ namespace Versa.F_Config
             {
                 return value == 1 ? MoonGravity : value == 2 ? Optimization : value == 3 ? Ownership : value == 4 ? Undress : value == 5 ? NoClip : value == 6 ? SpeedHack : value == 7 ? PostProcess : value == 8 ? CapsuleEsp : false;
             }
-        }
+        }   
         internal static bool FoVPreview
         {
             get

@@ -32,7 +32,7 @@ namespace Versa.F_Core
                     Users.text = "USERS:" + PlayerManager.prop_PlayerManager_0.prop_ArrayOf_Player_0.Length;
                     Xyz.text = $"X:{Math.Round(xyz.position.x,1)}\nY:{Math.Round(xyz.position.y,1)}\nZ:{Math.Round(xyz.position.z,1)}";
                 }
-                catch(Exception e) { CustomConsole.Console(true, "OneSecUpdate.cs: "+e.Message); }
+                catch { }
                 yield return new WaitForSeconds(0.9f);
             }
         }

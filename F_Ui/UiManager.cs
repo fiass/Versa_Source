@@ -105,9 +105,6 @@ namespace Versa.F_Ui
             F_Module.Camera.FoVLoad();
             SelectColor(Prefs.String.Load("Highlights"));
             HighlightsFXSetup.Setup();
-            Prefs.String.Save("runSpeed", PlayerApi.MyVRCPlayer().gameObject.GetComponent<GamelikeInputController>().field_Public_Single_0.ToString());
-            Prefs.String.Save("strafeSpeed", PlayerApi.MyVRCPlayer().gameObject.GetComponent<GamelikeInputController>().field_Public_Single_1.ToString());
-            Prefs.String.Save("walkSpeed", PlayerApi.MyVRCPlayer().gameObject.GetComponent<GamelikeInputController>().field_Public_Single_2.ToString());
             GenerateUi.IniUi();
             new AvatarList("<color=#00ccff>Versa Favorite</color>", -1);
 

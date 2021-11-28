@@ -61,16 +61,54 @@ namespace Versa.F_Core
         {
             CustomConsole.Console(true, "[OnUiWasInitialized]");
         }
+        private static bool notloaded;
+        internal async static void PlayerIsReady()
+        {
+            notloaded = true;
+            while (notloaded)
+            {
+                try
+                {
+                    if (PlayerApi.MyVRCPlayer().field_Private_Boolean_6)
+                    {
+                        notloaded = false;
+                        PlayerReady();
+                    }
+                }
+                catch { }
+               await Task.Delay(500);
+            }
+        }
+        internal static void PlayerReady()
+        {
+            CustomConsole.Console(true, "[PlayerReady]");
+            F_Core.CapsuleColor.Capsule();
+            Data.Toggle.Undress = false;
+            Prefs.String.Save("runSpeed", PlayerApi.MyVRCPlayer().gameObject.GetComponent<GamelikeInputController>().field_Public_Single_0.ToString());
+            Prefs.String.Save("strafeSpeed", PlayerApi.MyVRCPlayer().gameObject.GetComponent<GamelikeInputController>().field_Public_Single_1.ToString());
+            Prefs.String.Save("walkSpeed", PlayerApi.MyVRCPlayer().gameObject.GetComponent<GamelikeInputController>().field_Public_Single_2.ToString());
+           
+            if (Data.Toggle.PostProcess)
+                PostProcess.State(true);
+            
+            if (Data.Toggle.MoonGravity)
+                Gravity.Moon();
+            
+            if (Data.Toggle.Ownership)
+                WorldObject.TakeOwnership(true);
+
+            if (Data.Toggle.SpeedHack)
+                SpeedHack.State(true);
+
+
+        }
         internal static void OnSceneWasInitialized()
         {
+            if (Data.Toggle.Optimization)
+                Optimization.State(true);
             CustomConsole.Console(true, "[OnSceneWasInitialized]");
-            F_Core.CapsuleColor.Capsule();
-            Data.Toggle.MoonGravity = false;
-            Data.Toggle.Optimization = false;
-            Data.Toggle.Ownership = false;
-            Data.Toggle.SpeedHack = false;
-            Data.Toggle.Undress = false;
-            Data.Toggle.PostProcess = false;
+            if(!notloaded)
+            PlayerIsReady();
         }
         internal static void OnApplicationQuit()
         {

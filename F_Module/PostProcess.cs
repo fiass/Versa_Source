@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using UnityEngine.Rendering.PostProcessing;
+using Versa.F_Config;
 using Versa.F_Core;
 
 namespace Versa.F_Module

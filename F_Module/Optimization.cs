@@ -21,13 +21,13 @@ namespace Versa.F_Module
                 case true:
                     try
                     {
+                        CustomConsole.Console(true, "Optimization.cs [started]");
                         _lst.Clear();
                         foreach (Light light in Object.FindObjectsOfType<Light>())
                         {
                             if (light.type != LightType.Directional)
                             {
                                 _lst.Add(light.gameObject);
-                                light.gameObject.SetActive(false);
                             }
                         }
                         foreach (ParticleSystem particle in Object.FindObjectsOfType<ParticleSystem>())
@@ -35,21 +35,23 @@ namespace Versa.F_Module
                             if (!(particle.gameObject.name == "Trail") && !(particle.gameObject.name == "Ball") && !(particle.gameObject.name == "Glow"))
                             {
                                 _lst.Add(particle.gameObject);
-                                particle.gameObject.SetActive(false);
                             }
                         }
                         foreach (TrailRenderer trail in Object.FindObjectsOfType<TrailRenderer>())
                         {
                             _lst.Add(trail.gameObject);
-                            trail.gameObject.SetActive(false);
                         }
-                        foreach (VRC_Pickup pickup in Object.FindObjectsOfType<VRC_Pickup>())
+                        foreach (VRCSDK2.VRC_ObjectSync pickup in Object.FindObjectsOfType<VRCSDK2.VRC_ObjectSync>())
                         {
                             _lst.Add(pickup.gameObject);
-                            pickup.gameObject.SetActive(false);
                         }
+                        foreach (var x in _lst)
+                        {
+                            x.SetActive(false);
+                        }
+                        CustomConsole.Console(true, "Optimization.cs: [Items hidden: " + _lst.Count + "]");
                     }
-                    catch(Exception e) { CustomConsole.Console(true, "Optimization.cs: " + e.Message); }
+                    catch (Exception e) { CustomConsole.Console(true, "Optimization.cs: " + e.Message); }
                     break;
 
                 case false:
