@@ -1,7 +1,11 @@
 ﻿using System;
+using System.Collections;
+using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 using Versa.F_Config;
+using Versa.F_Output;
 using VRC.UI.Core.Styles;
 using Object = UnityEngine.Object;
 
@@ -10,8 +14,8 @@ namespace Versa.F_Ui
     public class WingButton
     {
         public Wing.BaseWing wing;
-        public TMPro.TextMeshProUGUI text;
         public Transform transform;
+        private TextMeshProUGUI text;
         internal void SetIcon(Image image, Texture2D texture)
         {
 
@@ -36,28 +40,33 @@ namespace Versa.F_Ui
             }
             return false;
         }
+        internal IEnumerator StateUpdate(WingButton button, int value)
+        {
+            CustomConsole.Console(true,"[Synchronization component is created]");
+             while(true)
+            {
+                try
+                {
+                    if (Data.LeftWing & Data.RightWing)
+                    {
+                        switch (Data.Toggle.ToggleIndex(value))
+                        {
+                            case false:
+                                button.SetColor(Color.red);
+                                break;
+                            case true:
+                                button.SetColor(Color.green);
+                                break;
+                        }
+                    }
+                }
+                catch { }
+                yield return new WaitForSeconds(1.46f);
+            }
+        }
         internal void SetColor(Color color)
         {
             transform.GetComponentInChildren<TMPro.TextMeshProUGUI>().color = color;
-        }
-        public WingButton(Wing.BaseWing wing, string name, Transform parent, int pos, System.Action onClick, Texture2D texture)
-        {
-            this.wing = wing;
-            //.Find("ScrollRect/Viewport/VerticalLayoutGroup")
-            transform = Object.Instantiate(wing.ProfileButton, parent);
-            transform.gameObject.name = "Button_" + name;
-            transform.gameObject.transform.Find("Container/Icon").gameObject.GetComponent<Graphic>().color = Color.white;
-            GameObject.Destroy(transform.gameObject.transform.Find("Container/Icon").gameObject.GetComponent<StyleElement>());
-            SetIcon(transform.gameObject.transform.Find("Container/Icon").gameObject.GetComponent<Image>(), texture);
-          
-            transform.GetComponent<RectTransform>().sizeDelta = new Vector2(420, 144);
-            transform.transform.localPosition = new Vector3(0, pos, transform.transform.localPosition.z);
-           
-            (text = transform.GetComponentInChildren<TMPro.TextMeshProUGUI>()).text = name;
-            transform.GetComponent<VRC.UI.Elements.Tooltips.UiTooltip>().field_Public_String_0 = "Don't know what the function is?\n Versa => Settings => Documentation";
-            Button button = transform.GetComponent<Button>();
-            button.onClick = new Button.ButtonClickedEvent();
-            button.onClick.AddListener(onClick);
         }
         internal void SetAction(System.Action onClick)
         {
@@ -65,7 +74,7 @@ namespace Versa.F_Ui
             button.onClick = new Button.ButtonClickedEvent();
             button.onClick.AddListener(onClick);
         }
-        public WingButton(WingPage page, string name, int index, Texture2D texture)
+        public WingButton(WingPage page, string name, int index, Texture2D texture, bool state)
         {
             wing = page.wing;
 
@@ -74,11 +83,32 @@ namespace Versa.F_Ui
             transform.gameObject.transform.Find("Container/Icon").gameObject.GetComponent<Graphic>().color = Color.white;
             GameObject.Destroy(transform.gameObject.transform.Find("Container/Icon").gameObject.GetComponent<StyleElement>());
             SetIcon(transform.gameObject.transform.Find("Container/Icon").gameObject.GetComponent<Image>(), texture);
-          
             transform.GetComponent<RectTransform>().sizeDelta = new Vector2(420, 144);
             transform.transform.localPosition = new Vector3(0, 320 - (index * 120), transform.transform.localPosition.z);
 
             (text = transform.GetComponentInChildren<TMPro.TextMeshProUGUI>()).text = name;
+           Object.Destroy(text.gameObject.GetComponent<StyleElement>());
+            if (state)
+                SetColor(Color.green);
+            else
+                SetColor(Color.red);
+            transform.GetComponent<VRC.UI.Elements.Tooltips.UiTooltip>().field_Public_String_0 = "Don't know what the function is?\n Versa => Settings => Documentation";
+        }
+        public WingButton(WingPage page, string name, int index, Texture2D texture)
+        {
+            wing = page.wing;
+
+            transform = Object.Instantiate(wing.ProfileButton, page.transform);
+            transform.gameObject.name = "Button_" + name;
+            transform.gameObject.transform.Find("Container/Icon").gameObject.GetComponent<Graphic>().color = Color.white;
+            GameObject.Destroy(transform.gameObject.transform.Find("Container/Icon").gameObject.GetComponent<StyleElement>());
+            SetIcon(transform.gameObject.transform.Find("Container/Icon").gameObject.GetComponent<Image>(), texture);
+            transform.GetComponent<RectTransform>().sizeDelta = new Vector2(420, 144);
+            transform.transform.localPosition = new Vector3(0, 320 - (index * 120), transform.transform.localPosition.z);
+
+            (text = transform.GetComponentInChildren<TMPro.TextMeshProUGUI>()).text = name;
+            Object.Destroy(text.gameObject.GetComponent<StyleElement>());
+            SetColor(Color.cyan);
             transform.GetComponent<VRC.UI.Elements.Tooltips.UiTooltip>().field_Public_String_0 = "Don't know what the function is?\n Versa => Settings => Documentation";
         }
     }

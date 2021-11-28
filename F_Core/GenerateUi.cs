@@ -47,17 +47,41 @@ namespace Versa.F_Core
                 WingPage Selected = Versa.CreateNestedPage("Selected", 6);
                 WingPage Highlights = Settings.CreateNestedPage("HighlightsFX", 0);
                 WingPage Capsule = Settings.CreateNestedPage("CapsuleFX", 1);
-                WingButton Gravity = World.CreateButton("MoonGravity", 0, Data.Textures[2]); Gravity.SetAction(() => Data.Toggle.MoonGravity = Gravity.State(Gravity, Data.Toggle.MoonGravity, F_Module.Gravity.Moon, F_Module.Gravity.Standard));
-                WingButton OptimizationWorld = World.CreateButton("Optimization", 1, Data.Textures[3]); OptimizationWorld.SetAction(() => Data.Toggle.Optimization = OptimizationWorld.State(OptimizationWorld, Data.Toggle.Optimization, () => Optimization.State(true), () => Optimization.State(false)));
-                WingButton WorldID = World.CreateButton("Instance:ID", 3, Data.Textures[16]); WorldID.SetAction(() => Clipboard.WorldFullID());
 
-                WingButton GetOwnership = World.CreateButton("Ownership", 2, Data.Textures[4]); GetOwnership.SetAction(() => Data.Toggle.Ownership = GetOwnership.State(GetOwnership, Data.Toggle.Ownership, () => WorldObject.TakeOwnership(true), () => WorldObject.TakeOwnership(false)));
-                WingButton TeleportToSelected = Selected.CreateButton("TeleportTo", 0, Data.Textures[12]); TeleportToSelected.SetAction(() => Teleport.TeleportToSelected());
-                WingButton SitOnHead = Selected.CreateButton("SitOnHead", 1, Data.Textures[10]); SitOnHead.SetAction(() => MelonCoroutines.Start(F_Module.SitOnHead.Basic()));
-                WingButton DownloadVRCA_Selected = Selected.CreateButton("DL VRCA", 2, Data.Textures[7]); DownloadVRCA_Selected.SetAction(() => { VRCA.DownloadSelect(); });
-                WingButton Undress = Selected.CreateButton("Undress", 3, Data.Textures[11]); Undress.SetAction(() => Data.Toggle.Undress = Undress.State(Undress, Data.Toggle.Undress, () => Lewd.MakeLewd(true), () => Lewd.MakeLewd(false)));
-                WingButton DownloadVRCA_Me = Self.CreateButton("DL VRCA", 0, Data.Textures[7]); DownloadVRCA_Me.SetAction(() => VRCA.DownloadMe());
-                WingButton GoTo = Self.CreateButton("JoinByID", 1, Data.Textures[15]); GoTo.SetAction(() => Popup.GoToWorld());
+                WingButton Gravity = World.CreateButton("MoonGravity", 0, Data.Textures[2], Data.Toggle.MoonGravity); 
+                Gravity.SetAction(() => Data.Toggle.MoonGravity = Gravity.State(Gravity, Data.Toggle.MoonGravity, F_Module.Gravity.Moon, F_Module.Gravity.Standard));
+                MelonLoader.MelonCoroutines.Start(Gravity.StateUpdate(Gravity, 1));
+
+                WingButton OptimizationWorld = World.CreateButton("Optimization", 1, Data.Textures[3], Data.Toggle.Optimization);
+                OptimizationWorld.SetAction(() => Data.Toggle.Optimization = OptimizationWorld.State(OptimizationWorld, Data.Toggle.Optimization, () => Optimization.State(true), () => Optimization.State(false)));
+                MelonLoader.MelonCoroutines.Start(OptimizationWorld.StateUpdate(OptimizationWorld, 2));
+
+                WingButton WorldID = World.CreateButton("Instance:ID", 3, Data.Textures[16]); 
+                WorldID.SetAction(() => Clipboard.WorldFullID());
+
+                WingButton GetOwnership = World.CreateButton("Ownership", 2, Data.Textures[4], Data.Toggle.Ownership);
+                GetOwnership.SetAction(() => Data.Toggle.Ownership = GetOwnership.State(GetOwnership, Data.Toggle.Ownership, () => WorldObject.TakeOwnership(true), () => WorldObject.TakeOwnership(false)));
+                MelonLoader.MelonCoroutines.Start(GetOwnership.StateUpdate(GetOwnership, 3));
+
+                WingButton TeleportToSelected = Selected.CreateButton("TeleportTo", 0, Data.Textures[12]); 
+                TeleportToSelected.SetAction(() => Teleport.TeleportToSelected());
+              
+                WingButton SitOnHead = Selected.CreateButton("SitOnHead", 1, Data.Textures[10]); 
+                SitOnHead.SetAction(() => MelonCoroutines.Start(F_Module.SitOnHead.Basic()));
+               
+                WingButton DownloadVRCA_Selected = Selected.CreateButton("DL VRCA", 2, Data.Textures[7]); 
+                DownloadVRCA_Selected.SetAction(() => { VRCA.DownloadSelect(); });
+               
+                WingButton Undress = Selected.CreateButton("Undress", 3, Data.Textures[11], Data.Toggle.Undress); 
+                Undress.SetAction(() => Data.Toggle.Undress = Undress.State(Undress, Data.Toggle.Undress, () => Lewd.MakeLewd(true), () => Lewd.MakeLewd(false)));
+                MelonLoader.MelonCoroutines.Start(Undress.StateUpdate(Undress, 4));
+
+                WingButton DownloadVRCA_Me = Self.CreateButton("DL VRCA", 0, Data.Textures[7]);
+                DownloadVRCA_Me.SetAction(() => VRCA.DownloadMe());
+               
+                WingButton GoTo = Self.CreateButton("JoinByID", 1, Data.Textures[15]); 
+                GoTo.SetAction(() => Popup.GoToWorld());
+
                 #region Color
                 WingButton Red_ = Capsule.CreateButton("Red", 0, Data.Textures[14]); Red_.SetAction(() => UiManager.SetCapsuleColor("Red"));
                 WingButton Green_ = Capsule.CreateButton("Green", 1, Data.Textures[14]); Green_.SetAction(() => UiManager.SetCapsuleColor("Green"));
@@ -73,12 +97,32 @@ namespace Versa.F_Core
                 WingButton White = Highlights.CreateButton("White", 5, Data.Textures[14]); White.SetAction(() => UiManager.SelectColor("White"));
                 WingButton None = Highlights.CreateButton("None", 6, Data.Textures[14]); None.SetAction(() => UiManager.SelectColor("Black"));
                 #endregion
-                WingButton NoClip = Tools.CreateButton("NoClip", 0, Data.Textures[5]); NoClip.SetAction(() => Data.Toggle.NoClip = NoClip.State(NoClip, Data.Toggle.NoClip, () => F_Module.NoClip.State(true), () => F_Module.NoClip.State(false)));
-                WingButton SpeedHack = Tools.CreateButton("SpeedHack", 1, Data.Textures[6]); SpeedHack.SetAction(() => Data.Toggle.SpeedHack = SpeedHack.State(SpeedHack, Data.Toggle.SpeedHack, () => F_Module.SpeedHack.State(true), () => F_Module.SpeedHack.State(false)));
-                WingButton FOVPlus = Camera.CreateButton("FoV+", 1, Data.Textures[8]); FOVPlus.SetAction(() => F_Module.Camera.FoVPlus());
-                WingButton FOVMinus = Camera.CreateButton("FoV-", 0, Data.Textures[8]); FOVMinus.SetAction(() => F_Module.Camera.FoVMinus());
-                WingButton PostProcess = Camera.CreateButton("PostProcess", 2, Data.Textures[13]); PostProcess.SetAction(() => Data.Toggle.PostProcess = PostProcess.State(PostProcess, Data.Toggle.PostProcess, () => F_Module.PostProcess.State(true), () => F_Module.PostProcess.State(false)));
-                WingButton CapsuleEsp = Esp.CreateButton("CapsuleEsp", 0, Data.Textures[9]); CapsuleEsp.SetAction(() => Data.Toggle.CapsuleEsp = CapsuleEsp.State(CapsuleEsp, Data.Toggle.CapsuleEsp, () => F_Module.PlayerEsp.Capsule(true), () => F_Module.PlayerEsp.Capsule(false)));
+
+                WingButton NoClip = Tools.CreateButton("NoClip", 0, Data.Textures[5], Data.Toggle.NoClip); 
+                NoClip.SetAction(() => Data.Toggle.NoClip = NoClip.State(NoClip, Data.Toggle.NoClip, () => F_Module.NoClip.State(true), () => F_Module.NoClip.State(false)));
+                MelonLoader.MelonCoroutines.Start(NoClip.StateUpdate(NoClip, 5));
+
+                WingButton SpeedHack = Tools.CreateButton("SpeedHack", 1, Data.Textures[6], Data.Toggle.SpeedHack);  
+                SpeedHack.SetAction(() => Data.Toggle.SpeedHack = SpeedHack.State(SpeedHack, Data.Toggle.SpeedHack, () => F_Module.SpeedHack.State(true), () => F_Module.SpeedHack.State(false)));
+                MelonLoader.MelonCoroutines.Start(SpeedHack.StateUpdate(SpeedHack, 6));
+
+                WingButton Preview = Tools.CreateButton("FoVPreview", 2, Data.Textures[17], Data.FoVPreview); 
+                Preview.SetAction(() => Data.FoVPreview = Preview.State(Preview, Data.FoVPreview, () => CameraPreview.State(true), () => CameraPreview.State(false)));
+
+                WingButton FOVPlus = Camera.CreateButton("FoV+", 1, Data.Textures[8]); 
+                FOVPlus.SetAction(() => F_Module.Camera.FoVPlus());
+                
+                WingButton FOVMinus = Camera.CreateButton("FoV-", 0, Data.Textures[8]); 
+                FOVMinus.SetAction(() => F_Module.Camera.FoVMinus());               
+               
+                WingButton PostProcess = Camera.CreateButton("PostProcess", 2, Data.Textures[13], Data.Toggle.PostProcess);
+                PostProcess.SetAction(() => Data.Toggle.PostProcess = PostProcess.State(PostProcess, Data.Toggle.PostProcess, () => F_Module.PostProcess.State(true), () => F_Module.PostProcess.State(false)));
+                MelonLoader.MelonCoroutines.Start(PostProcess.StateUpdate(PostProcess, 7));
+
+                WingButton CapsuleEsp = Esp.CreateButton("CapsuleEsp", 0, Data.Textures[9], Data.Toggle.CapsuleEsp);
+                CapsuleEsp.SetAction(() => Data.Toggle.CapsuleEsp = CapsuleEsp.State(CapsuleEsp, Data.Toggle.CapsuleEsp, () => F_Module.PlayerEsp.Capsule(true), () => F_Module.PlayerEsp.Capsule(false)));
+                MelonLoader.MelonCoroutines.Start(CapsuleEsp.StateUpdate(CapsuleEsp, 8));
+
                 F_Output.CustomConsole.Console(true, "[OnWingInit finished]");
             }
         });

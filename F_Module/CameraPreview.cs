@@ -15,6 +15,7 @@ namespace Versa.F_Module
     class CameraPreview
     {
         private static GameObject CacheObject;
+        internal static void State(bool state) { }
         private static void CreateCamera()
         {
             try
@@ -30,6 +31,7 @@ namespace Versa.F_Module
         }
         internal static async void CreateRender()
         {
+            if(Data.FoVPreview)
             try
             {
                 CustomConsole.Console(true, "CameraPreview.cs await 2s");

@@ -674,7 +674,6 @@
     <Compile Include="F_Ui\Wing.cs" />
     <Compile Include="F_Ui\WingButton.cs" />
     <Compile Include="F_Ui\WingPage.cs" />
-    <Compile Include="F_Ui\WingToggle.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="F_Core\Main.cs" />
     <Compile Include="Properties\Resources.Designer.cs">

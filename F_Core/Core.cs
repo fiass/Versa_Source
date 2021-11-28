@@ -40,14 +40,14 @@ namespace Versa.F_Core
         {
             try
             {
-            if (Server.Access())
-            {
-                CustomConsole.Console(true, "the menu is being configured");
-                Unnecessary.TurnGameObject(false);
-                textMeshPro = UiPath.Text_Title.GetComponent<TextMeshProUGUI>();
-                textMeshPro.text = "Versa";
-                UiManager.ApplyData();
-            }
+                if (Server.Access())
+                {
+                    CustomConsole.Console(true, "the menu is being configured");
+                    Unnecessary.TurnGameObject(false);
+                    textMeshPro = UiPath.Text_Title.GetComponent<TextMeshProUGUI>();
+                    textMeshPro.text = "Versa";
+                    UiManager.ApplyData();
+                }
             }
             catch (Exception e) { CustomConsole.Console(true, "Core.cs [MenuInitialized] " + e.Message); }
         }
@@ -65,6 +65,12 @@ namespace Versa.F_Core
         {
             CustomConsole.Console(true, "[OnSceneWasInitialized]");
             F_Core.CapsuleColor.Capsule();
+            Data.Toggle.MoonGravity = false;
+            Data.Toggle.Optimization = false;
+            Data.Toggle.Ownership = false;
+            Data.Toggle.SpeedHack = false;
+            Data.Toggle.Undress = false;
+            Data.Toggle.PostProcess = false;
         }
         internal static void OnApplicationQuit()
         {

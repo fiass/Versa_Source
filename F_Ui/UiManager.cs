@@ -61,7 +61,14 @@ namespace Versa.F_Ui
             try
             {
                 var LaunchPad = UiPath.Canvas_QuickMenu_Clone.AddComponent<StateListener>();
+                var LeftWing = UiPath.LeftWing.AddComponent<StateListener>();
+                var RightWing = UiPath.RightWing.AddComponent<StateListener>();
                 var SelectedUser = GameApi.Menu_SelectedUser_Local.AddComponent<StateListener>();
+
+                LeftWing.OnEnabledMethod = () => Data.LeftWing = true;
+                LeftWing.OnDisableMethod = () => Data.LeftWing = false;
+                RightWing.OnEnabledMethod = () => Data.RightWing = true;
+                RightWing.OnDisableMethod = () => Data.RightWing = false;
 
                 SelectedUser.OnEnabledMethod = () =>
                 {
@@ -69,7 +76,6 @@ namespace Versa.F_Ui
                     try { CameraPreview.CreateRender(); } catch { }
                     CustomConsole.Console(true, "SelectedUser Open");
                 };
-
                 SelectedUser.OnDisableMethod = () =>
                 {
                     try { CameraPreview.DestroyRender(); } catch { }

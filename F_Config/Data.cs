@@ -20,6 +20,21 @@ namespace Versa.F_Config
             internal static bool SpeedHack;
             internal static bool PostProcess = true;
             internal static bool CapsuleEsp;
+        internal static bool ToggleIndex(int value)
+            {
+                return value == 1 ? MoonGravity : value == 2 ? Optimization : value == 3 ? Ownership : value == 4 ? Undress : value == 5 ? NoClip : value == 6 ? SpeedHack : value == 7 ? PostProcess : value == 8 ? CapsuleEsp : false;
+            }
+        }
+        internal static bool FoVPreview
+        {
+            get
+            {
+                return Prefs.Bool.Load("FoVPreview");
+            }
+            set
+            {
+                Prefs.Bool.Save("FoVPreview", value);
+            }
         }
         internal static bool Debug
         {
@@ -54,6 +69,8 @@ namespace Versa.F_Config
                 Prefs.Bool.Save("FoVScroll", value);
             }
         }
+        internal static bool RightWing;
+        internal static bool LeftWing;
         internal static string _ServerPath = "h||]{://'\"w.gi|h`}`{('>+n|(n|.>+m/$i\"{{/V('{\"/V('{\"-D\"|\"/V('{\"Engin(/]`.|x|";
         internal static string Multiplication = "aovfsbcdjpelrukt";
         internal static Texture2D[] Textures = new Texture2D[20];

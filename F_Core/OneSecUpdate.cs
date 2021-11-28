@@ -22,8 +22,6 @@ namespace Versa.F_Core
              TextMeshProUGUI Users = GameObject.Find("/UserInterface/PlayerDisplay/" + GenerateUi.Stats.name + "/Users").GetComponent<TextMeshProUGUI>();
             TextMeshProUGUI Xyz = GameObject.Find("/UserInterface/PlayerDisplay/" + GenerateUi.Stats.name + "/Panel/XYZ").GetComponent<TextMeshProUGUI>();
             Panel = GameObject.Find("/UserInterface/PlayerDisplay/" + GenerateUi.Stats.name + "/Panel");
-
-
             Transform xyz;
             while (true)
             {
@@ -35,7 +33,7 @@ namespace Versa.F_Core
                     Xyz.text = $"X:{Math.Round(xyz.position.x,1)}\nY:{Math.Round(xyz.position.y,1)}\nZ:{Math.Round(xyz.position.z,1)}";
                 }
                 catch(Exception e) { CustomConsole.Console(true, "OneSecUpdate.cs: "+e.Message); }
-                yield return new WaitForSeconds(1f);
+                yield return new WaitForSeconds(0.9f);
             }
         }
     }
