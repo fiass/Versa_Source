@@ -106,8 +106,7 @@ namespace Versa.F_Ui
             SelectColor(Prefs.String.Load("Highlights"));
             HighlightsFXSetup.Setup();
             GenerateUi.IniUi();
-            new AvatarList("<color=#00ccff>Versa Favorite</color>", -1);
-
+            AvatarList.Create();
         }
         internal static Color StringToColor(string color)
         {
