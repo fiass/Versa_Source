@@ -62,7 +62,7 @@ namespace Versa.F_Core
                 if (PlayerPrefs.HasKey(key))
                     return Convert.ToBoolean(PlayerPrefs.GetInt(key));
                 else
-                    return false;
+                    return true;
             }
         }
     }

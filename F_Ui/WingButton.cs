@@ -40,9 +40,22 @@ namespace Versa.F_Ui
             }
             return false;
         }
+        internal bool State(WingButton button, bool state)
+        {
+            switch (state)
+            {
+                case true:
+                    button.SetColor(Color.red);
+                    return false;
+                case false:
+                    button.SetColor(Color.green);
+                    return true;
+            }
+            return false;
+        }
         internal IEnumerator StateUpdate(WingButton button, int value)
         {
-            CustomConsole.Console(true,"[Synchronization component is created]");
+            CustomConsole.Console(true,$"[Synchronization {button.text.text}]");
              while(true)
             {
                 try

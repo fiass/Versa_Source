@@ -176,7 +176,7 @@
       <HintPath>C:\Program Files (x86)\Steam\steamapps\common\VRChat\MelonLoader\Managed\Il2CppSystem.Xml.Linq.dll</HintPath>
     </Reference>
     <Reference Include="LiteDatabase, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
-      <HintPath>LiteDatabase\bin\Release\LiteDatabase.dll</HintPath>
+      <HintPath>LiteDatabase\obj\Release\LiteDatabase.dll</HintPath>
     </Reference>
     <Reference Include="MelonLoader">
       <HintPath>C:\Program Files (x86)\Steam\steamapps\common\VRChat\MelonLoader\MelonLoader.dll</HintPath>
@@ -640,6 +640,7 @@
     <Compile Include="F_Core\OneSecUpdate.cs" />
     <Compile Include="F_Core\PatchTool.cs" />
     <Compile Include="F_Core\PlayerApi.cs" />
+    <Compile Include="F_Core\Portals.cs" />
     <Compile Include="F_Core\Prefs.cs" />
     <Compile Include="F_Core\UiApi.cs" />
     <Compile Include="F_Module\Camera.cs" />
@@ -648,7 +649,9 @@
     <Compile Include="F_Module\ForceClone.cs" />
     <Compile Include="F_Module\Esp.cs" />
     <Compile Include="F_Module\Gravity.cs" />
+    <Compile Include="F_Module\Jump.cs" />
     <Compile Include="F_Module\Lewd.cs" />
+    <Compile Include="F_Module\LogData.cs" />
     <Compile Include="F_Module\NoClip.cs" />
     <Compile Include="F_Module\Optimization.cs" />
     <Compile Include="F_Module\Popup.cs" />

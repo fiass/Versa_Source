@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Reflection;
 using HarmonyLib;
+using Versa.F_Output;
 
 namespace Versa.F_Core
 {
@@ -26,7 +27,7 @@ namespace Versa.F_Core
                     {
                         if ( __instance._player.prop_ApiAvatar_0 != null)
                         {
-                           
+                            CustomConsole.Console(true, "Method_Public_add_Void_OnAvatarIsReady_0");
                         }
                     }
                 }
@@ -50,10 +51,7 @@ namespace Versa.F_Core
             {
                 HarmonyInstance.Patch(Method, PostFixMethod);
             }
-            catch (Exception e)
-            {
-                //TODO:Add error logging
-            }
+            catch (Exception e) { CustomConsole.Console(true, "PatchTool.cs [Patch] " + e.Message); }
         }
         internal static HarmonyMethod GetPatch<T>(string name) =>
             new HarmonyMethod(typeof(T).GetMethod(name, AccessTools.all));

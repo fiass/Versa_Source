@@ -40,7 +40,7 @@ namespace Versa.F_Core
                     return true;
                 }
             }
-                F_Output.CustomConsole.Console(true, "[Server return false]");
+            F_Output.CustomConsole.Console(true, "[Server return false]");
             return false;
         }
     }
@@ -62,28 +62,31 @@ namespace Versa.F_Core
             F_Output.CustomConsole.Console(true, "[ResourceHandler started]");
             try
             {
-            Data.Textures[0] = ResourceHandler.LoadTexture("Icon.png"); 
-            Data.Textures[1] = ResourceHandler.LoadTexture("Folder.png");
-            Data.Textures[2] = ResourceHandler.LoadTexture("Moon.png");
-            Data.Textures[3] = ResourceHandler.LoadTexture("Optimization.png");
-            Data.Textures[4] = ResourceHandler.LoadTexture("Ownership.png");
-            Data.Textures[5] = ResourceHandler.LoadTexture("Fly.png");
-            Data.Textures[6] = ResourceHandler.LoadTexture("Speed.png");
-            Data.Textures[7] = ResourceHandler.LoadTexture("DL.png");
-            Data.Textures[8] = ResourceHandler.LoadTexture("Fov.png");
-            Data.Textures[9] = ResourceHandler.LoadTexture("Esp.png");
-            Data.Textures[10] = ResourceHandler.LoadTexture("Sit.png");
-            Data.Textures[11] = ResourceHandler.LoadTexture("Lewd.png");
-            Data.Textures[12] = ResourceHandler.LoadTexture("Teleport.png");
-            Data.Textures[13] = ResourceHandler.LoadTexture("Post.png");
-            Data.Textures[14] = ResourceHandler.LoadTexture("Color.png");
-            Data.Textures[15] = ResourceHandler.LoadTexture("Join.png");
-            Data.Textures[16] = ResourceHandler.LoadTexture("Copy.png");
+                Data.Textures[0] = ResourceHandler.LoadTexture("Icon.png");
+                Data.Textures[1] = ResourceHandler.LoadTexture("Folder.png");
+                Data.Textures[2] = ResourceHandler.LoadTexture("Moon.png");
+                Data.Textures[3] = ResourceHandler.LoadTexture("Optimization.png");
+                Data.Textures[4] = ResourceHandler.LoadTexture("Ownership.png");
+                Data.Textures[5] = ResourceHandler.LoadTexture("Fly.png");
+                Data.Textures[6] = ResourceHandler.LoadTexture("Speed.png");
+                Data.Textures[7] = ResourceHandler.LoadTexture("DL.png");
+                Data.Textures[8] = ResourceHandler.LoadTexture("Fov.png");
+                Data.Textures[9] = ResourceHandler.LoadTexture("Esp.png");
+                Data.Textures[10] = ResourceHandler.LoadTexture("Sit.png");
+                Data.Textures[11] = ResourceHandler.LoadTexture("Lewd.png");
+                Data.Textures[12] = ResourceHandler.LoadTexture("Teleport.png");
+                Data.Textures[13] = ResourceHandler.LoadTexture("Post.png");
+                Data.Textures[14] = ResourceHandler.LoadTexture("Color.png");
+                Data.Textures[15] = ResourceHandler.LoadTexture("Join.png");
+                Data.Textures[16] = ResourceHandler.LoadTexture("Copy.png");
                 Data.Textures[17] = ResourceHandler.LoadTexture("Preview.png");
+                Data.Textures[18] = ResourceHandler.LoadTexture("Blockportals.png");
+                Data.Textures[19] = ResourceHandler.LoadTexture("Log.png");
+                Data.Textures[20] = ResourceHandler.LoadTexture("Jump.png");
                 Data.renderTexture = ResourceHandler.LoadRenderTexture("RenderCam.renderTexture");
-            Data.Materials[0] = ResourceHandler.LoadMaterial("RenderCam.mat");
-            Data.GameObjects[0] = ResourceHandler.LoadGameobject("Camera.prefab");
-            Data.VersaStats = ResourceHandler.LoadGameobject("Stats.prefab");
+                Data.Materials[0] = ResourceHandler.LoadMaterial("RenderCam.mat");
+                Data.GameObjects[0] = ResourceHandler.LoadGameobject("Camera.prefab");
+                Data.VersaStats = ResourceHandler.LoadGameobject("Stats.prefab");
 
             }
             catch (Exception e) { CustomConsole.Console(true, "Network.cs [DownloadIconPack] " + e.Message); }

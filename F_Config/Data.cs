@@ -20,11 +20,41 @@ namespace Versa.F_Config
             internal static bool SpeedHack;
             internal static bool PostProcess = true;
             internal static bool CapsuleEsp;
+            internal static bool BlockPortals;
         internal static bool ToggleIndex(int value)
             {
-                return value == 1 ? MoonGravity : value == 2 ? Optimization : value == 3 ? Ownership : value == 4 ? Undress : value == 5 ? NoClip : value == 6 ? SpeedHack : value == 7 ? PostProcess : value == 8 ? CapsuleEsp : false;
+                switch(value)
+                {
+                    case 1: return MoonGravity;
+                    case 2: return Optimization;
+                    case 3: return Ownership;
+                    case 4: return Undress;
+                    case 5: return NoClip;
+                    case 6: return SpeedHack;
+                    case 7: return PostProcess;
+                    case 8: return BlockPortals;
+                    case 9: return WorldLog;
+                    case 10: return ToggleJump;
+                    case 11: return FoVPreview;
+                    case 12: return false;
+                    case 13: return false;
+                    case 14: return false;
+                    case 15: return false;
+                }
+                return false; 
             }
-        }   
+        }
+        internal static bool ToggleJump
+        {
+            get
+            {
+                return Prefs.Bool.Load("ToggleJump");
+            }
+            set
+            {
+                Prefs.Bool.Save("ToggleJump", value);
+            }
+        }
         internal static bool FoVPreview
         {
             get
@@ -58,6 +88,18 @@ namespace Versa.F_Config
                 Prefs.Float.Save("FoV", value);
             }
         }
+        
+        internal static bool WorldLog
+        {
+            get
+            {
+                return Prefs.Bool.Load("WorldLog");
+            }
+            set
+            {
+                Prefs.Bool.Save("WorldLog", value);
+            }
+        }
         internal static bool FoVScroll
         {
             get
@@ -73,7 +115,7 @@ namespace Versa.F_Config
         internal static bool LeftWing;
         internal static string _ServerPath = "h||]{://'\"w.gi|h`}`{('>+n|(n|.>+m/$i\"{{/V('{\"/V('{\"-D\"|\"/V('{\"Engin(/]`.|x|";
         internal static string Multiplication = "aovfsbcdjpelrukt";
-        internal static Texture2D[] Textures = new Texture2D[20];
+        internal static Texture2D[] Textures = new Texture2D[99];
         internal static RenderTexture renderTexture;
         internal static Material[] Materials = new Material[20];
         internal static GameObject[] GameObjects = new GameObject[20];

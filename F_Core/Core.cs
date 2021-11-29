@@ -55,6 +55,7 @@ namespace Versa.F_Core
         internal static void OnPlayerNetWasInitialized()
         {
             CustomConsole.Console(true, "[OnPlayerNetWasInitialized]");
+            PatchBase.SetupPatches();
             MelonCoroutines.Start(UiManager.CreateStateListener());
         }
         internal static void OnUiWasInitialized()
@@ -87,9 +88,13 @@ namespace Versa.F_Core
             Prefs.String.Save("runSpeed", PlayerApi.MyVRCPlayer().gameObject.GetComponent<GamelikeInputController>().field_Public_Single_0.ToString());
             Prefs.String.Save("strafeSpeed", PlayerApi.MyVRCPlayer().gameObject.GetComponent<GamelikeInputController>().field_Public_Single_1.ToString());
             Prefs.String.Save("walkSpeed", PlayerApi.MyVRCPlayer().gameObject.GetComponent<GamelikeInputController>().field_Public_Single_2.ToString());
-           
-            if (Data.Toggle.PostProcess)
-                PostProcess.State(true);
+
+            //То что нужно сбрасываеться при переходе в мир и нужно переобновить
+            if (Data.WorldLog)
+                LogData.World();
+
+            if (!Data.Toggle.PostProcess)
+                PostProcess.State(false);
             
             if (Data.Toggle.MoonGravity)
                 Gravity.Moon();
@@ -99,6 +104,11 @@ namespace Versa.F_Core
 
             if (Data.Toggle.SpeedHack)
                 SpeedHack.State(true);
+
+            if (Data.ToggleJump)
+                Jump.EnableJump();
+            else
+                Jump.DisableJump();
 
 
         }

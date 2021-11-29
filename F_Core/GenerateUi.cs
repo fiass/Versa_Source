@@ -52,11 +52,19 @@ namespace Versa.F_Core
                 Gravity.SetAction(() => Data.Toggle.MoonGravity = Gravity.State(Gravity, Data.Toggle.MoonGravity, F_Module.Gravity.Moon, F_Module.Gravity.Standard));
                 MelonLoader.MelonCoroutines.Start(Gravity.StateUpdate(Gravity, 1));
 
+                WingButton BlockPortals = World.CreateButton("BlockPortals", 3, Data.Textures[18], Data.Toggle.BlockPortals);
+                BlockPortals.SetAction(() => Data.Toggle.BlockPortals = BlockPortals.State(BlockPortals, Data.Toggle.BlockPortals, ()=>Portals.State(true), () => Portals.State(false)));
+                MelonLoader.MelonCoroutines.Start(BlockPortals.StateUpdate(BlockPortals, 8));
+
                 WingButton OptimizationWorld = World.CreateButton("Optimization", 1, Data.Textures[3], Data.Toggle.Optimization);
                 OptimizationWorld.SetAction(() => Data.Toggle.Optimization = OptimizationWorld.State(OptimizationWorld, Data.Toggle.Optimization, () => Optimization.State(true), () => Optimization.State(false)));
                 MelonLoader.MelonCoroutines.Start(OptimizationWorld.StateUpdate(OptimizationWorld, 2));
 
-                WingButton WorldID = World.CreateButton("Instance:ID", 3, Data.Textures[16]); 
+                WingButton WorldLogs = Settings.CreateButton("WorldLogs", 2, Data.Textures[19], Data.WorldLog);
+                WorldLogs.SetAction(() => Data.WorldLog = WorldLogs.State(WorldLogs, Data.WorldLog));
+                MelonLoader.MelonCoroutines.Start(WorldLogs.StateUpdate(WorldLogs, 9));
+
+                WingButton WorldID = World.CreateButton("ID:Instance", 5, Data.Textures[16]); 
                 WorldID.SetAction(() => Clipboard.WorldFullID());
 
                 WingButton GetOwnership = World.CreateButton("Ownership", 2, Data.Textures[4], Data.Toggle.Ownership);
@@ -76,10 +84,14 @@ namespace Versa.F_Core
                 Undress.SetAction(() => Data.Toggle.Undress = Undress.State(Undress, Data.Toggle.Undress, () => Lewd.MakeLewd(true), () => Lewd.MakeLewd(false)));
                 MelonLoader.MelonCoroutines.Start(Undress.StateUpdate(Undress, 4));
 
-                WingButton DownloadVRCA_Me = Self.CreateButton("DL VRCA", 0, Data.Textures[7]);
+                WingButton ToggleJump = Self.CreateButton("ToggleJump", 0, Data.Textures[20], Data.ToggleJump);
+                ToggleJump.SetAction(() => Data.ToggleJump = ToggleJump.State(ToggleJump, Data.ToggleJump, () => Jump.EnableJump(), () => Jump.DisableJump()));
+                MelonLoader.MelonCoroutines.Start(ToggleJump.StateUpdate(ToggleJump, 10));
+
+                WingButton DownloadVRCA_Me = Self.CreateButton("DL VRCA", 1, Data.Textures[7]);
                 DownloadVRCA_Me.SetAction(() => VRCA.DownloadMe());
                
-                WingButton GoTo = Self.CreateButton("JoinByID", 1, Data.Textures[15]); 
+                WingButton GoTo = Self.CreateButton("JoinByID", 2, Data.Textures[15]); 
                 GoTo.SetAction(() => Popup.GoToWorld());
 
                 #region Color
@@ -108,6 +120,7 @@ namespace Versa.F_Core
 
                 WingButton Preview = Tools.CreateButton("FoVPreview", 2, Data.Textures[17], Data.FoVPreview); 
                 Preview.SetAction(() => Data.FoVPreview = Preview.State(Preview, Data.FoVPreview, () => CameraPreview.State(true), () => CameraPreview.State(false)));
+                MelonLoader.MelonCoroutines.Start(Preview.StateUpdate(Preview, 11));
 
                 WingButton FOVPlus = Camera.CreateButton("FoV+", 1, Data.Textures[8]); 
                 FOVPlus.SetAction(() => F_Module.Camera.FoVPlus());
