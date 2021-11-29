@@ -16,6 +16,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LiteDatabase", "LiteDatabas
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Installer", "Installer\Installer.csproj", "{4AF6D697-4E9A-4D8B-9EF9-F50646927237}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebsocketSharp", "WebsocketSharp\WebsocketSharp.csproj", "{71F08AE6-6DB8-4487-AE78-5B6A01FB92B4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Server", "Server\Server.csproj", "{2A03318F-10F6-4EAF-9138-ACECB8F09045}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Release|Any CPU = Release|Any CPU
@@ -27,6 +31,10 @@ Global
 		{632744AD-FD41-411A-A154-816452A2BFBC}.Release|Any CPU.Build.0 = Release|Any CPU
 		{4AF6D697-4E9A-4D8B-9EF9-F50646927237}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4AF6D697-4E9A-4D8B-9EF9-F50646927237}.Release|Any CPU.Build.0 = Release|Any CPU
+		{71F08AE6-6DB8-4487-AE78-5B6A01FB92B4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{71F08AE6-6DB8-4487-AE78-5B6A01FB92B4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2A03318F-10F6-4EAF-9138-ACECB8F09045}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2A03318F-10F6-4EAF-9138-ACECB8F09045}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -36,5 +44,6 @@ Global
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{632744AD-FD41-411A-A154-816452A2BFBC} = {416CBE69-6EF4-4DAF-A5B3-5977128F2F28}
+		{71F08AE6-6DB8-4487-AE78-5B6A01FB92B4} = {416CBE69-6EF4-4DAF-A5B3-5977128F2F28}
 	EndGlobalSection
 EndGlobal

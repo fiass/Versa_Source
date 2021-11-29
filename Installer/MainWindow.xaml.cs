@@ -1,4 +1,6 @@
-﻿namespace Installer
+﻿using System.Windows.Input;
+
+namespace Installer
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
@@ -9,5 +11,7 @@
         {
             InitializeComponent();
         }
+
+        private void UIElement_OnMouseDown(object sender, MouseButtonEventArgs e) => DragMove();
     }
 }

@@ -5,8 +5,13 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Installer"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525">
+        Title="Versa Installer" Height="540" Width="860" WindowStartupLocation="CenterScreen" ResizeMode="NoResize" WindowStyle="None" Background="#1a1a1a">
     <Grid>
-        
+        <Grid MouseDown="UIElement_OnMouseDown" Background="#0d0d0d" Height="25" Margin="0,0, 0,515">
+            <Label Content="Versa"></Label>
+        </Grid>
+        <Grid Name="ButtonParent" Background="#0d0d0d" Height="500" Width="120" Margin="0,0, 500,0">
+            
+        </Grid>
     </Grid>
 </Window>
