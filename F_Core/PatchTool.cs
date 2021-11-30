@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Reflection;
 using HarmonyLib;
+using Versa.F_Config;
+using Versa.F_Module;
 using Versa.F_Output;
 
 namespace Versa.F_Core
@@ -27,7 +29,8 @@ namespace Versa.F_Core
                     {
                         if ( __instance._player.prop_ApiAvatar_0 != null)
                         {
-                            CustomConsole.Console(true, "Method_Public_add_Void_OnAvatarIsReady_0");
+                            if(Data.Toggle.AntiCrash)
+                            AntiCrash.CheckPlayer(__instance._player);
                         }
                     }
                 }

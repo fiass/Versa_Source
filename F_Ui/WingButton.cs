@@ -79,7 +79,8 @@ namespace Versa.F_Ui
         }
         internal void SetColor(Color color)
         {
-            transform.GetComponentInChildren<TMPro.TextMeshProUGUI>().color = color;
+            transform.GetComponentInChildren<TMPro.TextMeshProUGUI>().color = Color.white;
+            transform.GetComponentInChildren<TMPro.TextMeshProUGUI>().colorGradient = new VertexGradient(color, Color.gray,color,color);
         }
         internal void SetAction(System.Action onClick)
         {
@@ -100,7 +101,9 @@ namespace Versa.F_Ui
             transform.transform.localPosition = new Vector3(0, 320 - (index * 120), transform.transform.localPosition.z);
 
             (text = transform.GetComponentInChildren<TMPro.TextMeshProUGUI>()).text = name;
-           Object.Destroy(text.gameObject.GetComponent<StyleElement>());
+            Object.Destroy(text.gameObject.GetComponent<StyleElement>());
+            text.m_colorMode = ColorMode.VerticalGradient;
+            text.enableVertexGradient = true;
             if (state)
                 SetColor(Color.green);
             else
@@ -121,6 +124,8 @@ namespace Versa.F_Ui
 
             (text = transform.GetComponentInChildren<TMPro.TextMeshProUGUI>()).text = name;
             Object.Destroy(text.gameObject.GetComponent<StyleElement>());
+            text.m_colorMode = ColorMode.VerticalGradient;
+            text.enableVertexGradient = true;
             SetColor(Color.cyan);
             transform.GetComponent<VRC.UI.Elements.Tooltips.UiTooltip>().field_Public_String_0 = "Don't know what the function is?\n Versa => Settings => Documentation";
         }

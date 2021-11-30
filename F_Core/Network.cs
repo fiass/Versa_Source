@@ -83,10 +83,16 @@ namespace Versa.F_Core
                 Data.Textures[18] = ResourceHandler.LoadTexture("Blockportals.png");
                 Data.Textures[19] = ResourceHandler.LoadTexture("Log.png");
                 Data.Textures[20] = ResourceHandler.LoadTexture("Jump.png");
+                Data.Textures[21] = ResourceHandler.LoadTexture("Moveblock.png");
+                Data.Textures[22] = ResourceHandler.LoadTexture("chair.png");
+                Data.Textures[23] = ResourceHandler.LoadTexture("Anticrash.png");
                 Data.renderTexture = ResourceHandler.LoadRenderTexture("RenderCam.renderTexture");
                 Data.Materials[0] = ResourceHandler.LoadMaterial("RenderCam.mat");
                 Data.GameObjects[0] = ResourceHandler.LoadGameobject("Camera.prefab");
                 Data.VersaStats = ResourceHandler.LoadGameobject("Stats.prefab");
+                Data.Textures[96] = ResourceHandler.LoadTexture("MenuBackground.png");
+                Data.Textures[98] = ResourceHandler.LoadTexture("Sphere.png");
+                Data.Textures[97] = ResourceHandler.LoadTexture("Private.png");
 
             }
             catch (Exception e) { CustomConsole.Console(true, "Network.cs [DownloadIconPack] " + e.Message); }

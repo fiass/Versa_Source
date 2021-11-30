@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 using Versa.F_Config;
@@ -55,8 +56,12 @@ namespace Versa.F_Ui
 
             Transform open = Object.Instantiate(wing.ProfileButton, wing.WingButtons);
             (text = open.GetComponentInChildren<TMPro.TextMeshProUGUI>()).text = name;
-
-             openButton = open.GetComponent<Button>();
+            Object.Destroy(text.gameObject.GetComponent<StyleElement>());
+            text.m_colorMode = ColorMode.VerticalGradient;
+            text.enableVertexGradient = true;
+            text.color = Color.white;
+            text.colorGradient = new VertexGradient(Color.cyan, Color.white, Color.cyan, Color.cyan);
+            openButton = open.GetComponent<Button>();
              openButton.gameObject.transform.Find("Container/Icon").gameObject.GetComponent<Graphic>().color = Color.white;
              GameObject.Destroy(openButton.gameObject.transform.Find("Container/Icon").gameObject.GetComponent<StyleElement>());
              SetIcon(openButton.gameObject.transform.Find("Container/Icon").gameObject.GetComponent<Image>(), Data.Textures[0]);
@@ -74,7 +79,7 @@ namespace Versa.F_Ui
                 else wing.WingMenu.gameObject.SetActive(false);
             }));
         }
-
+       
         public WingPage(WingPage page, string name, int index)
         {
             wing = page.wing;
@@ -105,6 +110,11 @@ namespace Versa.F_Ui
 
             Transform open = Object.Instantiate(wing.ProfileButton, page.transform);
             (text = open.GetComponentInChildren<TMPro.TextMeshProUGUI>()).text = name;
+            Object.Destroy(text.gameObject.GetComponent<StyleElement>());
+            text.m_colorMode = ColorMode.VerticalGradient;
+            text.enableVertexGradient = true;
+            text.color = Color.white;
+            text.colorGradient = new VertexGradient(Color.cyan, Color.white, Color.cyan, Color.cyan);
             openButton = open.GetComponent<Button>();
             openButton.gameObject.transform.Find("Container/Icon").gameObject.GetComponent<Graphic>().color = Color.white;
             GameObject.Destroy(openButton.gameObject.transform.Find("Container/Icon").gameObject.GetComponent<StyleElement>());

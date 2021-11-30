@@ -9,6 +9,7 @@ using Versa.F_Config;
 using Versa.F_Core;
 using Versa.F_Output;
 using Versa.F_Ui;
+using VRC.UI.Core.Styles;
 
 namespace Versa.F_Module
 {
@@ -31,7 +32,7 @@ namespace Versa.F_Module
         }
         internal static async void CreateRender()
         {
-            if(Data.FoVPreview)
+            if(Data.PoVPreview)
             try
             {
                 CustomConsole.Console(true, "CameraPreview.cs await 2s");

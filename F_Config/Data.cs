@@ -21,6 +21,8 @@ namespace Versa.F_Config
             internal static bool PostProcess = true;
             internal static bool CapsuleEsp;
             internal static bool BlockPortals;
+            internal static bool AntiCrash = true;
+            internal static bool ToggleMove;
         internal static bool ToggleIndex(int value)
             {
                 switch(value)
@@ -35,13 +37,35 @@ namespace Versa.F_Config
                     case 8: return BlockPortals;
                     case 9: return WorldLog;
                     case 10: return ToggleJump;
-                    case 11: return FoVPreview;
-                    case 12: return false;
-                    case 13: return false;
-                    case 14: return false;
+                    case 11: return PoVPreview;
+                    case 12: return ToggleMove;
+                    case 13: return ToggleChair;
+                    case 14: return AntiCrash;
                     case 15: return false;
                 }
                 return false; 
+            }
+        }
+        internal static bool AntiCrash
+        {
+            get
+            {
+                return Prefs.Bool.Load("AntiCrash");
+            }
+            set
+            {
+                Prefs.Bool.Save("AntiCrash", value);
+            }
+        }
+        internal static bool ToggleChair
+        {
+            get
+            {
+                return Prefs.Bool.Load("ToggleChair");
+            }
+            set
+            {
+                Prefs.Bool.Save("ToggleChair", value);
             }
         }
         internal static bool ToggleJump
@@ -55,17 +79,18 @@ namespace Versa.F_Config
                 Prefs.Bool.Save("ToggleJump", value);
             }
         }
-        internal static bool FoVPreview
+        internal static bool PoVPreview
         {
             get
             {
-                return Prefs.Bool.Load("FoVPreview");
+                return Prefs.Bool.Load("PoVPreview");
             }
             set
             {
-                Prefs.Bool.Save("FoVPreview", value);
+                Prefs.Bool.Save("PoVPreview", value);
             }
         }
+       
         internal static bool Debug
         {
             get

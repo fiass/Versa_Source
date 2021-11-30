@@ -643,6 +643,7 @@
     <Compile Include="F_Core\Portals.cs" />
     <Compile Include="F_Core\Prefs.cs" />
     <Compile Include="F_Core\UiApi.cs" />
+    <Compile Include="F_Module\AntiCrash.cs" />
     <Compile Include="F_Module\Camera.cs" />
     <Compile Include="F_Module\CameraPreview.cs" />
     <Compile Include="F_Module\ClientProtection.cs" />
@@ -652,10 +653,12 @@
     <Compile Include="F_Module\Jump.cs" />
     <Compile Include="F_Module\Lewd.cs" />
     <Compile Include="F_Module\LogData.cs" />
+    <Compile Include="F_Module\Movement.cs" />
     <Compile Include="F_Module\NoClip.cs" />
     <Compile Include="F_Module\Optimization.cs" />
     <Compile Include="F_Module\Popup.cs" />
     <Compile Include="F_Module\PostProcess.cs" />
+    <Compile Include="F_Module\QuickStatus.cs" />
     <Compile Include="F_Module\SitOnHead.cs" />
     <Compile Include="F_Module\SpeedHack.cs" />
     <Compile Include="F_Module\TabControl.cs" />

@@ -64,7 +64,9 @@ namespace Versa.F_Ui
                 var LeftWing = UiPath.LeftWing.AddComponent<StateListener>();
                 var RightWing = UiPath.RightWing.AddComponent<StateListener>();
                 var SelectedUser = GameApi.Menu_SelectedUser_Local.AddComponent<StateListener>();
+                var Social = UiPath.Social.AddComponent<StateListener>();
 
+                //Social.OnDisableMethod = () => Data.LeftWing = false;
                 LeftWing.OnEnabledMethod = () => Data.LeftWing = true;
                 LeftWing.OnDisableMethod = () => Data.LeftWing = false;
                 RightWing.OnEnabledMethod = () => Data.RightWing = true;
@@ -107,6 +109,7 @@ namespace Versa.F_Ui
             HighlightsFXSetup.Setup();
             GenerateUi.IniUi();
             AvatarList.Create();
+            QuickStatus.Icons();
         }
         internal static Color StringToColor(string color)
         {

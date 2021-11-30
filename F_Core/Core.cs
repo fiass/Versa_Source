@@ -90,6 +90,10 @@ namespace Versa.F_Core
             Prefs.String.Save("walkSpeed", PlayerApi.MyVRCPlayer().gameObject.GetComponent<GamelikeInputController>().field_Public_Single_2.ToString());
 
             //То что нужно сбрасываеться при переходе в мир и нужно переобновить
+          
+            Data.Toggle.ToggleMove = true;
+            Data.Toggle.AntiCrash = Data.AntiCrash;
+
             if (Data.WorldLog)
                 LogData.World();
 
@@ -109,6 +113,9 @@ namespace Versa.F_Core
                 Jump.EnableJump();
             else
                 Jump.DisableJump();
+
+            if (!Data.ToggleChair)
+                WorldObject.ChairDisabled();
 
 
         }

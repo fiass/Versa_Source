@@ -13,6 +13,9 @@ namespace Versa.F_Module
     class WorldObject
     {
         private static List<VRC_Pickup> _lst = new List<VRC_Pickup>();
+        private static List<VRC_StationInternal> chair = new List<VRC_StationInternal>();
+        private static List<VRC_StationInternal2> chair2 = new List<VRC_StationInternal2>();
+        private static List<VRC_StationInternal3> chair3 = new List<VRC_StationInternal3>();
         private static bool _Can;
         internal static void TakeOwnership(bool state)
         {
@@ -28,14 +31,60 @@ namespace Versa.F_Module
                         }
                             _Can = true;
                             MelonCoroutines.Start(Coroutine());
+                        CustomConsole.Console(true, "TakeOwnership started");
                     }
-                    catch { }
+                    catch (Exception e) { CustomConsole.Console(true, "WorldObject.cs [TakeOwnership] " + e.Message); }
                     break;
 
                 case false:
                     _Can = false;
                     break;
             }
+        }
+        internal static void ChairEnabled()
+        {
+            try
+            {
+                foreach (var a in chair)
+                {
+                    a.gameObject.SetActive(true);
+                }
+                foreach (var a in chair2)
+                {
+                    a.gameObject.SetActive(true);
+                }
+                foreach (var a in chair3)
+                {
+                    a.gameObject.SetActive(true);
+                }
+                CustomConsole.Console(true, $"Chairs enadbled: {chair.Count + chair2.Count + chair3.Count}");
+            }
+            catch (Exception e) { CustomConsole.Console(true, "WorldObject.cs [ChairEnabled] " + e.Message); }
+        }
+        internal static void ChairDisabled()
+        {
+            try
+            {
+                chair.Clear();
+                foreach (VRC_StationInternal a in Resources.FindObjectsOfTypeAll<VRC_StationInternal>())
+                {
+                    chair.Add(a);
+                    a.gameObject.SetActive(false);
+                }
+                chair2.Clear();
+                foreach (VRC_StationInternal2 a in Resources.FindObjectsOfTypeAll<VRC_StationInternal2>())
+                {
+                    chair2.Add(a);
+                    a.gameObject.SetActive(false);
+                }
+                chair3.Clear();
+                foreach (VRC_StationInternal3 a in Resources.FindObjectsOfTypeAll<VRC_StationInternal3>())
+                {
+                    chair3.Add(a);
+                    a.gameObject.SetActive(false);
+                }
+                CustomConsole.Console(true, $"Chairs disabled: {chair.Count + chair2.Count + chair3.Count}");
+            }catch (Exception e) { CustomConsole.Console(true, "WorldObject.cs [ChairDisabled] " + e.Message); }
         }
         private static IEnumerator Coroutine()
         {
