@@ -32,7 +32,15 @@ namespace Versa.F_Ui
     internal class UiManager
     {
         static bool animation = false;
-
+        internal static void MenuColor(string color)
+        {
+            Data.MenuColor = color;
+            Color temp = StringToColor(Data.MenuColor);
+            foreach (var menu in GenerateUi.ColorMenu)
+            {
+                menu.color = new Color(temp.r, temp.g, temp.b, 0.5f);  
+            }
+        }
         internal static IEnumerator CreateStateListener()
         {
             bool _a = true;

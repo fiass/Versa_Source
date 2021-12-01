@@ -108,7 +108,7 @@ namespace Versa.F_Ui
                 SetColor(Color.green);
             else
                 SetColor(Color.red);
-            transform.GetComponent<VRC.UI.Elements.Tooltips.UiTooltip>().field_Public_String_0 = "Don't know what the function is?\n Versa => Settings => Documentation";
+            transform.GetComponent<VRC.UI.Elements.Tooltips.UiTooltip>().field_Public_String_0 = "Don't know what the function is?\n Versa => Settings => Manual";
         }
         public WingButton(WingPage page, string name, int index, Texture2D texture)
         {
@@ -127,7 +127,7 @@ namespace Versa.F_Ui
             text.m_colorMode = ColorMode.VerticalGradient;
             text.enableVertexGradient = true;
             SetColor(Color.cyan);
-            transform.GetComponent<VRC.UI.Elements.Tooltips.UiTooltip>().field_Public_String_0 = "Don't know what the function is?\n Versa => Settings => Documentation";
+            transform.GetComponent<VRC.UI.Elements.Tooltips.UiTooltip>().field_Public_String_0 = "Don't know what the function is?\n Versa => Settings => Manual";
         }
     }
 }

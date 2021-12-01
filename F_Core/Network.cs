@@ -47,6 +47,10 @@ namespace Versa.F_Core
     internal class Network
     {
         private static WebClient wc = new WebClient();
+        internal static void OpenDoc()
+        {
+            System.Diagnostics.Process.Start("https://fiass.github.io/Versa/function.html");
+        }
         internal static string DownloadString(string _url)
         {
             return wc.DownloadString(_url);
@@ -93,6 +97,7 @@ namespace Versa.F_Core
                 Data.Textures[96] = ResourceHandler.LoadTexture("MenuBackground.png");
                 Data.Textures[98] = ResourceHandler.LoadTexture("Sphere.png");
                 Data.Textures[97] = ResourceHandler.LoadTexture("Private.png");
+                Data.Textures[50] = ResourceHandler.LoadTexture("Doc.png");
 
             }
             catch (Exception e) { CustomConsole.Console(true, "Network.cs [DownloadIconPack] " + e.Message); }

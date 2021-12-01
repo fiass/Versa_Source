@@ -18,7 +18,7 @@ namespace Versa.F_Core
     internal class GenerateUi
     {
         internal static GameObject Stats;
-        internal static Image[] ColorMenu = new Image[5];
+        internal static Image[] ColorMenu = new Image[11];
         private static void SetIcon(Image image, Texture2D texture)
         {
 
@@ -39,7 +39,16 @@ namespace Versa.F_Core
             {
                 SetIcon((ColorMenu[0] = UiPath.BackgroundLayer02.GetComponent<Image>()), Data.Textures[96]);
                 SetIcon((ColorMenu[1] = UiPath.BackgroundLeft.GetComponent<Image>()), Data.Textures[96]);
-                 SetIcon((ColorMenu[2] = UiPath.BackgroundRight.GetComponent<Image>()), Data.Textures[96]);
+                SetIcon((ColorMenu[2] = UiPath.BackgroundRight.GetComponent<Image>()), Data.Textures[96]);
+                SetIcon((ColorMenu[3] = UiPath.Page0.GetComponent<Image>()), Data.Textures[96]);
+                SetIcon((ColorMenu[4] = UiPath.Page1.GetComponent<Image>()), Data.Textures[96]);
+                SetIcon((ColorMenu[5] = UiPath.Page2.GetComponent<Image>()), Data.Textures[96]);
+                SetIcon((ColorMenu[6] = UiPath.Page3.GetComponent<Image>()), Data.Textures[96]);
+                SetIcon((ColorMenu[7] = UiPath.Page4.GetComponent<Image>()), Data.Textures[96]);
+                SetIcon((ColorMenu[8] = UiPath.Page5.GetComponent<Image>()), Data.Textures[96]);
+                SetIcon((ColorMenu[9] = UiPath.Page6.GetComponent<Image>()), Data.Textures[96]);
+                SetIcon((ColorMenu[10] = UiPath.Background.GetComponent<Image>()), Data.Textures[96]);
+
                 foreach (var color in ColorMenu)
                 {
                      UnityEngine.Object.Destroy(color.gameObject.GetComponent<StyleElement>()); 
@@ -69,8 +78,9 @@ namespace Versa.F_Core
                 //  WingPage DevStuff = Versa.CreateNestedPage("DevStuff", 7);
                 WingPage Selected = Versa.CreateNestedPage("Selected", 6);
                 WingPage Highlights = Settings.CreateNestedPage("HighlightsFX", 0);
+                WingPage VersaUI = Settings.CreateNestedPage("VersaUI", 2);
                 WingPage Capsule = Settings.CreateNestedPage("CapsuleFX", 1);
-
+              
                 WingButton Gravity = World.CreateButton("MoonGravity", 0, Data.Textures[2], Data.Toggle.MoonGravity); 
                 Gravity.SetAction(() => Data.Toggle.MoonGravity = Gravity.State(Gravity, Data.Toggle.MoonGravity, F_Module.Gravity.Moon, F_Module.Gravity.Standard));
                 MelonLoader.MelonCoroutines.Start(Gravity.StateUpdate(Gravity, 1));
@@ -83,14 +93,17 @@ namespace Versa.F_Core
                 OptimizationWorld.SetAction(() => Data.Toggle.Optimization = OptimizationWorld.State(OptimizationWorld, Data.Toggle.Optimization, () => Optimization.State(true), () => Optimization.State(false)));
                 MelonLoader.MelonCoroutines.Start(OptimizationWorld.StateUpdate(OptimizationWorld, 2));
 
-                WingButton WorldLogs = Settings.CreateButton("WorldLogs", 2, Data.Textures[19], Data.WorldLog);
+                WingButton WorldLogs = Settings.CreateButton("WorldLogs", 3, Data.Textures[19], Data.WorldLog);
                 WorldLogs.SetAction(() => Data.WorldLog = WorldLogs.State(WorldLogs, Data.WorldLog));
                 MelonLoader.MelonCoroutines.Start(WorldLogs.StateUpdate(WorldLogs, 9));
 
-                WingButton AntiCrash = Settings.CreateButton("AntiCrash", 3, Data.Textures[23], Data.AntiCrash);
+                WingButton AntiCrash = Settings.CreateButton("AntiCrash", 4, Data.Textures[23], Data.AntiCrash);
                 AntiCrash.SetAction(() => Data.AntiCrash = AntiCrash.State(AntiCrash, Data.AntiCrash, ()=> F_Module.AntiCrash.State(true), () => F_Module.AntiCrash.State(false)));
                 MelonLoader.MelonCoroutines.Start(AntiCrash.StateUpdate(AntiCrash, 14));
 
+                WingButton Documentation = Settings.CreateButton("Manual", 6, Data.Textures[50]);
+                Documentation.SetAction(() => Network.OpenDoc());
+               
                 WingButton WorldID = World.CreateButton("ID:Instance", 5, Data.Textures[16]); 
                 WorldID.SetAction(() => Clipboard.WorldFullID());
                 WingButton DownloadVRCW = World.CreateButton("DL VRCW", 4, Data.Textures[7]);
@@ -138,6 +151,7 @@ namespace Versa.F_Core
                 WingButton Magenta_ = Capsule.CreateButton("Magenta", 3, Data.Textures[14]); Magenta_.SetAction(() => UiManager.SetCapsuleColor("Magenta"));
                 WingButton Cyan_ = Capsule.CreateButton("Cyan", 4, Data.Textures[14]); Cyan_.SetAction(() => UiManager.SetCapsuleColor("Cyan"));
                 WingButton White_ = Capsule.CreateButton("White", 5, Data.Textures[14]); White_.SetAction(() => UiManager.SetCapsuleColor("White"));
+
                 WingButton Red = Highlights.CreateButton("Red", 0, Data.Textures[14]); Red.SetAction(() => UiManager.SelectColor("Red"));
                 WingButton Green = Highlights.CreateButton("Green", 1, Data.Textures[14]); Green.SetAction(() => UiManager.SelectColor("Green"));
                 WingButton Blue = Highlights.CreateButton("Blue", 2, Data.Textures[14]); Blue.SetAction(() => UiManager.SelectColor("Blue"));
@@ -145,9 +159,17 @@ namespace Versa.F_Core
                 WingButton Cyan = Highlights.CreateButton("Cyan", 4, Data.Textures[14]); Cyan.SetAction(() => UiManager.SelectColor("Cyan"));
                 WingButton White = Highlights.CreateButton("White", 5, Data.Textures[14]); White.SetAction(() => UiManager.SelectColor("White"));
                 WingButton None = Highlights.CreateButton("None", 6, Data.Textures[14]); None.SetAction(() => UiManager.SelectColor("Black"));
-                #endregion
 
-                WingButton NoClip = Tools.CreateButton("NoClip", 0, Data.Textures[5], Data.Toggle.NoClip); 
+                WingButton _Red = VersaUI.CreateButton("Red", 0, Data.Textures[14]); _Red.SetAction(() => UiManager.MenuColor("Red"));
+                WingButton _Green = VersaUI.CreateButton("Green", 1, Data.Textures[14]); _Green.SetAction(() => UiManager.MenuColor("Green"));
+                WingButton _Blue = VersaUI.CreateButton("Blue", 2, Data.Textures[14]); _Blue.SetAction(() => UiManager.MenuColor("Blue"));
+                WingButton _Magenta = VersaUI.CreateButton("Magenta", 3, Data.Textures[14]); _Magenta.SetAction(() => UiManager.MenuColor("Magenta"));
+                WingButton _Cyan = VersaUI.CreateButton("Cyan", 4, Data.Textures[14]); _Cyan.SetAction(() => UiManager.MenuColor("Cyan"));
+                WingButton _White = VersaUI.CreateButton("White", 5, Data.Textures[14]); _White.SetAction(() => UiManager.MenuColor("White"));
+                WingButton _None = VersaUI.CreateButton("None", 6, Data.Textures[14]); _None.SetAction(() => UiManager.MenuColor("Black"));
+            #endregion
+
+            WingButton NoClip = Tools.CreateButton("NoClip", 0, Data.Textures[5], Data.Toggle.NoClip); 
                 NoClip.SetAction(() => Data.Toggle.NoClip = NoClip.State(NoClip, Data.Toggle.NoClip, () => F_Module.NoClip.State(true), () => F_Module.NoClip.State(false)));
                 MelonLoader.MelonCoroutines.Start(NoClip.StateUpdate(NoClip, 5));
 

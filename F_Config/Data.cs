@@ -46,6 +46,17 @@ namespace Versa.F_Config
                 return false; 
             }
         }
+        internal static string MenuColor
+        {
+            get
+            {
+                return Prefs.String.Load("VersaColor");
+            }
+            set
+            {
+                Prefs.String.Save("VersaColor", value);
+            }
+        }
         internal static bool AntiCrash
         {
             get
