@@ -19,10 +19,10 @@ using System.Net;
 
 namespace Versa.F_Ui
 {
-    internal class StateListener : MonoBehaviour
+    internal class VersaStateListener : MonoBehaviour
     {
-        public StateListener(IntPtr ptr) : base(ptr) { }
-        public StateListener() : base(ClassInjector.DerivedConstructorPointer<StateListener>()) => ClassInjector.DerivedConstructorBody(this);
+        public VersaStateListener(IntPtr ptr) : base(ptr) { }
+        public VersaStateListener() : base(ClassInjector.DerivedConstructorPointer<VersaStateListener>()) => ClassInjector.DerivedConstructorBody(this);
         public Action OnEnabledMethod;
         public Action OnDisableMethod;
         private void OnEnable() => OnEnabledMethod?.Invoke();
@@ -41,7 +41,7 @@ namespace Versa.F_Ui
                 menu.color = new Color(temp.r, temp.g, temp.b, 0.5f);
             }
         }
-        internal static IEnumerator CreateStateListener()
+        internal static IEnumerator CreateVersaStateListener()
         {
             bool _a = true;
             while (_a)
@@ -70,21 +70,21 @@ namespace Versa.F_Ui
                     }
                 }
                 catch (Exception e)
-                { CustomConsole.Console(true, "UiManager.cs [CreateStateListener] " + e.Message); }
+                { CustomConsole.Console(true, "UiManager.cs [CreateVersaStateListener] " + e.Message); }
                 yield return new WaitForSeconds(0.5f);
             }
         }
         internal static void Initialize()
         {
-            StateListener LaunchPad = null;
-            StateListener LeftWing = null;
-            StateListener RightWing = null;
-            StateListener SelectedUser = null;
-           try {  ClassInjector.RegisterTypeInIl2Cpp<StateListener>(); } catch (Exception e) { CustomConsole.Console(true, "RegisterTypeInIl2Cpp [StateListener] " + e.Message); }
-            try { LaunchPad = UiPath.Canvas_QuickMenu_Clone.AddComponent<StateListener>(); } catch (Exception e) { CustomConsole.Console(true, "StateListener [Canvas_QuickMenu_Clone] " + e.Message); }
-            try { LeftWing = UiPath.LeftWing.AddComponent<StateListener>(); } catch (Exception e) { CustomConsole.Console(true, "StateListener [LeftWing] " + e.Message); }
-            try { RightWing = UiPath.RightWing.AddComponent<StateListener>(); } catch (Exception e) { CustomConsole.Console(true, "StateListener [RightWing] " + e.Message); }
-            try { SelectedUser = GameApi.Menu_SelectedUser_Local.AddComponent<StateListener>(); } catch (Exception e) { CustomConsole.Console(true, "StateListener [Menu_SelectedUser_Local] " + e.Message); }
+            VersaStateListener LaunchPad = null;
+            VersaStateListener LeftWing = null;
+            VersaStateListener RightWing = null;
+            VersaStateListener SelectedUser = null;
+           try {  ClassInjector.RegisterTypeInIl2Cpp<VersaStateListener>(); } catch (Exception e) { CustomConsole.Console(true, "RegisterTypeInIl2Cpp [VersaStateListener] " + e.Message); }
+            try { LaunchPad = UiPath.Canvas_QuickMenu_Clone.AddComponent<VersaStateListener>(); } catch (Exception e) { CustomConsole.Console(true, "VersaStateListener [Canvas_QuickMenu_Clone] " + e.Message); }
+            try { LeftWing = UiPath.LeftWing.AddComponent<VersaStateListener>(); } catch (Exception e) { CustomConsole.Console(true, "VersaStateListener [LeftWing] " + e.Message); }
+            try { RightWing = UiPath.RightWing.AddComponent<VersaStateListener>(); } catch (Exception e) { CustomConsole.Console(true, "VersaStateListener [RightWing] " + e.Message); }
+            try { SelectedUser = GameApi.Menu_SelectedUser_Local.AddComponent<VersaStateListener>(); } catch (Exception e) { CustomConsole.Console(true, "VersaStateListener [Menu_SelectedUser_Local] " + e.Message); }
 
             LeftWing.OnEnabledMethod = () => Data.LeftWing = true;
             LeftWing.OnDisableMethod = () => Data.LeftWing = false;
@@ -121,7 +121,7 @@ namespace Versa.F_Ui
                     OneSecUpdate.Panel.GetComponent<Animator>().SetBool("IsShow", false);
                     CustomConsole.Console(true, "LaunchPad Close");
                 }
-                catch (Exception e) { CustomConsole.Console(true, "LaunchPad [OnDisableMethod] " + e.Message); }
+                catch (Exception e) { CustomConsole.Console(true, "LaunchPad [OnEnabledMethod] " + e.Message); }
             };
 
         }

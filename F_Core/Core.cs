@@ -78,7 +78,7 @@ namespace Versa.F_Core
         {
             CustomConsole.Console(true, "[OnPlayerNetWasInitialized]");
             PatchBase.SetupPatches();
-            MelonCoroutines.Start(UiManager.CreateStateListener());
+            MelonCoroutines.Start(UiManager.CreateVersaStateListener());
         }
         internal static void OnUiWasInitialized()
         {

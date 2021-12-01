@@ -12,7 +12,7 @@ namespace Versa.F_Core
         internal static void SetupPatches()
         {
             //This patches first Quickmenu Open
-            PatchTool.Patch(typeof(VRC.UI.Elements.QuickMenu).GetMethod("Awake"), 
+            PatchTool.Patch(typeof(VRC.UI.Elements.MainMenu).GetMethod("Awake"), 
                 PatchTool.GetPatch<PatchBase>("QuickMenuPostfix"));
             //This patches VRCPlayer avatar load
             PatchTool.Patch(typeof(VRCPlayer).GetMethod("Awake"), 
@@ -38,7 +38,7 @@ namespace Versa.F_Core
             return true;
         }
 
-        private static bool QuickMenuPostfix(VRC.UI.Elements.QuickMenu __instance)
+        private static bool QuickMenuPostfix(VRC.UI.Elements.MainMenu __instance)
         {
             //Code ran on first quickmenu open
             return true;

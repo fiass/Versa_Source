@@ -44,8 +44,8 @@ namespace Versa.F_Module
                 if (CacheObject != null)
                 {
                     CacheObject.GetComponent<UnityEngine.Camera>().targetTexture = Data.renderTexture;
-                    UiPath.PlayerIcon.GetComponent<MonoBehaviour1PublicGaLaVo12VoAwOnVo12VoUnique>().field_Public_RawImage_0.texture = new Texture();
-                    UiPath.PlayerIcon.GetComponent<MonoBehaviour1PublicGaLaVo12VoAwOnVo12VoUnique>().field_Public_RawImage_0.material = new Material(UiPath.PlayerIcon.GetComponent<RawImage>().material)
+                    UiPath.PlayerIcon.GetComponent<MonoBehaviour1PublicGaLaVo12AwVo12OnVo121>().field_Public_RawImage_0.texture = new Texture();
+                    UiPath.PlayerIcon.GetComponent<MonoBehaviour1PublicGaLaVo12AwVo12OnVo121>().field_Public_RawImage_0.material = new Material(UiPath.PlayerIcon.GetComponent<RawImage>().material)
                     {
                         mainTexture = Data.renderTexture
                     };

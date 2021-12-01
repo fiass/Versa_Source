@@ -46,7 +46,7 @@ namespace Versa.F_Ui
             get
             {
                 if (!SelectedUserMenuCache)
-                    SelectedUserMenuCache = Resources.FindObjectsOfTypeAll<SelectedUserMenuQM>()[0].gameObject;
+                    SelectedUserMenuCache = Resources.FindObjectsOfTypeAll<MonoBehaviour1PublicBoRaGaObGaBuObScGaBuUnique>()[0].gameObject;
                 return SelectedUserMenuCache;
             }
         }
