@@ -46,6 +46,18 @@ namespace Versa.F_Config
                 return false; 
             }
         }
+        internal static string FirstUsageVersa
+        {
+            get
+            {
+                return Prefs.String.Load("FirstUsageVersa");
+            }
+            set
+            {
+                Prefs.String.Save("FirstUsageVersa", value);
+            }
+        }
+
         internal static string MenuColor
         {
             get

@@ -47,27 +47,31 @@ namespace Versa.F_Module
         }
         private static void Highlights(bool _a)
         {
-            GameObject[] array = GameObject.FindGameObjectsWithTag("Player");
-            for (int i = 0; i < array.Length; i++)
+            try
             {
-                if (array[i].transform.Find("SelectRegion"))
+                GameObject[] array = GameObject.FindGameObjectsWithTag("Player");
+                for (int i = 0; i < array.Length; i++)
                 {
-                    array[i].transform.Find("SelectRegion").GetComponent<Renderer>().sharedMaterial.SetColor("_Color", UiManager.StringToColor(Prefs.String.Load("CapsuleColor")));
-                    if (_a)
+                    if (array[i].transform.Find("SelectRegion"))
                     {
-                        HighlightsFX.prop_HighlightsFX_0.Method_Public_Void_Renderer_Boolean_0(
-                                                     array[i].transform.Find("SelectRegion").GetComponent<Renderer>(), true);
-                    }
-                    else
-                    {
-                        HighlightsFX.prop_HighlightsFX_0.Method_Public_Void_Renderer_Boolean_0(
-                                                      array[i].transform.Find("SelectRegion").GetComponent<Renderer>(), false);
+                        array[i].transform.Find("SelectRegion").GetComponent<Renderer>().sharedMaterial.SetColor("_Color", UiManager.StringToColor(Prefs.String.Load("CapsuleColor")));
+                        if (_a)
+                        {
+                            HighlightsFX.prop_HighlightsFX_0.Method_Public_Void_Renderer_Boolean_0(
+                                                         array[i].transform.Find("SelectRegion").GetComponent<Renderer>(), true);
+                        }
+                        else
+                        {
+                            HighlightsFX.prop_HighlightsFX_0.Method_Public_Void_Renderer_Boolean_0(
+                                                          array[i].transform.Find("SelectRegion").GetComponent<Renderer>(), false);
+                        }
                     }
                 }
             }
+            catch (Exception e) { CustomConsole.Console(true, "PlayerEsp.cs [Highlights] " + e.Message); }
         }
         #endregion
-        private static void Lines()
+            private static void Lines()
         {
             GameObject[] array = GameObject.FindGameObjectsWithTag("Player");
 

@@ -25,6 +25,28 @@ namespace Versa.F_Core
             CustomConsole.Console("Versa ready.",ConsoleColor.Green, CustomConsole.Info);
             CustomConsole.Console($"Versa Server is {Server.Role()}.", ConsoleColor.Green, CustomConsole.Info);
             ResourceHandler.Start();
+            if (Data.FirstUsageVersa == null)
+            { 
+                Data.AntiCrash = true;
+                Data.FirstUsageVersa = "No";
+                Data.FoV = 60;
+                Data.MenuColor = "blue";
+                Data.PoVPreview = true;
+                Data.ToggleChair = true;
+                Data.ToggleJump = true;
+                Data.WorldLog = true;
+                Data.Toggle.BlockPortals = false;
+                Data.Toggle.AntiCrash = true;
+                Data.Toggle.CapsuleEsp = false;
+                Data.Toggle.MoonGravity = false;
+                Data.Toggle.NoClip = false;
+                Data.Toggle.Optimization = false;
+                Data.Toggle.Ownership = false;
+                Data.Toggle.PostProcess = true;
+                Data.Toggle.SpeedHack = false;
+                Data.Toggle.ToggleMove = true;
+                Data.Toggle.Undress = false;
+            }
         }
         internal static void OnUpdate()
         {
@@ -85,9 +107,6 @@ namespace Versa.F_Core
             CustomConsole.Console(true, "[PlayerReady]");
             F_Core.CapsuleColor.Capsule();
             Data.Toggle.Undress = false;
-            Prefs.String.Save("runSpeed", PlayerApi.MyVRCPlayer().gameObject.GetComponent<GamelikeInputController>().field_Public_Single_0.ToString());
-            Prefs.String.Save("strafeSpeed", PlayerApi.MyVRCPlayer().gameObject.GetComponent<GamelikeInputController>().field_Public_Single_1.ToString());
-            Prefs.String.Save("walkSpeed", PlayerApi.MyVRCPlayer().gameObject.GetComponent<GamelikeInputController>().field_Public_Single_2.ToString());
 
             //То что нужно сбрасываеться при переходе в мир и нужно переобновить
           

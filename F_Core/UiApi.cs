@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.Rendering.PostProcessing;
+using Versa.F_Output;
 using VRC.UI.Core;
 using VRC.UI.Elements;
 
@@ -39,7 +40,16 @@ namespace Versa.F_Core
         {
             get
             {
-                return Resources.FindObjectsOfTypeAll<PostProcessLayer>()[2];
+                PostProcessLayer temp = null;
+                try
+                {
+                     temp = Resources.FindObjectsOfTypeAll<PostProcessLayer>()[2];
+                }
+                catch (Exception e)
+                {
+                    CustomConsole.Console(true, "UiApi.cs [PostProcessLayer] " + e.Message);
+                }
+                return temp;
             }
         }
 

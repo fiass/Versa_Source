@@ -38,7 +38,7 @@ namespace Versa.F_Ui
             Color temp = StringToColor(Data.MenuColor);
             foreach (var menu in GenerateUi.ColorMenu)
             {
-                menu.color = new Color(temp.r, temp.g, temp.b, 0.5f);  
+                menu.color = new Color(temp.r, temp.g, temp.b, 0.5f);
             }
         }
         internal static IEnumerator CreateStateListener()
@@ -49,66 +49,81 @@ namespace Versa.F_Ui
                 CustomConsole.Console(true, "Wait first open menu");
                 try
                 {
-                    var _b = GameObject.Find("/UserInterface/Canvas_QuickMenu(Clone)/");
+                    var _b = GameObject.Find("/UserInterface/Canvas_QuickMenu(Clone)");
                     if (_b != null)
                     {
                         CustomConsole.Console(true, "Menu was open");
-                        Initialize();
-                        Core.MenuInitialized();
+                        try
+                        {
+                            Initialize();
+                        }
+                        catch (Exception e)
+                        { CustomConsole.Console(true, "UiManager.cs [Initialize] " + e.Message); }
+                        try
+                        {
+                            Core.MenuInitialized();
+                        }
+                        catch (Exception e)
+                        { CustomConsole.Console(true, "UiManager.cs [MenuInitialized] " + e.Message); }
+
                         _a = false;
                     }
                 }
                 catch (Exception e)
-                { CustomConsole.Console(true, "UiManager.cs [CreateStateListener] "+ e.Message); }
+                { CustomConsole.Console(true, "UiManager.cs [CreateStateListener] " + e.Message); }
                 yield return new WaitForSeconds(0.5f);
             }
         }
         internal static void Initialize()
         {
-            ClassInjector.RegisterTypeInIl2Cpp<StateListener>();
-            try
+            StateListener LaunchPad = null;
+            StateListener LeftWing = null;
+            StateListener RightWing = null;
+            StateListener SelectedUser = null;
+           try {  ClassInjector.RegisterTypeInIl2Cpp<StateListener>(); } catch (Exception e) { CustomConsole.Console(true, "RegisterTypeInIl2Cpp [StateListener] " + e.Message); }
+            try { LaunchPad = UiPath.Canvas_QuickMenu_Clone.AddComponent<StateListener>(); } catch (Exception e) { CustomConsole.Console(true, "StateListener [Canvas_QuickMenu_Clone] " + e.Message); }
+            try { LeftWing = UiPath.LeftWing.AddComponent<StateListener>(); } catch (Exception e) { CustomConsole.Console(true, "StateListener [LeftWing] " + e.Message); }
+            try { RightWing = UiPath.RightWing.AddComponent<StateListener>(); } catch (Exception e) { CustomConsole.Console(true, "StateListener [RightWing] " + e.Message); }
+            try { SelectedUser = GameApi.Menu_SelectedUser_Local.AddComponent<StateListener>(); } catch (Exception e) { CustomConsole.Console(true, "StateListener [Menu_SelectedUser_Local] " + e.Message); }
+
+            LeftWing.OnEnabledMethod = () => Data.LeftWing = true;
+            LeftWing.OnDisableMethod = () => Data.LeftWing = false;
+            RightWing.OnEnabledMethod = () => Data.RightWing = true;
+            RightWing.OnDisableMethod = () => Data.RightWing = false;
+
+            SelectedUser.OnEnabledMethod = () =>
             {
-                var LaunchPad = UiPath.Canvas_QuickMenu_Clone.AddComponent<StateListener>();
-                var LeftWing = UiPath.LeftWing.AddComponent<StateListener>();
-                var RightWing = UiPath.RightWing.AddComponent<StateListener>();
-                var SelectedUser = GameApi.Menu_SelectedUser_Local.AddComponent<StateListener>();
-                var Social = UiPath.Social.AddComponent<StateListener>();
-
-                //Social.OnDisableMethod = () => Data.LeftWing = false;
-                LeftWing.OnEnabledMethod = () => Data.LeftWing = true;
-                LeftWing.OnDisableMethod = () => Data.LeftWing = false;
-                RightWing.OnEnabledMethod = () => Data.RightWing = true;
-                RightWing.OnDisableMethod = () => Data.RightWing = false;
-
-                SelectedUser.OnEnabledMethod = () =>
-                {
-                    ForceClone.UnlockCloneAvatar();
-                    try { CameraPreview.CreateRender(); } catch { }
-                    CustomConsole.Console(true, "SelectedUser Open");
-                };
-                SelectedUser.OnDisableMethod = () =>
-                {
-                    try { CameraPreview.DestroyRender(); } catch { }
-                    CustomConsole.Console(true, "SelectedUser Close");
-                };
-                LaunchPad.OnEnabledMethod = () =>
+                ForceClone.UnlockCloneAvatar();
+                try { CameraPreview.CreateRender(); } catch { }
+                CustomConsole.Console(true, "SelectedUser Open");
+            };
+            SelectedUser.OnDisableMethod = () =>
+            {
+                try { CameraPreview.DestroyRender(); } catch { }
+                CustomConsole.Console(true, "SelectedUser Close");
+            };
+            LaunchPad.OnEnabledMethod = () =>
+            {
+                try
                 {
                     MelonCoroutines.Start(LogoAnimation());
                     OneSecUpdate.Panel.GetComponent<Animator>().SetBool("IsShow", true);
                     CustomConsole.Console(true, "LaunchPad Open");
-                };
+                }
+                catch (Exception e) { CustomConsole.Console(true, "LaunchPad [OnEnabledMethod] " + e.Message); }
+            };
 
-                LaunchPad.OnDisableMethod = () =>
+            LaunchPad.OnDisableMethod = () =>
+            {
+                try
                 {
                     animation = false;
                     OneSecUpdate.Panel.GetComponent<Animator>().SetBool("IsShow", false);
                     CustomConsole.Console(true, "LaunchPad Close");
-                };
-            }
-            catch(Exception e)
-            {
-                CustomConsole.Console(true, "UiManager.cs [Initialize] " + e.Message);
-            }
+                }
+                catch (Exception e) { CustomConsole.Console(true, "LaunchPad [OnDisableMethod] " + e.Message); }
+            };
+
         }
         internal static void ApplyData()
         {
@@ -118,6 +133,9 @@ namespace Versa.F_Ui
             GenerateUi.IniUi();
             AvatarList.Create();
             QuickStatus.Icons();
+            Prefs.String.Save("runSpeed", PlayerApi.MyVRCPlayer().gameObject.GetComponent<GamelikeInputController>().field_Public_Single_0.ToString());
+            Prefs.String.Save("strafeSpeed", PlayerApi.MyVRCPlayer().gameObject.GetComponent<GamelikeInputController>().field_Public_Single_1.ToString());
+            Prefs.String.Save("walkSpeed", PlayerApi.MyVRCPlayer().gameObject.GetComponent<GamelikeInputController>().field_Public_Single_2.ToString());
         }
         internal static Color StringToColor(string color)
         {
@@ -158,7 +176,7 @@ namespace Versa.F_Ui
                 }
             }
             catch (Exception e)
-            { CustomConsole.Console(true, "UiManager.cs [SelectColor] "+ e.Message); }
+            { CustomConsole.Console(true, "UiManager.cs [SelectColor] " + e.Message); }
         }
         internal static IEnumerator LogoAnimation()
         {
