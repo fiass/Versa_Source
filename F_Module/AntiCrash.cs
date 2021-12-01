@@ -14,13 +14,15 @@ namespace Versa.F_Module
     class AntiCrash
     {
         internal static void State(bool state) => Data.Toggle.AntiCrash = state;
+        public static int PolygonLimits = 500000;
+        public static List<string> Whitelist;
         internal static void CheckPlayer(Player player)
         {
             try
             {
                 bool Max = PolygonCheck(player, GetPolyCount(player.prop_VRCPlayer_0.field_Internal_GameObject_0));
                 if (Max)
-                    CustomConsole.Console(player.prop_APIUser_0.displayName + " Over 300k poly, Avatar destroy");
+                    CustomConsole.Console("[Anti-Crsah] "+ player.prop_APIUser_0.displayName + $" Over {PolygonLimits / 100}k poly, Avatar destroy");
             }
             catch (Exception e) { CustomConsole.Console(true, "AntiCrash.cs [CheckPlayer] " + e.Message); }
         }
@@ -96,8 +98,13 @@ namespace Versa.F_Module
         {
             try
             {
-                if (polys >= 300000)
+                if (polys >= PolygonLimits)
                 {
+                    foreach(var whiteuser in Whitelist)
+                    {
+                        if (whiteuser.Contains(user.prop_APIUser_0.id))
+                            return false;
+                    }
                     Il2CppArrayBase<Renderer> componentsInChildren = user.prop_VRCPlayer_0.prop_VRCAvatarManager_0.GetComponentsInChildren<Renderer>(true);
                     for (int i = 0; i < componentsInChildren.Count; i++)
                     {
