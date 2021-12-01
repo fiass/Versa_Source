@@ -106,10 +106,10 @@ namespace Versa.F_Core
         {
             CustomConsole.Console(true, "[PlayerReady]");
             F_Core.CapsuleColor.Capsule();
-            Data.Toggle.Undress = false;
 
             //То что нужно сбрасываеться при переходе в мир и нужно переобновить
           
+            Data.Toggle.Undress = false;
             Data.Toggle.ToggleMove = true;
             Data.Toggle.AntiCrash = Data.AntiCrash;                                                                                         
 

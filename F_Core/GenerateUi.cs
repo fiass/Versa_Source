@@ -67,6 +67,7 @@ namespace Versa.F_Core
         }
         public static Action<BaseWing> OnWingInit = new Action<BaseWing>(wing =>
         {
+
                 F_Output.CustomConsole.Console(true, "[OnWingInit started]");
                 WingPage Versa = wing.CreatePage("Versa");
                 WingPage Tools = Versa.CreateNestedPage("Tools", 0);

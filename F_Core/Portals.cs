@@ -33,7 +33,7 @@ namespace Versa.F_Core
             {
                     try
                     {
-                        (from portal in GameObject.FindObjectsOfType<MonoBehaviourPublicSiBoSiInSeSiSoInStSiUnique>()
+                        (from portal in GameObject.FindObjectsOfType<PortalInternal>()
                          where portal.gameObject.activeInHierarchy && !portal.gameObject.GetComponentInParent<VRC_PortalMarker>()
                          select portal).ToList().ForEach(p =>
                          {
