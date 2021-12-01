@@ -30,6 +30,8 @@ namespace Versa.F_Core
         }
         public static void IniUi()
         {
+            var i = 1;
+            i = (i++) * i;
             F_Output.CustomConsole.Console(true, "[IniUi started]");
             ActivateScrollInQM();
             Network.DownloadIconPack();
@@ -37,14 +39,14 @@ namespace Versa.F_Core
             {
                 SetIcon((ColorMenu[0] = UiPath.BackgroundLayer02.GetComponent<Image>()), Data.Textures[96]);
                 SetIcon((ColorMenu[1] = UiPath.BackgroundLeft.GetComponent<Image>()), Data.Textures[96]);
-                SetIcon((ColorMenu[2] = UiPath.BackgroundRight.GetComponent<Image>()), Data.Textures[96]);
+                 SetIcon((ColorMenu[2] = UiPath.BackgroundRight.GetComponent<Image>()), Data.Textures[96]);
                 foreach (var color in ColorMenu)
                 {
-                    UnityEngine.Object.Destroy(color.gameObject.GetComponent<StyleElement>());
-                    color.color = new Color(0f, 0.5f, 1f, 0.5f);
+                     UnityEngine.Object.Destroy(color.gameObject.GetComponent<StyleElement>()); 
+                     color.color = new Color(0f, 0.5f, 1f, 0.5f);
                 }
             }
-            catch (Exception e) { CustomConsole.Console(true, "GenerateUi.cs: " + e.Message); }
+            catch (Exception e) { CustomConsole.Console(true, "GenerateUi.cs [IniUi] " + e.Message); }
             // QMButtonParent Versa_QM = new QMButtonParent(QMCache.QMHeader.transform.parent, "Versa", "Versa Quick", "#004166");
             // QMPage Versa_Page_1 = new QMPage("VersaPage", "VersaPage");
             // QMButton NoClip = Versa_QM.AddButton("NoClip", "NoClip", "", Data.Textures[5]); NoClip.SetAction(() => Data.Toggle.NoClip = NoClip.State(Data.Toggle.NoClip, () => F_Module.NoClip.State(true), () => F_Module.NoClip.State(false)));
@@ -56,8 +58,6 @@ namespace Versa.F_Core
         }
         public static Action<BaseWing> OnWingInit = new Action<BaseWing>(wing =>
         {
-            if (Server.Access())
-            {
                 F_Output.CustomConsole.Console(true, "[OnWingInit started]");
                 WingPage Versa = wing.CreatePage("Versa");
                 WingPage Tools = Versa.CreateNestedPage("Tools", 0);
@@ -174,7 +174,6 @@ namespace Versa.F_Core
                 MelonLoader.MelonCoroutines.Start(CapsuleEsp.StateUpdate(CapsuleEsp, 8));
 
                 F_Output.CustomConsole.Console(true, "[OnWingInit finished]");
-            }
         });
         private static void ActivateScrollInQM()
         {

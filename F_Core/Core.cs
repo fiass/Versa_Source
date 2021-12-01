@@ -92,7 +92,7 @@ namespace Versa.F_Core
             //То что нужно сбрасываеться при переходе в мир и нужно переобновить
           
             Data.Toggle.ToggleMove = true;
-            Data.Toggle.AntiCrash = Data.AntiCrash;
+            Data.Toggle.AntiCrash = Data.AntiCrash;                                                                                         
 
             if (Data.WorldLog)
                 LogData.World();

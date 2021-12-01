@@ -18,6 +18,5 @@ namespace Versa.F_Ui
             UiPath.VRC_Banner.SetActive(_a);
             GameObject.Destroy(UiPath.Image_Mask.GetComponent<StyleElement>());
             UiPath.BackgroundLayer01.SetActive(_a);
-            GameObject.Destroy(UiPath.BackgroundLayer02.GetComponent<StyleElement>());
         }    }
 }
