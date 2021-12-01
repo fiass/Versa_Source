@@ -1,4 +1,9 @@
 ﻿using System;
+using System.Threading.Tasks;
+using Server.Core;
+using Server.Database;
+using Server.Discord;
+using Server.Socket;
 
 namespace Server
 {
@@ -6,7 +11,11 @@ namespace Server
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            ModuleService.UpdateFileData();
+            Task.Run(() => SocketService.StartService());
+            Task.Run(() => DatabaseService.StartService());
+            Task.Run(() => DiscordService.StartService());
+            while(true){}
         }
     }
 }
