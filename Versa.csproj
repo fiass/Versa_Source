@@ -698,7 +698,7 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </None>
-    <EmbeddedResource Include="resources" />
+    <None Include="resources" />
   </ItemGroup>
   <ItemGroup>
     <None Include=".editorconfig" />
