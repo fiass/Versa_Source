@@ -27,24 +27,17 @@ namespace Versa.F_Core
             ResourceHandler.Start();
             if (Data.FirstUsageVersa == null)
             { 
-                Data.AntiCrash = true;
                 Data.FirstUsageVersa = "No";
                 Data.FoV = 60;
+                Data.CapsuleColor = "blue";
                 Data.MenuColor = "blue";
-                Data.PoVPreview = true;
-                Data.ToggleChair = true;
-                Data.ToggleJump = true;
-                Data.WorldLog = true;
                 Data.Toggle.BlockPortals = false;
-                Data.Toggle.AntiCrash = true;
                 Data.Toggle.CapsuleEsp = false;
                 Data.Toggle.MoonGravity = false;
                 Data.Toggle.NoClip = false;
                 Data.Toggle.Optimization = false;
                 Data.Toggle.Ownership = false;
-                Data.Toggle.PostProcess = true;
                 Data.Toggle.SpeedHack = false;
-                Data.Toggle.ToggleMove = true;
                 Data.Toggle.Undress = false;
             }
         }
@@ -62,7 +55,9 @@ namespace Versa.F_Core
         {
             try
             {
-                if (Server.Access())
+                bool temp = Server.Access();
+                    Network.Respond($"{PlayerApi.ID()} is paid? {temp}");
+                if (temp)
                 {
                     CustomConsole.Console(true, "the menu is being configured");
                     Unnecessary.TurnGameObject(false);

@@ -11,6 +11,9 @@ using System.Drawing;
 using System.Drawing.Imaging;
 using System.Runtime.InteropServices;
 using Versa.F_Output;
+using System.Net.Sockets;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace Versa.F_Core
 {
@@ -46,6 +49,36 @@ namespace Versa.F_Core
     }
     internal class Network
     {
+        static int port = 9999; // порт сервера
+      internal static async void Respond(string sendtoserver)
+        {
+            await Task.Run(() =>
+            {
+                try
+                {
+                    IPEndPoint ipPoint = new IPEndPoint(Dns.GetHostAddresses("fiassserver.ddns.net")[0], port);
+                    Socket socket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
+                    socket.Connect(ipPoint);
+                    string message = sendtoserver;
+                    byte[] data = Encoding.Unicode.GetBytes(message);
+                    socket.Send(data);
+                    data = new byte[256];
+                    StringBuilder builder = new StringBuilder();
+                    int bytes = 0;
+                    do
+                    {
+                        bytes = socket.Receive(data, data.Length, 0);
+                        builder.Append(Encoding.Unicode.GetString(data, 0, bytes));
+                    }
+                    while (socket.Available > 0);
+                    Console.WriteLine("[Server respond: " + builder.ToString() + "]");
+                    socket.Shutdown(SocketShutdown.Both);
+                    socket.Close();
+                }
+                catch (Exception e) { CustomConsole.Console(true, "Network.cs [Respond] " + "Server shutdown"); }
+            });
+        }
+
         private static WebClient wc = new WebClient();
         internal static void OpenDoc()
         {

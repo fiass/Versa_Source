@@ -34,7 +34,7 @@ namespace Versa.F_Core
                 if (PlayerPrefs.HasKey(key))
                     return PlayerPrefs.GetFloat(key);
                 else
-                    return 0.0f;
+                    return 0f;
             }
         }
         internal static class String

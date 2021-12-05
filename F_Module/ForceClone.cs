@@ -34,7 +34,7 @@ namespace Versa.F_Module
                             GameApi.SelectedAPIUser().allowAvatarCopying = false;
                         }
                     }
-                    else { CustomConsole.Console(true, "ForceClone.cs:   SelectedPlayer() == null"); }
+                    else { CustomConsole.Console(true, "ForceClone.cs:   SelectedPlayer not founded"); }
                 }
             }
             catch (Exception e) { CustomConsole.Console(true, "ForceClone.cs: " + e.Message); }

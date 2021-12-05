@@ -100,11 +100,15 @@ namespace Versa.F_Module
             {
                 if (polys >= PolygonLimits)
                 {
-                    foreach(var whiteuser in Whitelist)
+                    try
                     {
-                        if (whiteuser.Contains(user.prop_APIUser_0.id))
-                            return false;
+                        foreach (var whiteuser in Whitelist)
+                        {
+                            if (whiteuser.Contains(user.prop_APIUser_0.id))
+                                return false;
+                        }
                     }
+                    catch { CustomConsole.Console(true, $"User: {user.prop_APIUser_0.displayName} not in WhiteList" ); }
                     Il2CppArrayBase<Renderer> componentsInChildren = user.prop_VRCPlayer_0.prop_VRCAvatarManager_0.GetComponentsInChildren<Renderer>(true);
                     for (int i = 0; i < componentsInChildren.Count; i++)
                     {

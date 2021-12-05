@@ -50,11 +50,11 @@ namespace Versa.F_Config
         {
             get
             {
-                return Prefs.String.Load("FirstUsageVersa");
+                return Prefs.String.Load("FirstUsageVersa_0");
             }
             set
             {
-                Prefs.String.Save("FirstUsageVersa", value);
+                Prefs.String.Save("FirstUsageVersa_0", value);
             }
         }
 
@@ -62,7 +62,10 @@ namespace Versa.F_Config
         {
             get
             {
-                return Prefs.String.Load("VersaColor");
+                var temp = Prefs.String.Load("VersaColor");
+                if (temp != null)
+                    return temp;
+                return "red";
             }
             set
             {
@@ -89,6 +92,17 @@ namespace Versa.F_Config
             set
             {
                 Prefs.Bool.Save("ToggleChair", value);
+            }
+        }
+        internal static string CapsuleColor
+        {
+            get
+            {
+                return  Prefs.String.Load("CapsuleColor");
+            }
+            set
+            {
+                Prefs.String.Save("CapsuleColor", value);
             }
         }
         internal static bool ToggleJump
@@ -129,7 +143,10 @@ namespace Versa.F_Config
         {
             get
             {
-                return Prefs.Float.Load("FoV");
+                var temp = Prefs.Float.Load("FoV");
+                if (temp != 0f)
+                    return temp; 
+                return 60f;
             }
             set
             {
