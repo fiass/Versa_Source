@@ -20,7 +20,10 @@ namespace Versa.F_Core
                 if (PlayerPrefs.HasKey(key))
                     return PlayerPrefs.GetInt(key);
                 else
+                {
+                    PlayerPrefs.SetInt(key, 0);
                     return 0;
+                }
             }
         }
         internal static class Float
@@ -34,7 +37,10 @@ namespace Versa.F_Core
                 if (PlayerPrefs.HasKey(key))
                     return PlayerPrefs.GetFloat(key);
                 else
+                {
+                    PlayerPrefs.SetFloat(key, 0f);
                     return 0f;
+                }
             }
         }
         internal static class String
@@ -48,7 +54,10 @@ namespace Versa.F_Core
                 if (PlayerPrefs.HasKey(key))
                     return PlayerPrefs.GetString(key);
                 else
-                    return null;
+                {
+                    PlayerPrefs.SetString(key, "");
+                    return "";
+                }
             }
         }
         internal static class Bool
@@ -62,7 +71,10 @@ namespace Versa.F_Core
                 if (PlayerPrefs.HasKey(key))
                     return Convert.ToBoolean(PlayerPrefs.GetInt(key));
                 else
+                {
+                    PlayerPrefs.SetInt(key, 1);
                     return true;
+                }
             }
         }
     }

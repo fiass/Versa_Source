@@ -132,7 +132,7 @@ namespace Versa.F_Config
         {
             get
             {
-                return true;
+                return Prefs.Bool.Load("Debug");
             }
             set
             {

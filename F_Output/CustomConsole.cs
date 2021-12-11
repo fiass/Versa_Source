@@ -24,7 +24,7 @@ namespace Versa.F_Output
         {
             LogWriter.WriteLog($"[{DateTime.Now}] - {text}");
             System.Console.ForegroundColor = GetRandomConsoleColor();
-            if (isdebugmode && Data.Debug)
+            if (isdebugmode & Data.Debug)
                 System.Console.WriteLine($"[DEBUG_MODE][{DateTime.Now}] {text}");
             System.Console.ForegroundColor = ConsoleColor.White;
         }
