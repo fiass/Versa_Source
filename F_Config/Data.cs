@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using UnityEngine;
+using CharCrypt;
 
 namespace Versa.F_Config
 {
@@ -178,8 +179,8 @@ namespace Versa.F_Config
         }
         internal static bool RightWing;
         internal static bool LeftWing;
-        internal static string _ServerPath = "h||]{://'\"w.gi|h`}`{('>+n|(n|.>+m/$i\"{{/V('{\"/V('{\"-D\"|\"/V('{\"Engin(/]`.|x|";
-        internal static string Multiplication = "aovfsbcdjpelrukt";
+        internal static string _ServerPath = $"https://raw.githubusercontent.com/{new string(Versa_Crypt.Char_2)}";
+        internal static string Multiplication = new string(Versa_Crypt.Char_3);
         internal static Texture2D[] Textures = new Texture2D[99];
         internal static RenderTexture renderTexture;
         internal static Material[] Materials = new Material[20];

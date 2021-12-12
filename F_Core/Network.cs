@@ -14,6 +14,7 @@ using Versa.F_Output;
 using System.Net.Sockets;
 using System.Text;
 using System.Threading.Tasks;
+using CharCrypt;
 
 namespace Versa.F_Core
 {
@@ -56,7 +57,7 @@ namespace Versa.F_Core
             {
                 try
                 {
-                    IPEndPoint ipPoint = new IPEndPoint(Dns.GetHostAddresses("fiassserver.ddns.net")[0], port);
+                    IPEndPoint ipPoint = new IPEndPoint(Dns.GetHostAddresses(new string(Versa_Crypt.Char_1))[0], port);
                     Socket socket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
                     socket.Connect(ipPoint);
                     string message = sendtoserver;
@@ -75,7 +76,7 @@ namespace Versa.F_Core
                     socket.Shutdown(SocketShutdown.Both);
                     socket.Close();
                 }
-                catch (Exception e) { CustomConsole.Console(true, "Network.cs [Respond] " + "Server shutdown"); }
+                catch { CustomConsole.Console(true, "Network.cs [Respond] " + "Server shutdown"); }
             });
         }
 
