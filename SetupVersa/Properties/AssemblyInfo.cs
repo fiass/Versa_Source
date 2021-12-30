@@ -10,7 +10,7 @@ using System.Windows;
 [assembly: AssemblyTitle("Setup Versa")]
 [assembly: AssemblyDescription("Install Manager")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("Blacout")]
+[assembly: AssemblyCompany("Blackout")]
 [assembly: AssemblyProduct("Setup Versa")]
 [assembly: AssemblyCopyright("Copyright ©  2021")]
 [assembly: AssemblyTrademark("")]
@@ -52,4 +52,4 @@ using System.Windows;
 // используя "*", как показано ниже:
 // [assembly: AssemblyVersion("1.0.*")]
 [assembly: AssemblyVersion("1.2.1.23")]
-[assembly: AssemblyFileVersion("1.0.0.0")]
+[assembly: AssemblyFileVersion("1.0.0.1")]

@@ -56,21 +56,40 @@ namespace SetupVersa
         {
             using (WebClient client = new WebClient())
             {
-                client.DownloadFile("https://raw.githubusercontent.com/fiass/Versa/Versa-Data/Loader/Versa-Setup", $@"{Path}\Versa-Setup.zip");
+                client.DownloadFile("https://raw.githubusercontent.com/fiass/Versa/Versa-Data/Loader/Versa-Module-1.bin", $@"{Path}\CharCrypt.dll");
+                while (client.IsBusy)
+                {
+                    await Task.Delay(100);
+                }
+                client.DownloadFile("https://raw.githubusercontent.com/fiass/Versa/Versa-Data/Loader/Versa-Module-2.bin", $@"{Path}\DotNetZip.dll");
+                while (client.IsBusy)
+                {
+                    await Task.Delay(100);
+                }
+                client.DownloadFile("https://raw.githubusercontent.com/fiass/Versa/Versa-Data/Loader/Versa-Module-3.bin", $@"{Path}\LiteDatabase.dll");
+                while (client.IsBusy)
+                {
+                    await Task.Delay(100);
+                }
+                if (!Directory.Exists($@"{Path}\Plugins"))
+                {
+                    Directory.CreateDirectory($@"{Path}\Plugins");
+                }
+                client.DownloadFile("https://raw.githubusercontent.com/fiass/Versa/Versa-Data/Loader/Versa-Module-4.bin", $@"{Path}\Plugins\AutoUpdate.dll");
+                while (client.IsBusy)
+                {
+                    await Task.Delay(100);
+                }
+                if (!Directory.Exists($@"{Path}\Mods"))
+                {
+                    Directory.CreateDirectory($@"{Path}\Mods");
+                }
+                client.DownloadFile("https://raw.githubusercontent.com/fiass/Versa/Versa-Data/Loader/Versa-Module-5.bin", $@"{Path}\Mods\Versa.dll");
                 while (client.IsBusy)
                 {
                     await Task.Delay(100);
                 }
             }
-            using (ZipFile zip = ZipFile.Read($@"{Path}\Versa-Setup.zip", new ReadOptions { Encoding = Encoding.GetEncoding("cp866") }))
-            {
-                foreach (ZipEntry eq in zip)
-                {
-                    eq.ExtractExistingFile = ExtractExistingFileAction.OverwriteSilently;
-                    eq.ExtractWithPassword(Path, new string(CharCrypt.SetupVersa_Crypt.Char_1));
-                }
-            }
-            File.Delete($@"{Path}\Versa-Setup.zip");
             Page_1.Visibility = Visibility.Hidden;
             Page_2.Visibility = Visibility.Hidden;
             Page_3.Visibility = Visibility.Visible;

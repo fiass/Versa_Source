@@ -14,7 +14,7 @@ namespace Versa
         public const string Description = "Hi cute";
         public const string Author = "Null";
         public const string Company = "Blackout";
-        public const string Version = "1.0.0";
+        public const string Version = "1.1.1";
         public const string DownloadLink = "";
     }
 
