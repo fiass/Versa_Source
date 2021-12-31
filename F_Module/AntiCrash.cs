@@ -3,11 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ExitGames.Client.Photon;
 using UnhollowerBaseLib;
 using UnityEngine;
 using Versa.F_Config;
 using Versa.F_Output;
 using VRC;
+using VRC.Core;
 
 namespace Versa.F_Module
 {
@@ -20,6 +22,11 @@ namespace Versa.F_Module
         {
             try
             {
+                //Lazy check
+                if (player.prop_APIUser_0.id == APIUser.CurrentUser.id) return;
+                
+                
+                
                 bool Max = PolygonCheck(player, GetPolyCount(player.prop_VRCPlayer_0.field_Internal_GameObject_0));
                 if (Max)
                     CustomConsole.Console("[Anti-Crsah] "+ player.prop_APIUser_0.displayName + $" Over {PolygonLimits / 100}k poly, Avatar destroy");
@@ -94,7 +101,7 @@ namespace Versa.F_Module
             return num;
         }
 
-        public static bool PolygonCheck(Player user, int polys)
+        internal static bool PolygonCheck(Player user, int polys)
         {
             try
             {
@@ -124,6 +131,11 @@ namespace Versa.F_Module
             }
             catch (Exception e) { CustomConsole.Console(true, "AntiCrash.cs [PolygonCheck] " + e.Message); }
             return false;
+        }
+
+        internal static bool PhotonScan(int PhotonID, EventData eventData)
+        {
+            return true;
         }
     }
 }
