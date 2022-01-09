@@ -14,7 +14,7 @@ namespace Versa.F_Ui
 {
     internal class AvatarList
     {
-        private  static System.Collections.Generic.List<JsonAvatar> Avatars { get; set; }
+        private  static Il2CppSystem.Collections.Generic.List<JsonAvatar> Avatars { get; set; }
         private static Text HeaderText { get; set; }
         private static GameObject ListObject { get; set; }
         private static UiAvatarList AviListBase { get; set; }
@@ -33,9 +33,10 @@ namespace Versa.F_Ui
             HeaderText.text = "<color=#00ccff>Versa Favorites</color>";
         }
 
+        //Fiass put this on avatar menu open
         internal static void Render()
         {
-            
+            AviListBase.Method_Protected_Void_List_1_T_Int32_Boolean_VRCUiContentButton_0(Avatars, 0, true, null);
         }
         
         //TODO:Create button api for lists
@@ -76,7 +77,11 @@ namespace Versa.F_Ui
                 if(File.Exists("Versa\\Favorites.Versa")) Avatars = JsonAvatar.ParseList(File.ReadAllText("Versa\\Favorites.Versa"));
                 else
                 {
-                    Avatars = new System.Collections.Generic.List<JsonAvatar>() {new JsonAvatar() { }};
+                    Avatars = new Il2CppSystem.Collections.Generic.List<JsonAvatar>();
+                    Avatars.Add(new JsonAvatar()
+                    {
+                        //Put default robot here
+                    });
                     File.WriteAllText("Versa\\Favorites.Versa", JsonConvert.SerializeObject(Avatars));
                 }
             }
@@ -95,9 +100,9 @@ namespace Versa.F_Ui
         public string assetURL { get; set; }
         public string ImageURL { get; set; }
 
-        internal static System.Collections.Generic.List<JsonAvatar> ParseList(string Data)
+        internal static Il2CppSystem.Collections.Generic.List<JsonAvatar> ParseList(string Data)
         {
-            return JsonConvert.DeserializeObject<System.Collections.Generic.List<JsonAvatar>>(Data);
+            return JsonConvert.DeserializeObject<Il2CppSystem.Collections.Generic.List<JsonAvatar>>(Data);
         }
 
         internal static JsonAvatar ParseAvatar(ApiAvatar avatar)
