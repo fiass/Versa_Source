@@ -20,7 +20,7 @@ namespace Versa.F_Ui
         private static UiAvatarList AviListBase { get; set; }
         internal static void Create()
         {
-            Load();
+           // Load();
             ListObject = GameObject.Instantiate(UICache.FavoriteList, UICache.FavoriteList.transform.parent);
             ListObject.name = $"Favorite Versa List";
             ListObject.transform.SetSiblingIndex(UICache.FavoriteList.transform.GetSiblingIndex() + -1);
@@ -80,7 +80,11 @@ namespace Versa.F_Ui
                     Avatars = new Il2CppSystem.Collections.Generic.List<JsonAvatar>();
                     Avatars.Add(new JsonAvatar()
                     {
-                        //Put default robot here
+                       id = "avtr_d720f33e-ed8d-4b1e-8d74-9735e17c87d5",
+                       name = "Robot Kyle",
+                       releaseStatus = "public",
+                       assetURL = "https://api.vrchat.cloud/api/1/file/file_66157f48-2429-4079-8eee-dff551e92438/3/file",
+                       ImageURL = "https://api.vrchat.cloud/api/1/file/file_0a2b100d-f23e-4e61-9c4e-902c566aafa3/2/file"
                     });
                     File.WriteAllText("Versa\\Favorites.Versa", JsonConvert.SerializeObject(Avatars));
                 }
