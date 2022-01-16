@@ -124,6 +124,7 @@ namespace Versa.F_Core
                 Data.Textures[21] = ResourceHandler.LoadTexture("Moveblock.png");
                 Data.Textures[22] = ResourceHandler.LoadTexture("chair.png");
                 Data.Textures[23] = ResourceHandler.LoadTexture("Anticrash.png");
+                Data.Textures[24] = ResourceHandler.LoadTexture("Flashlight.png");
                 Data.renderTexture = ResourceHandler.LoadRenderTexture("RenderCam.renderTexture");
                 Data.Materials[0] = ResourceHandler.LoadMaterial("RenderCam.mat");
                 Data.GameObjects[0] = ResourceHandler.LoadGameobject("Camera.prefab");

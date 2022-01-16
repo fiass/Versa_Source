@@ -131,7 +131,7 @@ namespace Versa.F_Ui
             SelectColor(Prefs.String.Load("Highlights"));
             HighlightsFXSetup.Setup();
             GenerateUi.IniUi();
-            AvatarList.Create();
+            //AvatarList.Create();
             QuickStatus.Icons();
             F_Core.Network.DownloadIconPack();
             Prefs.String.Save("runSpeed", PlayerApi.MyVRCPlayer().gameObject.GetComponent<GamelikeInputController>().field_Public_Single_0.ToString());

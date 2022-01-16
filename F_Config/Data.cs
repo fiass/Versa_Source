@@ -24,7 +24,8 @@ namespace Versa.F_Config
             internal static bool BlockPortals;
             internal static bool AntiCrash = true;
             internal static bool ToggleMove;
-        internal static bool ToggleIndex(int value)
+            internal static bool Flashlight;
+            internal static bool ToggleIndex(int value)
             {
                 switch(value)
                 {
@@ -42,7 +43,7 @@ namespace Versa.F_Config
                     case 12: return ToggleMove;
                     case 13: return ToggleChair;
                     case 14: return AntiCrash;
-                    case 15: return false;
+                    case 15: return Flashlight;
                 }
                 return false; 
             }
@@ -84,6 +85,7 @@ namespace Versa.F_Config
                 Prefs.Bool.Save("AntiCrash", value);
             }
         }
+       
         internal static bool ToggleChair
         {
             get

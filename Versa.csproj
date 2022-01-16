@@ -755,6 +755,7 @@
     <Compile Include="F_Module\Camera.cs" />
     <Compile Include="F_Module\CameraPreview.cs" />
     <Compile Include="F_Module\ClientProtection.cs" />
+    <Compile Include="F_Module\Flashlight.cs" />
     <Compile Include="F_Module\ForceClone.cs" />
     <Compile Include="F_Module\Esp.cs" />
     <Compile Include="F_Module\Gravity.cs" />
