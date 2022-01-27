@@ -29,7 +29,7 @@ namespace Versa.F_Module
                 
                 bool Max = PolygonCheck(player, GetPolyCount(player.prop_VRCPlayer_0.field_Internal_GameObject_0));
                 if (Max)
-                    CustomConsole.Console("[Anti-Crsah] "+ player.prop_APIUser_0.displayName + $" Over {PolygonLimits / 100}k poly, Avatar destroy");
+                    CustomConsole.Console("[Anti-Crsah] "+ player.prop_APIUser_0.displayName + $" Over {PolygonLimits / 1000}k poly, Avatar destroy");
             }
             catch (Exception e) { CustomConsole.Console(true, "AntiCrash.cs [CheckPlayer] " + e.Message); }
         }

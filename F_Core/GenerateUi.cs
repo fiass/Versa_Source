@@ -145,7 +145,7 @@ namespace Versa.F_Core
                 WingButton GoTo = Self.CreateButton("JoinByID", 4, Data.Textures[15]); 
                 GoTo.SetAction(() => Popup.GoToWorld());
 
-            WingButton Flashlight = Self.CreateButton("Flashlight", 5, Data.Textures[24], Data.Toggle.Flashlight);
+            WingButton Flashlight = Camera.CreateButton("Flashlight", 3, Data.Textures[24], Data.Toggle.Flashlight);
             Flashlight.SetAction(() => Data.Toggle.Flashlight = Flashlight.State(Flashlight, Data.Toggle.Flashlight, () => F_Module.Flashlight.Enable(), () => F_Module.Flashlight.Disable()));
             MelonLoader.MelonCoroutines.Start(Flashlight.StateUpdate(Flashlight, 15));
 
