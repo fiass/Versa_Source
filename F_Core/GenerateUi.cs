@@ -149,6 +149,10 @@ namespace Versa.F_Core
             Flashlight.SetAction(() => Data.Toggle.Flashlight = Flashlight.State(Flashlight, Data.Toggle.Flashlight, () => F_Module.Flashlight.Enable(), () => F_Module.Flashlight.Disable()));
             MelonLoader.MelonCoroutines.Start(Flashlight.StateUpdate(Flashlight, 15));
 
+            WingButton Spam = Selected.CreateButton("Spam", 4, Data.Textures[24], Data.Toggle.SpamObject);
+            Spam.SetAction(() => Data.Toggle.SpamObject = Spam.State(Spam, Data.Toggle.SpamObject, () => F_Module.SpamObject.Enable(), () => F_Module.SpamObject.Disable()));
+            MelonLoader.MelonCoroutines.Start(Spam.StateUpdate(Spam, 16));
+
             #region Color
             WingButton Red_ = Capsule.CreateButton("Red", 0, Data.Textures[14]); Red_.SetAction(() => UiManager.SetCapsuleColor("Red"));
                 WingButton Green_ = Capsule.CreateButton("Green", 1, Data.Textures[14]); Green_.SetAction(() => UiManager.SetCapsuleColor("Green"));

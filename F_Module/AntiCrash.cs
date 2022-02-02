@@ -25,8 +25,6 @@ namespace Versa.F_Module
                 //Lazy check
                 if (player.prop_APIUser_0.id == APIUser.CurrentUser.id) return;
                 
-                
-                
                 bool Max = PolygonCheck(player, GetPolyCount(player.prop_VRCPlayer_0.field_Internal_GameObject_0));
                 if (Max)
                     CustomConsole.Console("[Anti-Crsah] "+ player.prop_APIUser_0.displayName + $" Over {PolygonLimits / 1000}k poly, Avatar destroy");
@@ -56,7 +54,6 @@ namespace Versa.F_Module
             catch (Exception e) { CustomConsole.Console(true, "AntiCrash.cs [GetPolyCount] " + e.Message); }
             return num;
         }
-
         internal static int CountPolys(Renderer r)
         {
             int num = 0;
@@ -71,7 +68,6 @@ namespace Versa.F_Module
             }
             return num;
         }
-
         private static int CountPolyMeshes(Mesh sourceMesh)
         {
             bool flag = false;
@@ -100,7 +96,6 @@ namespace Versa.F_Module
             catch(Exception e) { CustomConsole.Console(true, "AntiCrash.cs [CountPolyMeshes] " + e.Message); }
             return num;
         }
-
         internal static bool PolygonCheck(Player user, int polys)
         {
             try
@@ -132,7 +127,6 @@ namespace Versa.F_Module
             catch (Exception e) { CustomConsole.Console(true, "AntiCrash.cs [PolygonCheck] " + e.Message); }
             return false;
         }
-
         internal static bool PhotonScan(int PhotonID, EventData eventData)
         {
             return true;

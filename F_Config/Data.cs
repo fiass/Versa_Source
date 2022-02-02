@@ -25,6 +25,7 @@ namespace Versa.F_Config
             internal static bool AntiCrash = true;
             internal static bool ToggleMove;
             internal static bool Flashlight;
+            internal static bool SpamObject;
             internal static bool ToggleIndex(int value)
             {
                 switch(value)
@@ -44,6 +45,7 @@ namespace Versa.F_Config
                     case 13: return ToggleChair;
                     case 14: return AntiCrash;
                     case 15: return Flashlight;
+                    case 16: return SpamObject;
                 }
                 return false; 
             }
