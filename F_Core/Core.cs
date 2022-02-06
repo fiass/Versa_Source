@@ -105,7 +105,11 @@ namespace Versa.F_Core
             //То что нужно сбрасываеться при переходе в мир и нужно переобновить
           
             Data.Toggle.Undress = false;
+            Data.Toggle.TriggerEsp = false;
+            Data.Toggle.LineEsp = false;
             Data.Toggle.ToggleMove = true;
+            Data.Toggle.Flashlight = false;
+            Data.Toggle.SpamObject = false;
             Data.Toggle.AntiCrash = Data.AntiCrash;                                                                                         
 
             if (Data.WorldLog)

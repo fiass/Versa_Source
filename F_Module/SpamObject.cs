@@ -72,7 +72,7 @@ namespace Versa.F_Module
                 {
                     Data.Toggle.SpamObject = false;
                 }
-                yield return new WaitForSeconds(0.001f);
+                yield return new WaitForSeconds(0.5f);
             }
         }
     }

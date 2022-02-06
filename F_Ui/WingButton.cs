@@ -60,7 +60,7 @@ namespace Versa.F_Ui
             {
                 try
                 {
-                    if (Data.LeftWing & Data.RightWing)
+                    if (Data.LeftWing | Data.RightWing)
                     {
                         switch (Data.Toggle.ToggleIndex(value))
                         {

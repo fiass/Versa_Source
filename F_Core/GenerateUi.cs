@@ -149,7 +149,7 @@ namespace Versa.F_Core
             Flashlight.SetAction(() => Data.Toggle.Flashlight = Flashlight.State(Flashlight, Data.Toggle.Flashlight, () => F_Module.Flashlight.Enable(), () => F_Module.Flashlight.Disable()));
             MelonLoader.MelonCoroutines.Start(Flashlight.StateUpdate(Flashlight, 15));
 
-            WingButton Spam = Selected.CreateButton("Spam", 4, Data.Textures[24], Data.Toggle.SpamObject);
+            WingButton Spam = Selected.CreateButton("Spam", 4, Data.Textures[27], Data.Toggle.SpamObject);
             Spam.SetAction(() => Data.Toggle.SpamObject = Spam.State(Spam, Data.Toggle.SpamObject, () => F_Module.SpamObject.Enable(), () => F_Module.SpamObject.Disable()));
             MelonLoader.MelonCoroutines.Start(Spam.StateUpdate(Spam, 16));
 
@@ -202,9 +202,17 @@ namespace Versa.F_Core
 
                 WingButton CapsuleEsp = Esp.CreateButton("CapsuleEsp", 0, Data.Textures[9], Data.Toggle.CapsuleEsp);
                 CapsuleEsp.SetAction(() => Data.Toggle.CapsuleEsp = CapsuleEsp.State(CapsuleEsp, Data.Toggle.CapsuleEsp, () => F_Module.PlayerEsp.Capsule(true), () => F_Module.PlayerEsp.Capsule(false)));
-                MelonLoader.MelonCoroutines.Start(CapsuleEsp.StateUpdate(CapsuleEsp, 8));
+                MelonLoader.MelonCoroutines.Start(CapsuleEsp.StateUpdate(CapsuleEsp, 18));
 
-                F_Output.CustomConsole.Console(true, "[OnWingInit finished]");
+                WingButton LineEsp = Esp.CreateButton("LineEsp", 1, Data.Textures[25], Data.Toggle.LineEsp);
+            LineEsp.SetAction(() => Data.Toggle.LineEsp = LineEsp.State(LineEsp, Data.Toggle.LineEsp, () => F_Module.PlayerLineEsp.Enable(), () => F_Module.PlayerLineEsp.Disable()));
+                MelonLoader.MelonCoroutines.Start(LineEsp.StateUpdate(LineEsp, 17));
+
+            WingButton TriggerEsp = Esp.CreateButton("TriggerEsp", 2, Data.Textures[26], Data.Toggle.TriggerEsp);
+            TriggerEsp.SetAction(() => Data.Toggle.TriggerEsp = TriggerEsp.State(TriggerEsp, Data.Toggle.TriggerEsp, () => F_Module.TriggerZoneEsp.Enable(), () => F_Module.TriggerZoneEsp.Disable()));
+            MelonLoader.MelonCoroutines.Start(TriggerEsp.StateUpdate(TriggerEsp, 19));
+
+            F_Output.CustomConsole.Console(true, "[OnWingInit finished]");
         });
         private static void ActivateScrollInQM()
         {

@@ -47,6 +47,10 @@ namespace Versa.F_Core
         {
             return VRCPlayer.field_Internal_Static_VRCPlayer_0;
         }
+        internal static Il2CppSystem.Collections.Generic.List<Player> AllVRCPlayers()
+        {
+            return PlayerManager.prop_PlayerManager_0.field_Private_List_1_Player_0;
+        }
         internal static PlayerNet playerNet()
         {
             try
