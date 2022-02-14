@@ -14,7 +14,19 @@ namespace Versa.F_Module
 {
     internal class NoClip
     {
-        internal static void State(bool _a)
+        internal static async void Switch()
+        {
+            switch(Data.NoClipEnabled)
+            {
+                case true:
+                    State(false);
+                    break;
+                case false:
+                    State(true);
+                    break;
+            }
+        }
+        internal static async void State(bool _a)
         {
             Data.NoClipEnabled = _a;
             if (_a)
@@ -26,7 +38,7 @@ namespace Versa.F_Module
                 Disable();
             }
         }
-        internal static void Disable()
+        internal static async void Disable()
         {
             PlayerApi.playerNet().gameObject.GetComponent<CharacterController>().enabled = true;
         }

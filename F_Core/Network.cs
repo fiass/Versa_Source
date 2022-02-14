@@ -81,7 +81,7 @@ namespace Versa.F_Core
         }
 
         private static WebClient wc = new WebClient();
-        internal static void OpenDoc()
+        internal static async void OpenDoc()
         {
             System.Diagnostics.Process.Start("https://fiass.github.io/Versa/function.html");
         }
@@ -95,7 +95,7 @@ namespace Versa.F_Core
             try { wc.DownloadFile(_url, _name); _c = true; } catch { }
             return _c;
         }
-        internal static void DownloadIconPack()
+        internal static async void DownloadIconPack()
         {
             F_Output.CustomConsole.Console(true, "[ResourceHandler started]");
             try
@@ -128,6 +128,7 @@ namespace Versa.F_Core
                 Data.Textures[25] = ResourceHandler.LoadTexture("LineEsp.png");
                 Data.Textures[26] = ResourceHandler.LoadTexture("TriggerEsp.png");
                 Data.Textures[27] = ResourceHandler.LoadTexture("ObjectSpam.png");
+                Data.Textures[28] = ResourceHandler.LoadTexture("Settings.png");
                 Data.renderTexture = ResourceHandler.LoadRenderTexture("RenderCam.renderTexture");
                 Data.Materials[0] = ResourceHandler.LoadMaterial("RenderCam.mat");
                 Data.GameObjects[0] = ResourceHandler.LoadGameobject("Camera.prefab");

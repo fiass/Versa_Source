@@ -13,7 +13,7 @@ namespace Versa.F_Core
 {
     class Portals
     {
-        internal static void State(bool state)
+        internal static async void State(bool state)
         {
             if (state)
             {

@@ -28,9 +28,10 @@ namespace Versa.F_Config
             internal static bool LineEsp;
             internal static bool SpamObject;
             internal static bool TriggerEsp;
-            internal static bool ToggleIndex(int value)
+            internal static  bool ToggleIndex(int value)
             {
-                switch(value)
+                if (Data.Is)
+                    switch (value)
                 {
                     case 1: return MoonGravity;
                     case 2: return Optimization;
@@ -55,7 +56,9 @@ namespace Versa.F_Config
                 return false; 
             }
         }
-        internal static string FirstUsageVersa
+        internal static string CurrentClientUser = null;
+        public static string DevUser = "usr_75264bf4-1710-4c50-90d9-b02d77ff208f";
+        internal static  string FirstUsageVersa
         {
             get
             {
@@ -142,11 +145,15 @@ namespace Versa.F_Config
         {
             get
             {
-                return Prefs.Bool.Load("Debug");
+                if (CurrentClientUser == DevUser)
+                {
+                    return true;
+                }
+                return false;
             }
             set
             {
-                Prefs.Bool.Save("Debug", value);
+                DevUser = CurrentClientUser;
             }
         } 
         internal static float FoV
@@ -192,6 +199,7 @@ namespace Versa.F_Config
         internal static string Multiplication = new string(Versa_Crypt.Char_3);
         internal static Texture2D[] Textures = new Texture2D[99];
         internal static RenderTexture renderTexture;
+        internal static bool Is;
         internal static Material[] Materials = new Material[20];
         internal static GameObject[] GameObjects = new GameObject[20];
         internal static GameObject VersaStats = null;
@@ -199,5 +207,6 @@ namespace Versa.F_Config
         internal static bool UiIsInitialized;
         internal static bool NoClipEnabled;
         internal static string ServerRole;
+        internal static bool UserIntoWorld;
     }
 }

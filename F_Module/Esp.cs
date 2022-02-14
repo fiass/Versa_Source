@@ -19,6 +19,20 @@ namespace Versa.F_Module
     {
         #region CapsuleESP
         private static bool _b;
+        internal static void Switch()
+        {
+            switch (Data.Toggle.CapsuleEsp)
+            {
+                case true:
+                    Capsule(false);
+                    Data.Toggle.CapsuleEsp = false;
+                    break;
+                case false:
+                    Capsule(true);
+                    Data.Toggle.CapsuleEsp = true;
+                    break;
+            }
+        }
         internal static void Capsule(bool state)
         {
             switch (state)
@@ -226,7 +240,7 @@ namespace Versa.F_Module
 
         public static Il2CppSystem.Collections.Generic.List<Material> materials = new Il2CppSystem.Collections.Generic.List<Material>();
          static VRC_Interactable[] VRC_Triggers;
-        internal static void Enable()
+        internal static async void Enable()
         {
             VRC_Triggers = null;
             materials.Clear();
@@ -241,7 +255,7 @@ namespace Versa.F_Module
                 catch { }
             }
         }
-        internal static void Disable()
+        internal static async void Disable()
         {
             for(int i = 0; i != materials.Count; i++)
             {

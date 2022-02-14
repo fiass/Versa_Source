@@ -14,7 +14,7 @@ namespace Versa.F_Module
     class QuickStatus
     {
 
-        internal static void Icons()
+        internal static async void Icons()
         {
             foreach (UiStatusIcon a in Resources.FindObjectsOfTypeAll<UiStatusIcon>())
             {    

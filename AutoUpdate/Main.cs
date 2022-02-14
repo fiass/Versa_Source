@@ -65,7 +65,7 @@ namespace AutoUpdate
             }
             catch { }
         }
-        public static char[] Char_1 =
+        public static  char[] Char_1 =
         {
            (char)(89000f * 0.024f / +(+24)),
            (char)(111000f * 0.024f / +(+24)),

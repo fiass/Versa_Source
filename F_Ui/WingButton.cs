@@ -16,7 +16,7 @@ namespace Versa.F_Ui
         public Wing.BaseWing wing;
         public Transform transform;
         private TextMeshProUGUI text;
-        internal void SetIcon(Image image, Texture2D texture)
+        internal async void SetIcon(Image image, Texture2D texture)
         {
 
             image.sprite = new Sprite();
@@ -77,12 +77,12 @@ namespace Versa.F_Ui
                 yield return new WaitForSeconds(1.46f);
             }
         }
-        internal void SetColor(Color color)
+        internal async void SetColor(Color color)
         {
             transform.GetComponentInChildren<TMPro.TextMeshProUGUI>().color = Color.white;
             transform.GetComponentInChildren<TMPro.TextMeshProUGUI>().colorGradient = new VertexGradient(color, Color.gray,color,color);
         }
-        internal void SetAction(System.Action onClick)
+        internal async void SetAction(System.Action onClick)
         {
             Button button = transform.GetComponent<Button>();
             button.onClick = new Button.ButtonClickedEvent();

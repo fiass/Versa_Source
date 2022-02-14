@@ -17,7 +17,7 @@ namespace Versa.F_Module
         private static List<VRC_StationInternal2> chair2 = new List<VRC_StationInternal2>();
         private static List<VRC_StationInternal3> chair3 = new List<VRC_StationInternal3>();
         private static bool _Can;
-        internal static void TakeOwnership(bool state)
+        internal static async void TakeOwnership(bool state)
         {
             switch (state)
             {
@@ -41,7 +41,7 @@ namespace Versa.F_Module
                     break;
             }
         }
-        internal static void ChairEnabled()
+        internal static async void ChairEnabled()
         {
             try
             {
@@ -61,7 +61,7 @@ namespace Versa.F_Module
             }
             catch (Exception e) { CustomConsole.Console(true, "WorldObject.cs [ChairEnabled] " + e.Message); }
         }
-        internal static void ChairDisabled()
+        internal static async void ChairDisabled()
         {
             try
             {

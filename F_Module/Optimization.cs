@@ -14,7 +14,7 @@ namespace Versa.F_Module
     {
         public static List<GameObject> _lst = new List<GameObject>();
 
-        internal static void State(bool state)
+        internal static async void State(bool state)
         {
             switch (state)
             {

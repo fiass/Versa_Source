@@ -32,7 +32,7 @@ namespace Versa.F_Ui
     internal class UiManager
     {
         static bool animation = false;
-        internal static void MenuColor(string color)
+        internal static async void MenuColor(string color)
         {
             Data.MenuColor = color;
             Color temp = StringToColor(Data.MenuColor);
@@ -74,7 +74,7 @@ namespace Versa.F_Ui
                 yield return new WaitForSeconds(0.5f);
             }
         }
-        internal static void Initialize()
+        internal static async void Initialize()
         {
             VersaStateListener LaunchPad = null;
             VersaStateListener LeftWing = null;
@@ -125,11 +125,12 @@ namespace Versa.F_Ui
             };
 
         }
-        internal static void ApplyData()
+        internal static async void ApplyData()
         {
             F_Module.Camera.FoVLoad();
             SelectColor(Prefs.String.Load("Highlights"));
             HighlightsFXSetup.Setup();
+            if (Data.Is)
             GenerateUi.IniUi();
             //AvatarList.Create();
             QuickStatus.Icons();

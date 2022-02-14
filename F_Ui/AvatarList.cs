@@ -18,7 +18,7 @@ namespace Versa.F_Ui
         private static Text HeaderText { get; set; }
         private static GameObject ListObject { get; set; }
         private static UiAvatarList AviListBase { get; set; }
-        internal static void Create()
+        internal static async void Create()
         {
            // Load();
             ListObject = GameObject.Instantiate(UICache.FavoriteList, UICache.FavoriteList.transform.parent);
@@ -34,31 +34,31 @@ namespace Versa.F_Ui
         }
 
         //Fiass put this on avatar menu open
-        internal static void Render()
+        internal static async void Render()
         {
             AviListBase.Method_Protected_Void_List_1_T_Int32_Boolean_VRCUiContentButton_0(Avatars, 0, true, null);
         }
         
         //TODO:Create button api for lists
-        private static void CreateButtons()
+        private static async void CreateButtons()
         {
         }
 
         //Fiass do not use add or remove until database is finished
         
-        internal static void Add(ApiAvatar avatar)
+        internal static async void Add(ApiAvatar avatar)
         {
             Avatars.Add(JsonAvatar.ParseAvatar(avatar));
             Save();
         }
 
-        internal static void Remove(ApiAvatar avatar)
+        internal static async void Remove(ApiAvatar avatar)
         {
             Avatars.Add(JsonAvatar.ParseAvatar(avatar));
             Save();
         }
 
-        internal static void Save()
+        internal static async void Save()
         {
             try
             {
@@ -70,7 +70,7 @@ namespace Versa.F_Ui
             }
         }
 
-        internal static void Load()
+        internal static async void Load()
         {
             try
             {

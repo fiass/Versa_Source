@@ -11,6 +11,6 @@ namespace Versa.F_Module
 {
     class PostProcess
     {
-        internal static void State(bool state) => UiApi.postProcessLayer.enabled = state;
+        internal static async void State(bool state) => UiApi.postProcessLayer.enabled = state;
     }
 }

@@ -83,7 +83,7 @@ namespace Versa.F_Module
         {
             return GameApi.GetAvatar(GameApi.SelectedPlayer().prop_VRCPlayer_0);
         }
-        public static void MakeLewd(bool state)
+        public static async void MakeLewd(bool state)
         {
             try
             {

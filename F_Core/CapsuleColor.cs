@@ -11,7 +11,7 @@ namespace Versa.F_Core
 {
     class CapsuleColor
     {
-        internal static void Capsule()
+        internal static async void Capsule()
         {
             try
             {

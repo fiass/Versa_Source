@@ -10,7 +10,7 @@ namespace Versa.F_Module
 {
     class Jump
     {
-        public static void EnableJump()
+        public static async void EnableJump()
         {
             try
             {
@@ -22,7 +22,7 @@ namespace Versa.F_Module
             }
             catch (Exception e) { CustomConsole.Console(true, "Jump.cs [EnableJump] " + e.Message); }
         }
-        public static void DisableJump()
+        public static async void DisableJump()
         {
             try
             {

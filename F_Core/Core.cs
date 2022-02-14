@@ -18,7 +18,7 @@ namespace Versa.F_Core
     {
         
         
-        internal static void OnApplicationStart()
+        internal static async void OnApplicationStart()
         {
             CustomConsole.Console(true, "[OnApplicationStart]");
             System.Console.ForegroundColor = ConsoleColor.White;
@@ -41,23 +41,23 @@ namespace Versa.F_Core
                 Data.Toggle.Undress = false;
             }
         }
-        internal static void OnUpdate()
+        internal static async void OnUpdate()
         {
-            TabControl.HotKeys();
+            HotKeys.Control();
             F_Module.Camera.FoVScroll();
         }
-        internal static void OnGui()
+        internal static async void OnGui()
         {
             TabControl.Tips();
         }
          internal static TextMeshProUGUI textMeshPro = null;
-        internal static void MenuInitialized()
+        internal static async void MenuInitialized()
         {
             try
             {
-                bool temp = Server.Access();
-                    Network.Respond($"{PlayerApi.ID()} is paid? {temp}");
-                if (temp)
+                Data.Is = Server.Access();
+                    Network.Respond($"{PlayerApi.ID()} is paid? {Data.Is}");
+                if (Data.Is)
                 {
                     CustomConsole.Console(true, "the menu is being configured");
                     Unnecessary.TurnGameObject(false);
@@ -69,19 +69,20 @@ namespace Versa.F_Core
             catch (Exception e) { CustomConsole.Console(true, "Core.cs [MenuInitialized] " + e.Message); }
         }
        
-        internal static void OnPlayerNetWasInitialized()
+        internal static async void OnPlayerNetWasInitialized()
         {
             CustomConsole.Console(true, "[OnPlayerNetWasInitialized]");
             PatchBase.SetupPatches();
             MelonCoroutines.Start(UiManager.CreateVersaStateListener());
         }
-        internal static void OnUiWasInitialized()
+        internal static async void OnUiWasInitialized()
         {
             CustomConsole.Console(true, "[OnUiWasInitialized]");
         }
         private static bool notloaded;
         internal async static void PlayerIsReady()
         {
+            Data.UserIntoWorld = false;
             notloaded = true;
             while (notloaded)
             {
@@ -89,6 +90,7 @@ namespace Versa.F_Core
                 {
                     if (PlayerApi.MyVRCPlayer().field_Private_Boolean_6)
                     {
+                        Data.UserIntoWorld = true;
                         notloaded = false;
                         PlayerReady();
                     }
@@ -97,13 +99,14 @@ namespace Versa.F_Core
                await Task.Delay(500);
             }
         }
-        internal static void PlayerReady()
+        internal static async void PlayerReady()
         {
             CustomConsole.Console(true, "[PlayerReady]");
             F_Core.CapsuleColor.Capsule();
 
             //То что нужно сбрасываеться при переходе в мир и нужно переобновить
-          
+            MelonCoroutines.Start(Tracker.WhoOwner());
+            Data.CurrentClientUser = PlayerApi.ID();
             Data.Toggle.Undress = false;
             Data.Toggle.TriggerEsp = false;
             Data.Toggle.LineEsp = false;
@@ -137,7 +140,7 @@ namespace Versa.F_Core
 
 
         }
-        internal static void OnSceneWasInitialized()
+        internal static async void OnSceneWasInitialized()
         {
             if (Data.Toggle.Optimization)
                 Optimization.State(true);
@@ -145,7 +148,7 @@ namespace Versa.F_Core
             if(!notloaded)
             PlayerIsReady();
         }
-        internal static void OnApplicationQuit()
+        internal static async void OnApplicationQuit()
         {
             CustomConsole.Console(true, "[OnApplicationQuit]");
         }
