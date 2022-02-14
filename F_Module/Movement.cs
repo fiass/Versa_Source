@@ -9,13 +9,13 @@ namespace Versa.F_Module
 {
     class Movement
     {
-        internal static void MoveEnabled()
+        internal static async void MoveEnabled()
         {
             PlayerApi.MyVRCPlayer().gameObject.GetComponent<GamelikeInputController>().field_Public_Single_0 = Convert.ToSingle(Prefs.String.Load("runSpeed"));
             PlayerApi.MyVRCPlayer().gameObject.GetComponent<GamelikeInputController>().field_Public_Single_1 = Convert.ToSingle(Prefs.String.Load("strafeSpeed"));
             PlayerApi.MyVRCPlayer().gameObject.GetComponent<GamelikeInputController>().field_Public_Single_2 = Convert.ToSingle(Prefs.String.Load("walkSpeed"));
         }
-        internal static void MoveDisabled()
+        internal static async void MoveDisabled()
         {
             PlayerApi.MyVRCPlayer().gameObject.GetComponent<GamelikeInputController>().field_Public_Single_0 = 0;
             PlayerApi.MyVRCPlayer().gameObject.GetComponent<GamelikeInputController>().field_Public_Single_1 = 0;

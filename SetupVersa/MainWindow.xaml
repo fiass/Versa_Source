@@ -96,7 +96,7 @@
                 <Label Content="                                                                                            Client Ready To Use" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Foreground="White" Height="27" Width="778"/>
                 <Label Content="Thanks for using &quot;Versa&quot;" HorizontalAlignment="Left" Margin="10,37,0,0" VerticalAlignment="Top" Foreground="White" Height="27" Width="778"/>
                 <Label Content="Right now u can just start VRChat" HorizontalAlignment="Left" Margin="10,64,0,0" VerticalAlignment="Top" Foreground="White" Height="27" Width="778"/>
-                <Label Content="All Rights Reserved 2021 By GNU v3" HorizontalAlignment="Left" Margin="11,380,0,0" VerticalAlignment="Top" Foreground="White" Height="27" Width="652"/>
+                <Label Content="All Rights Reserved 2021 - 2022 By GNU v3" HorizontalAlignment="Left" Margin="11,380,0,0" VerticalAlignment="Top" Foreground="White" Height="27" Width="652"/>
                 <Label Content="Versa Client ©" HorizontalAlignment="Left" Margin="10,353,0,0" VerticalAlignment="Top" Foreground="White" Height="27" Width="653"/>
             </Grid>
         </Border>

@@ -7,9 +7,13 @@ using Versa.F_Output;
 
 namespace Versa.F_Core
 {
+    internal class truе
+    {
+        internal static bool ъ = Data.Is;
+    }
     internal class PatchBase
     {
-        internal static void SetupPatches()
+        internal static async void SetupPatches()
         {
             //This patches first Quickmenu Open
             PatchTool.Patch(typeof(VRC.UI.Elements.MainMenu).GetMethod("Awake"), 

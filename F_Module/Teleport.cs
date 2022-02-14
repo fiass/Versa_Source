@@ -10,7 +10,7 @@ namespace Versa.F_Module
 {
     class Teleport
     {
-        internal static void TeleportToSelected()
+        internal static async void TeleportToSelected()
         {
             try
             {

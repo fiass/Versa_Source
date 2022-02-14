@@ -8,12 +8,12 @@ namespace Versa.F_Module
     internal class Camera
     {
         internal static bool _FoVScroll;
-        internal static void FoVReset()
+        internal static async void FoVReset()
         {
             UnityEngine.Camera.main.fieldOfView = 60;
             FoVSave(UnityEngine.Camera.main.fieldOfView);
         }
-        internal static void FoVPlus()
+        internal static async void FoVPlus()
         {
             if (UnityEngine.Camera.main.fieldOfView < 110)
             {
@@ -21,7 +21,7 @@ namespace Versa.F_Module
                 FoVSave(UnityEngine.Camera.main.fieldOfView);
             }
         }
-        internal static void FoVMinus()
+        internal static async void FoVMinus()
         {
             if (UnityEngine.Camera.main.fieldOfView > 50)
             {
@@ -29,11 +29,11 @@ namespace Versa.F_Module
                 FoVSave(UnityEngine.Camera.main.fieldOfView);
             }
         }
-        internal protected static void FoVSave(float value)
+        internal protected static async void FoVSave(float value)
         {
             Data.FoV = value;
         }
-        internal static void FoVLoad()
+        internal static async void FoVLoad()
         {
             #region FoV
             if (Data.FoV > 40)
@@ -46,18 +46,18 @@ namespace Versa.F_Module
             _FoVScroll = Data.FoVScroll;
             #endregion
         }
-        internal static void FoVUpdate()
+        internal static async void FoVUpdate()
         {
 
         }
-        internal static void FoVScroll()
+        internal static async void FoVScroll()
         {
           if(_FoVScroll)
             {
 
             }
         }
-        internal static void UnlockCameraLimits(bool unlock)
+        internal static async void UnlockCameraLimits(bool unlock)
         {
             VRC.DataModel.NeckRange neckRange = new VRC.DataModel.NeckRange();
             if (unlock)

@@ -15,10 +15,10 @@ namespace Versa.F_Module
 {
     class AntiCrash
     {
-        internal static void State(bool state) => Data.Toggle.AntiCrash = state;
+        internal static async void State(bool state) => Data.Toggle.AntiCrash = state;
         public static int PolygonLimits = 500000;
         public static List<string> Whitelist;
-        internal static void CheckPlayer(Player player)
+        internal static async void CheckPlayer(Player player)
         {
             try
             {

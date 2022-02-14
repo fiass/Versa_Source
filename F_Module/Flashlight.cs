@@ -12,7 +12,7 @@ namespace Versa.F_Module
     class Flashlight
     {
         internal static GameObject gameObject;
-        internal static void Enable()
+        internal static async void Enable()
         {
             try
             {
@@ -23,7 +23,7 @@ namespace Versa.F_Module
             }
             catch (Exception e) { CustomConsole.Console(true, "Flashlight.cs [Enable] " + e.Message); }
         }
-        internal static void Disable()
+        internal static async void Disable()
         {
             try
             {

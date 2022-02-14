@@ -16,13 +16,13 @@ namespace Versa.F_Module
     class SpamObject
     {
         internal static List<VRC_Pickup> _t = new List<VRC_Pickup>();
-        internal static void Enable()
+        internal static async void Enable()
         {
 
             Data.Toggle.SpamObject = true;
             MelonLoader.MelonCoroutines.Start(Coroutine());
         }
-        internal static void Disable()
+        internal static async void Disable()
         {
             Data.Toggle.SpamObject = false;
             _t.Clear();

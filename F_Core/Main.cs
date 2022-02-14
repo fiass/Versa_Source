@@ -14,20 +14,20 @@ namespace Versa
         public const string Description = "Hi cute";
         public const string Author = "Null";
         public const string Company = "Blackout";
-        public const string Version = "2.3.0";
+        public const string Version = "2.3.6";
         public const string DownloadLink = "";
     }
 
     internal class Main : MelonMod
     {
        
-        public override void OnApplicationStart()
+        public override async void OnApplicationStart()
         {
             Core.OnApplicationStart();
             Initialize();
         }
         private static bool hasInitialized = false;
-        public static void Initialize()
+        public static async void Initialize()
         {
             if (hasInitialized) return;
             hasInitialized = true;
@@ -35,7 +35,7 @@ namespace Versa
             MelonCoroutines.Start(FindUI());
         }
 
-        private static IEnumerator FindUI()
+        private static  IEnumerator FindUI()
         {
             while ((Misc.UserInterface = GameObject.Find("UserInterface")?.transform) is null)
                 yield return null;
@@ -49,7 +49,7 @@ namespace Versa
             Left.WingOpen.GetComponent<UnityEngine.UI.Button>().onClick.AddListener(new Action(() => Init_L()));
             Right.WingOpen.GetComponent<UnityEngine.UI.Button>().onClick.AddListener(new Action(() => Init_R()));
         }
-        private static Action Init_L = new Action(() =>
+        private static  Action Init_L = new Action(() =>
         {
             Init_L = new Action(() => { });
             GenerateUi.OnWingInit(Left);
@@ -71,13 +71,13 @@ namespace Versa
             
         }
 
-        public override void OnSceneWasInitialized(int buildindex, string sceneName)
+        public override async void OnSceneWasInitialized(int buildindex, string sceneName)
         {
             Core.OnSceneWasInitialized();
 
         }
 
-        public override void OnUpdate()
+        public override async void OnUpdate()
         {
             Core.OnUpdate();
             if (!Data.PlayerNetIsInitialized & PlayerApi.playerNet() != null)
@@ -100,12 +100,12 @@ namespace Versa
         {
         }
 
-        public override void OnGUI()
+        public override async void OnGUI()
         {
             Core.OnGui();
         }
 
-        public override void OnApplicationQuit()
+        public override async void OnApplicationQuit()
         {
             Core.OnApplicationQuit();
         }

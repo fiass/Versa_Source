@@ -11,7 +11,7 @@ namespace Versa.F_Core
     {
         internal static class Int
         {
-            internal static void Save(string key, int value)
+            internal static async void Save(string key, int value)
             {
                 PlayerPrefs.SetInt(key, value);
             }
@@ -28,7 +28,7 @@ namespace Versa.F_Core
         }
         internal static class Float
         {
-            internal static void Save(string key, float value)
+            internal static async void Save(string key, float value)
             {
                 PlayerPrefs.SetFloat(key, value);
             }
@@ -45,7 +45,7 @@ namespace Versa.F_Core
         }
         internal static class String
         {
-            internal static void Save(string key, string value)
+            internal static async void Save(string key, string value)
             {
                 PlayerPrefs.SetString(key, value);
             }
@@ -62,7 +62,7 @@ namespace Versa.F_Core
         }
         internal static class Bool
         {
-            internal static void Save(string key, bool value)
+            internal static async void Save(string key, bool value)
             {
                 PlayerPrefs.SetInt(key, Convert.ToInt32(value));
             }

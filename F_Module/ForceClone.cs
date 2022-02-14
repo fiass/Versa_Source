@@ -7,11 +7,17 @@ using System.Threading.Tasks;
 using UnityEngine;
 using TMPro;
 using Versa.F_Output;
+using VRC.UI.Elements.Menus;
+using VRC;
+using BestHTTP;
+using VRC.Core;
+using VRC.UI;
 
 namespace Versa.F_Module
 {
     class ForceClone
     {
+       
         public static async void UnlockCloneAvatar()
         {
             try

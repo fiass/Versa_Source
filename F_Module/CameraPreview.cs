@@ -16,8 +16,8 @@ namespace Versa.F_Module
     class CameraPreview
     {
         private static GameObject CacheObject;
-        internal static void State(bool state) { }
-        private static void CreateCamera()
+        internal static async void State(bool state) { }
+        private static async void CreateCamera()
         {
             try
             {
@@ -55,7 +55,7 @@ namespace Versa.F_Module
             }
             catch(Exception e) { CustomConsole.Console(true, "CameraPreview.cs [CreateRender] " + e.Message);; DestroyRender(); }
         }
-        internal static void DestroyRender()
+        internal static async void DestroyRender()
         {
             try
             {

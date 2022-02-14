@@ -10,7 +10,7 @@ namespace Versa.F_Output
 {
     public class LogWriter
     {
-        public static void WriteLog(string strLog)
+        public static async void WriteLog(string strLog)
         {
             try
             {

@@ -123,9 +123,6 @@
     <Reference Include="Iced">
       <HintPath>C:\Program Files (x86)\Steam\steamapps\common\VRChat\MelonLoader\Managed\Iced.dll</HintPath>
     </Reference>
-    <Reference Include="ICSharpCode.SharpZipLib">
-      <HintPath>C:\Program Files (x86)\Steam\steamapps\common\VRChat\MelonLoader\Managed\ICSharpCode.SharpZipLib.dll</HintPath>
-    </Reference>
     <Reference Include="Il2CppMono.Security">
       <HintPath>C:\Program Files (x86)\Steam\steamapps\common\VRChat\MelonLoader\Managed\Il2CppMono.Security.dll</HintPath>
     </Reference>
@@ -759,6 +756,7 @@
     <Compile Include="F_Module\ForceClone.cs" />
     <Compile Include="F_Module\Esp.cs" />
     <Compile Include="F_Module\Gravity.cs" />
+    <Compile Include="F_Module\HotKeys.cs" />
     <Compile Include="F_Module\Jump.cs" />
     <Compile Include="F_Module\Lewd.cs" />
     <Compile Include="F_Module\LogData.cs" />
@@ -774,6 +772,7 @@
     <Compile Include="F_Module\SpeedHack.cs" />
     <Compile Include="F_Module\TabControl.cs" />
     <Compile Include="F_Module\Teleport.cs" />
+    <Compile Include="F_Module\Tracker.cs" />
     <Compile Include="F_Module\VRCA.cs" />
     <Compile Include="F_Module\WorldObject.cs" />
     <Compile Include="F_Output\Clipboard.cs" />
