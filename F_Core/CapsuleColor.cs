@@ -11,7 +11,7 @@ namespace Versa.F_Core
 {
     class CapsuleColor
     {
-        internal static async void Capsule()
+        internal static void Capsule()
         {
             try
             {
@@ -25,7 +25,7 @@ namespace Versa.F_Core
                 }
                 F_Output.CustomConsole.Console(true, "[CapsuleColor has apply]");
             }
-            catch (Exception e) { CustomConsole.Console(true, "CapsuleColor.cs: "+e.Message); }
+            catch (Exception e) { CustomConsole.Console(true, "CapsuleColor.cs: " + e.Message); }
         }
     }
 }

@@ -12,7 +12,7 @@ namespace Versa.F_Core
     internal class KeybindWatcher
     {
         //Watch for keybinds in another thread which shouldn't crash the game I think
-        internal static async void WatchKeybinds()
+        internal static void WatchKeybinds()
         {
             Task.Run((() =>
             {

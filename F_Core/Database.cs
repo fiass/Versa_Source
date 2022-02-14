@@ -7,7 +7,7 @@ namespace Versa.F_Core
     {
         internal static ILiteDatabase LiteDatabase { get; set; }
         internal static ILiteCollection<ApiAvatar> Avatars { get; set; }
-        internal static async void Setup()
+        internal static void Setup()
         {
             LiteDatabase = new LiteDatabase("Versa\\Database.Versa");
             Avatars = LiteDatabase.GetCollection<ApiAvatar>("Avatars");

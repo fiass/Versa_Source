@@ -58,7 +58,7 @@ namespace Versa.F_Config
         }
         internal static string CurrentClientUser = null;
         public static string DevUser = "usr_75264bf4-1710-4c50-90d9-b02d77ff208f";
-        internal static  string FirstUsageVersa
+        internal static string FirstUsageVersa
         {
             get
             {

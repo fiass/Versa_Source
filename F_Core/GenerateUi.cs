@@ -28,7 +28,7 @@ namespace Versa.F_Core
                 mainTexture = texture
             };
         }
-        public static async void IniUi()
+        public static void IniUi()
         {
             var i = 1;
             i = (i++) * i;
@@ -51,8 +51,8 @@ namespace Versa.F_Core
 
                 foreach (var color in ColorMenu)
                 {
-                     UnityEngine.Object.Destroy(color.gameObject.GetComponent<StyleElement>()); 
-                     color.color = new Color(0f, 0.5f, 1f, 0.5f);
+                    UnityEngine.Object.Destroy(color.gameObject.GetComponent<StyleElement>());
+                    color.color = new Color(0f, 0.5f, 1f, 0.5f);
                 }
             }
             catch (Exception e) { CustomConsole.Console(true, "GenerateUi.cs [IniUi] " + e.Message); }
@@ -61,7 +61,7 @@ namespace Versa.F_Core
             // QMButton NoClip = Versa_QM.AddButton("NoClip", "NoClip", "", Data.Textures[5]); NoClip.SetAction(() => Data.Toggle.NoClip = NoClip.State(Data.Toggle.NoClip, () => F_Module.NoClip.State(true), () => F_Module.NoClip.State(false)));
             // QMButton Speed = Versa_QM.AddButton("Speed", "Speed", "", Data.Textures[6]); Speed.SetAction(() => Data.Toggle.SpeedHack = Speed.State(Data.Toggle.SpeedHack, () => F_Module.SpeedHack.State(true), () => F_Module.SpeedHack.State(false)));
             // QMButton Optimization = Versa_QM.AddButton("Optimization", "Optimization", "", Data.Textures[3]); Optimization.SetAction(() => Data.Toggle.Optimization = Optimization.State(Data.Toggle.Optimization, () => F_Module.Optimization.State(true), () => F_Module.Optimization.State(false)));
-                Stats = GameObject.Instantiate(Data.VersaStats, GameObject.Find("/UserInterface/PlayerDisplay/").transform);
+            Stats = GameObject.Instantiate(Data.VersaStats, GameObject.Find("/UserInterface/PlayerDisplay/").transform);
             MelonCoroutines.Start(OneSecUpdate.Enable());
             F_Output.CustomConsole.Console(true, "[IniUi finished]");
         }
@@ -221,7 +221,7 @@ namespace Versa.F_Core
                 F_Output.CustomConsole.Console(true, "[OnWingInit finished]");
             }
         });
-        private static async void ActivateScrollInQM()
+        private static void ActivateScrollInQM()
         {
             F_Output.CustomConsole.Console(true, "[ActivateScrollInQM started]");
             var scrollRect = QMCache.LaunchPadQmMenu.transform.Find("ScrollRect").gameObject.GetComponent<ScrollRect>();

@@ -21,13 +21,13 @@ namespace Versa
     internal class Main : MelonMod
     {
        
-        public override async void OnApplicationStart()
+        public override void OnApplicationStart()
         {
             Core.OnApplicationStart();
             Initialize();
         }
         private static bool hasInitialized = false;
-        public static async void Initialize()
+        public static void Initialize()
         {
             if (hasInitialized) return;
             hasInitialized = true;
@@ -35,7 +35,7 @@ namespace Versa
             MelonCoroutines.Start(FindUI());
         }
 
-        private static  IEnumerator FindUI()
+        private static IEnumerator FindUI()
         {
             while ((Misc.UserInterface = GameObject.Find("UserInterface")?.transform) is null)
                 yield return null;
@@ -71,13 +71,13 @@ namespace Versa
             
         }
 
-        public override async void OnSceneWasInitialized(int buildindex, string sceneName)
+        public override void OnSceneWasInitialized(int buildindex, string sceneName)
         {
             Core.OnSceneWasInitialized();
 
         }
 
-        public override async void OnUpdate()
+        public override void OnUpdate()
         {
             Core.OnUpdate();
             if (!Data.PlayerNetIsInitialized & PlayerApi.playerNet() != null)
@@ -100,12 +100,12 @@ namespace Versa
         {
         }
 
-        public override async void OnGUI()
+        public override void OnGUI()
         {
             Core.OnGui();
         }
 
-        public override async void OnApplicationQuit()
+        public override void OnApplicationQuit()
         {
             Core.OnApplicationQuit();
         }

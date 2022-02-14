@@ -18,7 +18,7 @@ namespace Versa.F_Core
     {
         
         
-        internal static async void OnApplicationStart()
+        internal static void OnApplicationStart()
         {
             CustomConsole.Console(true, "[OnApplicationStart]");
             System.Console.ForegroundColor = ConsoleColor.White;
@@ -41,17 +41,17 @@ namespace Versa.F_Core
                 Data.Toggle.Undress = false;
             }
         }
-        internal static async void OnUpdate()
+        internal static void OnUpdate()
         {
             HotKeys.Control();
             F_Module.Camera.FoVScroll();
         }
-        internal static async void OnGui()
+        internal static void OnGui()
         {
             TabControl.Tips();
         }
          internal static TextMeshProUGUI textMeshPro = null;
-        internal static async void MenuInitialized()
+        internal static void MenuInitialized()
         {
             try
             {
@@ -69,13 +69,13 @@ namespace Versa.F_Core
             catch (Exception e) { CustomConsole.Console(true, "Core.cs [MenuInitialized] " + e.Message); }
         }
        
-        internal static async void OnPlayerNetWasInitialized()
+        internal static void OnPlayerNetWasInitialized()
         {
             CustomConsole.Console(true, "[OnPlayerNetWasInitialized]");
             PatchBase.SetupPatches();
             MelonCoroutines.Start(UiManager.CreateVersaStateListener());
         }
-        internal static async void OnUiWasInitialized()
+        internal static void OnUiWasInitialized()
         {
             CustomConsole.Console(true, "[OnUiWasInitialized]");
         }
@@ -140,7 +140,7 @@ namespace Versa.F_Core
 
 
         }
-        internal static async void OnSceneWasInitialized()
+        internal static void OnSceneWasInitialized()
         {
             if (Data.Toggle.Optimization)
                 Optimization.State(true);
@@ -148,7 +148,7 @@ namespace Versa.F_Core
             if(!notloaded)
             PlayerIsReady();
         }
-        internal static async void OnApplicationQuit()
+        internal static void OnApplicationQuit()
         {
             CustomConsole.Console(true, "[OnApplicationQuit]");
         }

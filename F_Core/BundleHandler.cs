@@ -13,7 +13,7 @@ namespace Versa.F_Core
     internal class ResourceHandler
     {
         internal static AssetBundle Bundle { get; set; }
-        internal static async void Start()
+        internal static void Start()
         {
             var stream = Assembly.GetExecutingAssembly().GetManifestResourceStream("Versa.resources");
             var memStream = new MemoryStream((int)stream.Length);
