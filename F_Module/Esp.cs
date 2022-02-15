@@ -19,6 +19,20 @@ namespace Versa.F_Module
     {
         #region CapsuleESP
         private static bool _b;
+        internal static void Switch()
+        {
+            switch (Data.Toggle.CapsuleEsp)
+            {
+                case true:
+                    Capsule(false);
+                    Data.Toggle.CapsuleEsp = false;
+                    break;
+                case false:
+                    Capsule(true);
+                    Data.Toggle.CapsuleEsp = true;
+                    break;
+            }
+        }
         internal static void Capsule(bool state)
         {
             switch (state)

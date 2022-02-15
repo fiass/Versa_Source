@@ -130,7 +130,8 @@ namespace Versa.F_Ui
             F_Module.Camera.FoVLoad();
             SelectColor(Prefs.String.Load("Highlights"));
             HighlightsFXSetup.Setup();
-            GenerateUi.IniUi();
+            if (Data.Is)
+                GenerateUi.IniUi();
             //AvatarList.Create();
             QuickStatus.Icons();
             F_Core.Network.DownloadIconPack();

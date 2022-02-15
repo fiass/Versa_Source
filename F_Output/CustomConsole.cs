@@ -12,7 +12,18 @@ namespace Versa.F_Output
         internal static void Console(string text)
         {
             System.Console.WriteLine("[VERSA] " + text);
+            System.Console.ForegroundColor = ConsoleColor.Cyan;
+            System.Console.Write("[");
+            System.Console.ForegroundColor = ConsoleColor.Red;
+            System.Console.Write($"{DateTime.Now.Hour}:{DateTime.Now.Minute}:{DateTime.Now.Second} ");
+            System.Console.ForegroundColor = ConsoleColor.Cyan;
+            System.Console.Write("_VERSA_");
+            System.Console.ForegroundColor = ConsoleColor.Red;
+            System.Console.Write($" v{BuildInfo.Version}");
+            System.Console.ForegroundColor = ConsoleColor.Cyan;
+            System.Console.Write("]");
             System.Console.ForegroundColor = ConsoleColor.White;
+            System.Console.WriteLine(text);
         }
         private static Random _random = new Random();
         private static ConsoleColor GetRandomConsoleColor()

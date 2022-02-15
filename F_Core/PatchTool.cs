@@ -18,7 +18,7 @@ namespace Versa.F_Core
             PatchTool.Patch(typeof(VRCPlayer).GetMethod("Awake"), 
                 PatchTool.GetPatch<PatchBase>("VRCPlayerPostfix"));
         }
-        
+     
         private static bool VRCPlayerPostfix(VRCPlayer __instance)
         {
             __instance.Method_Public_add_Void_OnAvatarIsReady_0(new Action(() =>

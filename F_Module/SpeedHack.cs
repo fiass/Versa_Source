@@ -4,13 +4,28 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Versa.F_Core;
+using Versa.F_Config;
 using Versa.F_Output;
 
 namespace Versa.F_Module
 {
     class SpeedHack
     {
-      internal static void State(bool state)
+        internal static void Switch()
+        {
+            switch (Data.Toggle.SpeedHack)
+            {
+                case true:
+                    State(false);
+                    Data.Toggle.SpeedHack = false;
+                    break;
+                case false:
+                    State(true);
+                    Data.Toggle.SpeedHack = true;
+                    break;
+            }
+        }
+        internal static void State(bool state)
         {
             switch(state)
             {

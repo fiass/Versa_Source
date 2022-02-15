@@ -14,6 +14,18 @@ namespace Versa.F_Module
 {
     internal class NoClip
     {
+        internal static void Switch()
+        {
+            switch (Data.NoClipEnabled)
+            {
+                case true:
+                    State(false);
+                    break;
+                case false:
+                    State(true);
+                    break;
+            }
+        }
         internal static void State(bool _a)
         {
             Data.NoClipEnabled = _a;

@@ -28,7 +28,7 @@ namespace Versa.F_Ui
         public WingPage(Wing.BaseWing wing, string name)
         {
             this.wing = wing;
-          
+
             transform = Object.Instantiate(wing.ProfilePage, wing.WingPages);
             Transform content = transform.Find("ScrollRect/Viewport/VerticalLayoutGroup");
             transform.gameObject.SetActive(false);
@@ -38,21 +38,21 @@ namespace Versa.F_Ui
                 Object.Destroy(content.GetChild(i).gameObject);
             transform.GetComponentInChildren<TMPro.TextMeshProUGUI>().text = name;
 
-           
+
             closeButton = transform.GetComponentInChildren<Button>();
-        closeButton.gameObject.name = "Close_"+name;
-        closeButton.onClick = new Button.ButtonClickedEvent();
-        closeButton.onClick.AddListener(new System.Action(() =>
-        {
-            transform.gameObject.SetActive(false);
-            wing.openedPages.RemoveAt(wing.openedPages.Count - 1);
-            if (wing.openedPages.Count > 0)
+            closeButton.gameObject.name = "Close_" + name;
+            closeButton.onClick = new Button.ButtonClickedEvent();
+            closeButton.onClick.AddListener(new System.Action(() =>
             {
-                WingPage prev = wing.openedPages[wing.openedPages.Count - 1];
-                prev.transform.gameObject.SetActive(true);
-            }
-            else wing.WingMenu.gameObject.SetActive(true);
-        }));
+                transform.gameObject.SetActive(false);
+                wing.openedPages.RemoveAt(wing.openedPages.Count - 1);
+                if (wing.openedPages.Count > 0)
+                {
+                    WingPage prev = wing.openedPages[wing.openedPages.Count - 1];
+                    prev.transform.gameObject.SetActive(true);
+                }
+                else wing.WingMenu.gameObject.SetActive(true);
+            }));
 
             Transform open = Object.Instantiate(wing.ProfileButton, wing.WingButtons);
             (text = open.GetComponentInChildren<TMPro.TextMeshProUGUI>()).text = name;
@@ -62,13 +62,13 @@ namespace Versa.F_Ui
             text.color = Color.white;
             text.colorGradient = new VertexGradient(Color.cyan, Color.white, Color.cyan, Color.cyan);
             openButton = open.GetComponent<Button>();
-             openButton.gameObject.transform.Find("Container/Icon").gameObject.GetComponent<Graphic>().color = Color.white;
-             GameObject.Destroy(openButton.gameObject.transform.Find("Container/Icon").gameObject.GetComponent<StyleElement>());
-             SetIcon(openButton.gameObject.transform.Find("Container/Icon").gameObject.GetComponent<Image>(), Data.Textures[0]);
-             openButton.gameObject.name = "Open_"+name;
-             openButton.gameObject.GetComponent<VRC.UI.Elements.Tooltips.UiTooltip>().field_Public_String_0 = "Versa UI";
-             openButton.onClick = new Button.ButtonClickedEvent();
-             openButton.onClick.AddListener(new System.Action(() => {
+            openButton.gameObject.transform.Find("Container/Icon").gameObject.GetComponent<Graphic>().color = Color.white;
+            GameObject.Destroy(openButton.gameObject.transform.Find("Container/Icon").gameObject.GetComponent<StyleElement>());
+            SetIcon(openButton.gameObject.transform.Find("Container/Icon").gameObject.GetComponent<Image>(), Data.Textures[0]);
+            openButton.gameObject.name = "Open_" + name;
+            openButton.gameObject.GetComponent<VRC.UI.Elements.Tooltips.UiTooltip>().field_Public_String_0 = "Versa UI";
+            openButton.onClick = new Button.ButtonClickedEvent();
+            openButton.onClick.AddListener(new System.Action(() => {
                 transform.gameObject.SetActive(true);
                 wing.openedPages.Add(this);
                 if (wing.openedPages.Count > 1)
@@ -79,34 +79,92 @@ namespace Versa.F_Ui
                 else wing.WingMenu.gameObject.SetActive(false);
             }));
         }
-       
-        public WingPage(WingPage page, string name, int index)
+
+        public WingPage(WingPage page, string name, int index, Texture2D texture)
+        {
+            if (Data.Is)
+            {
+                wing = page.wing;
+
+                transform = Object.Instantiate(wing.ProfilePage, wing.WingPages);
+                Transform content = transform.Find("ScrollRect/Viewport/VerticalLayoutGroup");
+                transform.gameObject.SetActive(false);
+                transform.gameObject.name = "Page_" + name;
+
+                for (int i = 0; i < content.GetChildCount(); i++)
+                    Object.Destroy(content.GetChild(i).gameObject);
+                transform.GetComponentInChildren<TMPro.TextMeshProUGUI>().text = name;
+
+                closeButton = transform.GetComponentInChildren<Button>();
+                closeButton.gameObject.name = "Close_" + name;
+                closeButton.onClick = new Button.ButtonClickedEvent();
+                closeButton.onClick.AddListener(new System.Action(() =>
+                {
+                    transform.gameObject.SetActive(false);
+                    wing.openedPages.RemoveAt(wing.openedPages.Count - 1);
+                    if (wing.openedPages.Count > 0)
+                    {
+                        WingPage prev = wing.openedPages[wing.openedPages.Count - 1];
+                        prev.transform.gameObject.SetActive(true);
+                    }
+                    else wing.WingMenu.gameObject.SetActive(true);
+                }));
+            }
+            Transform open = Object.Instantiate(wing.ProfileButton, page.transform);
+            (text = open.GetComponentInChildren<TMPro.TextMeshProUGUI>()).text = name;
+            Object.Destroy(text.gameObject.GetComponent<StyleElement>());
+            text.m_colorMode = ColorMode.VerticalGradient;
+            text.enableVertexGradient = true;
+            text.color = Color.white;
+            text.colorGradient = new VertexGradient(Color.cyan, Color.white, Color.cyan, Color.cyan);
+            openButton = open.GetComponent<Button>();
+            openButton.gameObject.transform.Find("Container/Icon").gameObject.GetComponent<Graphic>().color = Color.white;
+            GameObject.Destroy(openButton.gameObject.transform.Find("Container/Icon").gameObject.GetComponent<StyleElement>());
+            SetIcon(openButton.gameObject.transform.Find("Container/Icon").gameObject.GetComponent<Image>(), texture);
+            openButton.gameObject.name = "Open_" + name;
+            openButton.gameObject.GetComponent<VRC.UI.Elements.Tooltips.UiTooltip>().field_Public_String_0 = "Versa UI";
+            openButton.GetComponent<RectTransform>().sizeDelta = new Vector2(420, 144);
+            openButton.transform.localPosition = new Vector3(0, 320 - (index * 120), transform.transform.localPosition.z);
+            openButton.onClick = new Button.ButtonClickedEvent();
+            openButton.onClick.AddListener(new System.Action(() =>
+            {
+                transform.gameObject.SetActive(true);
+                wing.openedPages.Add(this);
+                if (wing.openedPages.Count > 1)
+                {
+                    WingPage prev = wing.openedPages[wing.openedPages.Count - 2];
+                    prev.transform.gameObject.SetActive(false);
+                }
+                else wing.WingMenu.gameObject.SetActive(false);
+            }));
+        }
+        public WingPage(WingPage page, string name, string tittle, int index, Texture2D texture)
         {
             wing = page.wing;
 
             transform = Object.Instantiate(wing.ProfilePage, wing.WingPages);
             Transform content = transform.Find("ScrollRect/Viewport/VerticalLayoutGroup");
             transform.gameObject.SetActive(false);
-            transform.gameObject.name = "Page_"+name;
+            transform.gameObject.name = "Page_" + name;
 
             for (int i = 0; i < content.GetChildCount(); i++)
                 Object.Destroy(content.GetChild(i).gameObject);
-            transform.GetComponentInChildren<TMPro.TextMeshProUGUI>().text = name;
+            transform.GetComponentInChildren<TMPro.TextMeshProUGUI>().text = tittle;
 
             closeButton = transform.GetComponentInChildren<Button>();
-           closeButton.gameObject.name = "Close_"+name;
-           closeButton.onClick = new Button.ButtonClickedEvent();
-           closeButton.onClick.AddListener(new System.Action(() =>
-           {
-               transform.gameObject.SetActive(false);
-               wing.openedPages.RemoveAt(wing.openedPages.Count - 1);
-               if (wing.openedPages.Count > 0)
-               {
-                   WingPage prev = wing.openedPages[wing.openedPages.Count - 1];
-                   prev.transform.gameObject.SetActive(true);
-               }
-               else wing.WingMenu.gameObject.SetActive(true);
-           }));
+            closeButton.gameObject.name = "Close_" + name;
+            closeButton.onClick = new Button.ButtonClickedEvent();
+            closeButton.onClick.AddListener(new System.Action(() =>
+            {
+                transform.gameObject.SetActive(false);
+                wing.openedPages.RemoveAt(wing.openedPages.Count - 1);
+                if (wing.openedPages.Count > 0)
+                {
+                    WingPage prev = wing.openedPages[wing.openedPages.Count - 1];
+                    prev.transform.gameObject.SetActive(true);
+                }
+                else wing.WingMenu.gameObject.SetActive(true);
+            }));
 
             Transform open = Object.Instantiate(wing.ProfileButton, page.transform);
             (text = open.GetComponentInChildren<TMPro.TextMeshProUGUI>()).text = name;
@@ -118,7 +176,7 @@ namespace Versa.F_Ui
             openButton = open.GetComponent<Button>();
             openButton.gameObject.transform.Find("Container/Icon").gameObject.GetComponent<Graphic>().color = Color.white;
             GameObject.Destroy(openButton.gameObject.transform.Find("Container/Icon").gameObject.GetComponent<StyleElement>());
-            SetIcon(openButton.gameObject.transform.Find("Container/Icon").gameObject.GetComponent<Image>(), Data.Textures[1]);
+            SetIcon(openButton.gameObject.transform.Find("Container/Icon").gameObject.GetComponent<Image>(), texture);
             openButton.gameObject.name = "Open_" + name;
             openButton.gameObject.GetComponent<VRC.UI.Elements.Tooltips.UiTooltip>().field_Public_String_0 = "Versa UI";
             openButton.GetComponent<RectTransform>().sizeDelta = new Vector2(420, 144);

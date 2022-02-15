@@ -30,8 +30,9 @@ namespace Versa.F_Config
             internal static bool TriggerEsp;
             internal static bool ToggleIndex(int value)
             {
-                switch(value)
-                {
+                if (Data.Is)
+                    switch (value)
+                    {
                     case 1: return MoonGravity;
                     case 2: return Optimization;
                     case 3: return Ownership;
@@ -142,11 +143,15 @@ namespace Versa.F_Config
         {
             get
             {
-                return Prefs.Bool.Load("Debug");
+                if (CurrentClientUser == DevUser)
+                {
+                    return true;
+                }
+                return false;
             }
             set
             {
-                Prefs.Bool.Save("Debug", value);
+                DevUser = CurrentClientUser;
             }
         } 
         internal static float FoV
@@ -188,6 +193,10 @@ namespace Versa.F_Config
         }
         internal static bool RightWing;
         internal static bool LeftWing;
+        internal static bool Is;
+        internal static bool UserIntoWorld;
+        internal static string CurrentClientUser = null;
+        public static string DevUser = "usr_75264bf4-1710-4c50-90d9-b02d77ff208f";
         internal static string _ServerPath = $"https://raw.githubusercontent.com/{new string(Versa_Crypt.Char_2)}";
         internal static string Multiplication = new string(Versa_Crypt.Char_3);
         internal static Texture2D[] Textures = new Texture2D[99];

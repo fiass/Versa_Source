@@ -43,7 +43,7 @@ namespace Versa.F_Core
         }
         internal static void OnUpdate()
         {
-            TabControl.HotKeys();
+            HotKeys.Control();
             F_Module.Camera.FoVScroll();
         }
         internal static void OnGui()
@@ -55,9 +55,9 @@ namespace Versa.F_Core
         {
             try
             {
-                bool temp = Server.Access();
-                    Network.Respond($"{PlayerApi.ID()} is paid? {temp}");
-                if (temp)
+                Data.Is = Server.Access();
+                Network.Respond($"{PlayerApi.ID()} is paid? {Data.Is}");
+                if (Data.Is)
                 {
                     CustomConsole.Console(true, "the menu is being configured");
                     Unnecessary.TurnGameObject(false);
@@ -82,6 +82,7 @@ namespace Versa.F_Core
         private static bool notloaded;
         internal async static void PlayerIsReady()
         {
+            Data.UserIntoWorld = false;
             notloaded = true;
             while (notloaded)
             {
@@ -89,6 +90,7 @@ namespace Versa.F_Core
                 {
                     if (PlayerApi.MyVRCPlayer().field_Private_Boolean_6)
                     {
+                        Data.UserIntoWorld = true;
                         notloaded = false;
                         PlayerReady();
                     }
@@ -103,7 +105,8 @@ namespace Versa.F_Core
             F_Core.CapsuleColor.Capsule();
 
             //То что нужно сбрасываеться при переходе в мир и нужно переобновить
-          
+            MelonCoroutines.Start(Tracker.WhoOwner());
+            Data.CurrentClientUser = PlayerApi.ID();
             Data.Toggle.Undress = false;
             Data.Toggle.TriggerEsp = false;
             Data.Toggle.LineEsp = false;
