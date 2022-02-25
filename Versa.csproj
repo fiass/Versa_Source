@@ -123,9 +123,6 @@
     <Reference Include="Iced">
       <HintPath>C:\Program Files (x86)\Steam\steamapps\common\VRChat\MelonLoader\Managed\Iced.dll</HintPath>
     </Reference>
-    <Reference Include="ICSharpCode.SharpZipLib">
-      <HintPath>C:\Program Files (x86)\Steam\steamapps\common\VRChat\MelonLoader\Managed\ICSharpCode.SharpZipLib.dll</HintPath>
-    </Reference>
     <Reference Include="Il2CppMono.Security">
       <HintPath>C:\Program Files (x86)\Steam\steamapps\common\VRChat\MelonLoader\Managed\Il2CppMono.Security.dll</HintPath>
     </Reference>

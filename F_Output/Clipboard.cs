@@ -9,7 +9,7 @@ namespace Versa.F_Output
 {
     class Clipboard
     {
-        internal static void WorldFullID()
+        internal static async void WorldFullID()
         {
             GameApi.SaveToClipboard(GameApi.currentRoom.id);
         }

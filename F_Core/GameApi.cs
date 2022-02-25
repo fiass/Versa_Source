@@ -44,7 +44,7 @@ namespace Versa.F_Core
             }
             catch(Exception e) { CustomConsole.Console(true, "GameApi.cs [SaveToClipboard] " + e.Message); }
         }
-        internal static GameObject Menu_SelectedUser_Local
+        internal static  GameObject Menu_SelectedUser_Local
         {  
             get
             {
@@ -60,7 +60,7 @@ namespace Versa.F_Core
             }
         }
         
-        internal static Player GetPlayerByID(string ID)
+        internal static  Player GetPlayerByID(string ID)
         {
             Player temp = null;
             try

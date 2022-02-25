@@ -240,7 +240,7 @@ namespace Versa.F_Module
 
         public static Il2CppSystem.Collections.Generic.List<Material> materials = new Il2CppSystem.Collections.Generic.List<Material>();
          static VRC_Interactable[] VRC_Triggers;
-        internal static void Enable()
+        internal static async void Enable()
         {
             VRC_Triggers = null;
             materials.Clear();
@@ -255,7 +255,7 @@ namespace Versa.F_Module
                 catch { }
             }
         }
-        internal static void Disable()
+        internal static async void Disable()
         {
             for(int i = 0; i != materials.Count; i++)
             {

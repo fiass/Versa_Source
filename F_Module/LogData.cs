@@ -11,7 +11,7 @@ namespace Versa.F_Module
 {
     class LogData
     {
-        public static void World()
+        public static async void World()
         {
             try
             {
