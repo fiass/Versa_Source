@@ -95,7 +95,7 @@ namespace Versa.F_Core
             try { wc.DownloadFile(_url, _name); _c = true; } catch { }
             return _c;
         }
-        internal static void DownloadIconPack()
+        internal async static void DownloadIconPack()
         {
             F_Output.CustomConsole.Console(true, "[ResourceHandler started]");
             try
@@ -129,6 +129,7 @@ namespace Versa.F_Core
                 Data.Textures[26] = ResourceHandler.LoadTexture("TriggerEsp.png");
                 Data.Textures[27] = ResourceHandler.LoadTexture("ObjectSpam.png");
                 Data.Textures[28] = ResourceHandler.LoadTexture("Settings.png");
+                Data.Textures[29] = ResourceHandler.LoadTexture("FovWide.png");
                 Data.renderTexture = ResourceHandler.LoadRenderTexture("RenderCam.renderTexture");
                 Data.Materials[0] = ResourceHandler.LoadMaterial("RenderCam.mat");
                 Data.GameObjects[0] = ResourceHandler.LoadGameobject("Camera.prefab");

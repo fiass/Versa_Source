@@ -7,7 +7,6 @@ namespace Versa.F_Module
 {
     internal class Camera
     {
-        internal static bool _FoVScroll;
         internal static void FoVReset()
         {
             UnityEngine.Camera.main.fieldOfView = 60;
@@ -42,19 +41,31 @@ namespace Versa.F_Module
                 FoVReset();
             #endregion
 
-            #region Scroll
-            _FoVScroll = Data.FoVScroll;
-            #endregion
         }
-        internal static void FoVUpdate()
+        internal static void Enable()
         {
-
+            Data.FoVScroll = true;
+        }
+        internal static void Disable()
+        {
+            Data.FoVScroll = false;
         }
         internal static void FoVScroll()
         {
-          if(_FoVScroll)
+          if(Data.FoVScroll)
             {
-
+                float y = Input.mouseScrollDelta.y;
+                if (y != 0)
+                {
+                    if (y >= 1)
+                    {
+                        UnityEngine.Camera.main.fieldOfView -= 5f;
+                    }
+                    else if (y >= -1)
+                    {
+                        UnityEngine.Camera.main.fieldOfView += 5f;
+                    }
+                }
             }
         }
         internal static void UnlockCameraLimits(bool unlock)

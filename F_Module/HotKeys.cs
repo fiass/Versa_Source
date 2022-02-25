@@ -21,15 +21,12 @@ namespace Versa.F_Module
                 {
                     if (Input.GetKey(KeyCode.Tab))
                     {
-                        if (!Data.Is)
-                            System.Windows.Forms.Application.Exit();
-
                         if (Input.GetKeyDown(KeyCode.F))
                             NoClip.Switch();
                         if (Input.GetKeyDown(KeyCode.E))
                             PlayerEsp.Switch();
-                        //  if (Input.GetKeyDown(KeyCode.X))
-                        //      PostProcessing.Switch();
+                          if (Input.GetKeyDown(KeyCode.X))
+                              PostProcess.Switch();
                         //  if (Input.GetKeyDown(KeyCode.H))
                         //      ForceHide.HideToggle();
                         if (Input.GetKeyDown(KeyCode.W))

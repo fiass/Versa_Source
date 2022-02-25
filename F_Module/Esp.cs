@@ -116,7 +116,7 @@ namespace Versa.F_Module
             {
                 try
                 {
-                    Player.prop_VRCPlayer_0.prop_VRCAvatarManager_0.GetComponent<LineRenderer>().enabled = false;
+                    F_Core.GameApi.prop_VRCAvatarManager_0(Player.prop_VRCPlayer_0).GetComponent<LineRenderer>().enabled = false;
                 }
                 catch { }
             }
@@ -152,7 +152,7 @@ namespace Versa.F_Module
                 {
                     try
                     {
-                        line1 = Remote.prop_VRCPlayer_0.prop_VRCAvatarManager_0.gameObject.GetOrAddComponent<LineRenderer>();
+                        line1 = F_Core.GameApi.prop_VRCAvatarManager_0(Remote.prop_VRCPlayer_0).gameObject.GetOrAddComponent<LineRenderer>();
                         line1.enabled = true;
                         line1.startWidth = 0.001f;
                         line1.alignment = LineAlignment.View;
@@ -205,9 +205,9 @@ namespace Versa.F_Module
                         {
                             try
                             {
-                                Player.prop_VRCPlayer_0.prop_VRCAvatarManager_0.gameObject.GetComponent<LineRenderer>().SetPosition(0, Player.prop_VRCPlayerApi_0.GetBoneTransform(HumanBodyBones.Hips).position);
+                                F_Core.GameApi.prop_VRCAvatarManager_0(Player.prop_VRCPlayer_0).gameObject.GetComponent<LineRenderer>().SetPosition(0, Player.prop_VRCPlayerApi_0.GetBoneTransform(HumanBodyBones.Hips).position);
                                 // if (sw2)
-                                Player.prop_VRCPlayer_0.prop_VRCAvatarManager_0.gameObject.GetComponent<LineRenderer>().SetPosition(1, UnityEngine.Camera.current.transform.position + UnityEngine.Camera.current.transform.forward * 0.3f);
+                                F_Core.GameApi.prop_VRCAvatarManager_0(Player.prop_VRCPlayer_0).gameObject.GetComponent<LineRenderer>().SetPosition(1, UnityEngine.Camera.current.transform.position + UnityEngine.Camera.current.transform.forward * 0.3f);
                                 //   else
                                 //      Player.prop_VRCPlayer_0.prop_VRCAvatarManager_0.gameObject.GetComponent<LineRenderer>().SetPosition(1, PlayerApi.MyPlayer().prop_VRCPlayerApi_0.GetBonePosition(HumanBodyBones.LeftHand));
 

@@ -28,6 +28,7 @@ namespace Versa.F_Config
             internal static bool LineEsp;
             internal static bool SpamObject;
             internal static bool TriggerEsp;
+            internal static bool FoVScroll;
             internal static bool ToggleIndex(int value)
             {
                 if (Data.Is)
@@ -52,7 +53,8 @@ namespace Versa.F_Config
                     case 17: return LineEsp;
                     case 18: return CapsuleEsp;
                     case 19: return TriggerEsp;
-                }
+                    case 20: return FoVScroll;
+                    }
                 return false; 
             }
         }
@@ -75,7 +77,7 @@ namespace Versa.F_Config
                 var temp = Prefs.String.Load("VersaColor");
                 if (temp != null)
                     return temp;
-                return "red";
+                return "blue";
             }
             set
             {
@@ -93,7 +95,18 @@ namespace Versa.F_Config
                 Prefs.Bool.Save("AntiCrash", value);
             }
         }
-       
+        internal static bool FoVScroll
+        {
+            get
+            {
+                return Prefs.Bool.Load("FovScroll");
+            }
+            set
+            {
+                Prefs.Bool.Save("FovScroll", value);
+            }
+        }
+
         internal static bool ToggleChair
         {
             get
@@ -180,17 +193,7 @@ namespace Versa.F_Config
                 Prefs.Bool.Save("WorldLog", value);
             }
         }
-        internal static bool FoVScroll
-        {
-            get
-            {
-                return Prefs.Bool.Load("FoVScroll");
-            }
-            set
-            {
-                Prefs.Bool.Save("FoVScroll", value);
-            }
-        }
+       
         internal static bool RightWing;
         internal static bool LeftWing;
         internal static bool Is;

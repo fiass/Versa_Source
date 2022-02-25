@@ -16,9 +16,7 @@ namespace Versa.F_Core
 {
     internal class Core
     {
-        
-        
-        internal static void OnApplicationStart()
+        internal async static void OnApplicationStart()
         {
             CustomConsole.Console(true, "[OnApplicationStart]");
             System.Console.ForegroundColor = ConsoleColor.White;
@@ -41,17 +39,17 @@ namespace Versa.F_Core
                 Data.Toggle.Undress = false;
             }
         }
-        internal static void OnUpdate()
+        internal async static void OnUpdate()
         {
             HotKeys.Control();
             F_Module.Camera.FoVScroll();
         }
-        internal static void OnGui()
+        internal async static void OnGui()
         {
             TabControl.Tips();
         }
          internal static TextMeshProUGUI textMeshPro = null;
-        internal static void MenuInitialized()
+        internal async static void MenuInitialized()
         {
             try
             {
@@ -62,28 +60,29 @@ namespace Versa.F_Core
                     CustomConsole.Console(true, "the menu is being configured");
                     Unnecessary.TurnGameObject(false);
                     textMeshPro = UiPath.Text_Title.GetComponent<TextMeshProUGUI>();
-                    textMeshPro.text = "Versa";
+                    textMeshPro.text = "Versa " + BuildInfo.Version;
                     UiManager.ApplyData();
+                    Data.CurrentClientUser = PlayerApi.ID(); // Получение Current ID после иницилизации крыла
                 }
             }
             catch (Exception e) { CustomConsole.Console(true, "Core.cs [MenuInitialized] " + e.Message); }
         }
        
-        internal static void OnPlayerNetWasInitialized()
+        internal async static void OnPlayerNetWasInitialized()
         {
             CustomConsole.Console(true, "[OnPlayerNetWasInitialized]");
             PatchBase.SetupPatches();
             MelonCoroutines.Start(UiManager.CreateVersaStateListener());
         }
-        internal static void OnUiWasInitialized()
+        internal async static void OnUiWasInitialized()
         {
             CustomConsole.Console(true, "[OnUiWasInitialized]");
         }
         private static bool notloaded;
         internal async static void PlayerIsReady()
         {
-            Data.UserIntoWorld = false;
             notloaded = true;
+            Data.UserIntoWorld = false;
             while (notloaded)
             {
                 try
@@ -99,21 +98,21 @@ namespace Versa.F_Core
                await Task.Delay(500);
             }
         }
-        internal static void PlayerReady()
+        internal async static void PlayerReady()
         {
             CustomConsole.Console(true, "[PlayerReady]");
             F_Core.CapsuleColor.Capsule();
 
             //То что нужно сбрасываеться при переходе в мир и нужно переобновить
-            MelonCoroutines.Start(Tracker.WhoOwner());
-            Data.CurrentClientUser = PlayerApi.ID();
+          
             Data.Toggle.Undress = false;
             Data.Toggle.TriggerEsp = false;
             Data.Toggle.LineEsp = false;
             Data.Toggle.ToggleMove = true;
             Data.Toggle.Flashlight = false;
             Data.Toggle.SpamObject = false;
-            Data.Toggle.AntiCrash = Data.AntiCrash;                                                                                         
+            Data.Toggle.AntiCrash = Data.AntiCrash;
+            Data.Toggle.FoVScroll = Data.FoVScroll;
 
             if (Data.WorldLog)
                 LogData.World();
@@ -137,10 +136,8 @@ namespace Versa.F_Core
 
             if (!Data.ToggleChair)
                 WorldObject.ChairDisabled();
-
-
         }
-        internal static void OnSceneWasInitialized()
+        internal async static void OnSceneWasInitialized()
         {
             if (Data.Toggle.Optimization)
                 Optimization.State(true);
@@ -148,7 +145,7 @@ namespace Versa.F_Core
             if(!notloaded)
             PlayerIsReady();
         }
-        internal static void OnApplicationQuit()
+        internal async static void OnApplicationQuit()
         {
             CustomConsole.Console(true, "[OnApplicationQuit]");
         }

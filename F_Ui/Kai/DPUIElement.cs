@@ -48,8 +48,8 @@ namespace Versa.F_Ui
             btn.onClick = new Button.ButtonClickedEvent();
             btn.onClick.AddListener(UnhollowerRuntimeLib.DelegateSupport.ConvertDelegate<UnityAction>(act));
         }
-        internal static VRC.UI.Elements.MainMenu GetQuickMenuInstance =>
-            Resources.FindObjectsOfTypeAll<VRC.UI.Elements.MainMenu>().FirstOrDefault();
+        internal static VRC.UI.Elements.MenuStateController GetQuickMenuInstance =>     //MenuStateController 25
+            Resources.FindObjectsOfTypeAll<VRC.UI.Elements.MenuStateController>().FirstOrDefault();            //MenuStateController  25
 
         internal static MenuStateController GetMenuStateControllerInstance =>
             GetQuickMenuInstance.gameObject.GetComponent<MenuStateController>();

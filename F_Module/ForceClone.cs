@@ -23,7 +23,7 @@ namespace Versa.F_Module
                     await Task.Delay(1000);
                     if (GameApi.SelectedPlayer() != null)
                     {
-                        if (GameApi.SelectedPlayer().prop_VRCPlayer_0.prop_VRCAvatarManager_0.prop_ApiAvatar_0.releaseStatus == "public")
+                        if (GameApi.prop_VRCAvatarManager_0( GameApi.SelectedPlayer().prop_VRCPlayer_0).prop_ApiAvatar_0.releaseStatus == "public")
                         {
                             Text_H4.text = "Versa Clone";
                             GameApi.SelectedAPIUser().allowAvatarCopying = true;

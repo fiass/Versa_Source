@@ -78,7 +78,6 @@ namespace Versa.F_Core
                 WingPage World = Versa.CreateNestedPage("World", 2, Data.Textures[1]);
                 WingPage Self = Versa.CreateNestedPage("Self", 1, Data.Textures[1]);
                 WingPage Settings = Versa.CreateNestedPage("Settings", 6, Data.Textures[28]);
-                //  WingPage DevStuff = Versa.CreateNestedPage("DevStuff", 7);
                 WingPage Selected = Versa.CreateNestedPage("Selected", 5, Data.Textures[1]);
                 WingPage Highlights = Settings.CreateNestedPage("HighlightsFX", 0, Data.Textures[1]);
                 WingPage VersaUI = Settings.CreateNestedPage("VersaUI", 2, Data.Textures[1]);
@@ -86,7 +85,7 @@ namespace Versa.F_Core
 
                 #region NextPage
                 WingPage NextSettings = Settings.CreateNestedPage("Next Page", "Settings 2", 6, Data.Textures[1]);
-
+                WingPage NextWorld = World.CreateNestedPage("Next Page", "World 2", 6, Data.Textures[1]);
                 #endregion
 
                 WingButton Gravity = World.CreateButton("MoonGravity", 0, Data.Textures[2], Data.Toggle.MoonGravity);
@@ -155,6 +154,10 @@ namespace Versa.F_Core
                 WingButton Flashlight = Camera.CreateButton("Flashlight", 3, Data.Textures[24], Data.Toggle.Flashlight);
                 Flashlight.SetAction(() => Data.Toggle.Flashlight = Flashlight.State(Flashlight, Data.Toggle.Flashlight, () => F_Module.Flashlight.Enable(), () => F_Module.Flashlight.Disable()));
                 MelonLoader.MelonCoroutines.Start(Flashlight.StateUpdate(Flashlight, 15));
+
+                WingButton FoVScroll = Camera.CreateButton("FoV Scroll", 4, Data.Textures[29], Data.Toggle.FoVScroll);
+                FoVScroll.SetAction(() => Data.Toggle.FoVScroll = FoVScroll.State(FoVScroll, Data.Toggle.FoVScroll, () => F_Module.Camera.Enable(), () => F_Module.Camera.Disable()));
+                MelonLoader.MelonCoroutines.Start(FoVScroll.StateUpdate(FoVScroll, 20));
 
                 WingButton Spam = Selected.CreateButton("Spam", 4, Data.Textures[27], Data.Toggle.SpamObject);
                 Spam.SetAction(() => Data.Toggle.SpamObject = Spam.State(Spam, Data.Toggle.SpamObject, () => F_Module.SpamObject.Enable(), () => F_Module.SpamObject.Disable()));

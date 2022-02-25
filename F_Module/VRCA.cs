@@ -46,10 +46,10 @@ namespace Versa.F_Module
             {
                 Player player = GameApi.SelectedPlayer();
                 var client = new WebClient();
-                string Your_Link = player.prop_VRCPlayer_0.prop_VRCAvatarManager_0.prop_ApiAvatar_0.assetUrl;
+                string Your_Link = F_Core.GameApi.prop_VRCAvatarManager_0(player.prop_VRCPlayer_0).prop_ApiAvatar_0.assetUrl;
                 client.Headers.Add("user-agent", "Mozilla/4.0 (compatible; MSIE 6.0; " + "Windows NT 5.2; .NET CLR 1.0.3705;)");
                 CustomConsole.Console(true, "client.Ready");
-                client.DownloadFileAsync(new Uri(Your_Link), str + $"[SELECTED]{player.prop_VRCPlayer_0.prop_VRCAvatarManager_0.prop_ApiAvatar_0.name} By {player.prop_VRCPlayer_0.prop_VRCAvatarManager_0.prop_ApiAvatar_0.authorName}.vrca");
+                client.DownloadFileAsync(new Uri(Your_Link), str + $"[SELECTED]{F_Core.GameApi.prop_VRCAvatarManager_0(player.prop_VRCPlayer_0).prop_ApiAvatar_0.name} By {F_Core.GameApi.prop_VRCAvatarManager_0(player.prop_VRCPlayer_0).prop_ApiAvatar_0.authorName}.vrca");
 
                 while (client.IsBusy)
                 {
@@ -68,10 +68,10 @@ namespace Versa.F_Module
             {
                 Player player = PlayerApi.MyPlayer();
                 var client = new WebClient();
-                string Your_Link = player.prop_VRCPlayer_0.prop_VRCAvatarManager_0.prop_ApiAvatar_0.assetUrl;
+                string Your_Link = F_Core.GameApi.prop_VRCAvatarManager_0(player.prop_VRCPlayer_0).prop_ApiAvatar_0.assetUrl;
                 client.Headers.Add("user-agent", "Mozilla/4.0 (compatible; MSIE 6.0; " + "Windows NT 5.2; .NET CLR 1.0.3705;)");
                 CustomConsole.Console(true, "client.Ready");
-                client.DownloadFileAsync(new Uri(Your_Link), str + $"[ME]{player.prop_VRCPlayer_0.prop_VRCAvatarManager_0.prop_ApiAvatar_0.name} By {player.prop_VRCPlayer_0.prop_VRCAvatarManager_0.prop_ApiAvatar_0.authorName}.vrca");
+                client.DownloadFileAsync(new Uri(Your_Link), str + $"[ME]{F_Core.GameApi.prop_VRCAvatarManager_0(player.prop_VRCPlayer_0).prop_ApiAvatar_0.name} By {F_Core.GameApi.prop_VRCAvatarManager_0(player.prop_VRCPlayer_0).prop_ApiAvatar_0.authorName}.vrca");
 
                 while (client.IsBusy)
                 {

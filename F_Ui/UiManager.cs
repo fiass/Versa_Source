@@ -134,6 +134,7 @@ namespace Versa.F_Ui
                 GenerateUi.IniUi();
             //AvatarList.Create();
             QuickStatus.Icons();
+            MenuColor(Data.MenuColor);
             F_Core.Network.DownloadIconPack();
             Prefs.String.Save("runSpeed", PlayerApi.MyVRCPlayer().gameObject.GetComponent<GamelikeInputController>().field_Public_Single_0.ToString());
             Prefs.String.Save("strafeSpeed", PlayerApi.MyVRCPlayer().gameObject.GetComponent<GamelikeInputController>().field_Public_Single_1.ToString());
