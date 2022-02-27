@@ -200,6 +200,10 @@ namespace Versa.F_Core
                 Preview.SetAction(() => Data.PoVPreview = Preview.State(Preview, Data.PoVPreview, () => CameraPreview.State(true), () => CameraPreview.State(false)));
                 MelonLoader.MelonCoroutines.Start(Preview.StateUpdate(Preview, 11));
 
+             // WingButton Polygons = Tools.CreateButton("Polygons", 3, Data.Textures[6], Data.Toggle.Polygons);
+             // Polygons.SetAction(() => Data.Toggle.Polygons = Polygons.State(Polygons, Data.Toggle.Polygons, () => F_Module.PolygonShow.Enable(), () => F_Module.PolygonShow.Disable()));
+             // MelonLoader.MelonCoroutines.Start(Polygons.StateUpdate(Polygons, 21));
+
                 WingButton FOVPlus = Camera.CreateButton("FoV+", 1, Data.Textures[8]);
                 FOVPlus.SetAction(() => F_Module.Camera.FoVPlus());
 

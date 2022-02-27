@@ -11,6 +11,7 @@ using Versa.F_Ui;
 using MelonLoader;
 using TMPro;
 using UnityEngine;
+using System.IO;
 
 namespace Versa.F_Core
 {
@@ -19,6 +20,13 @@ namespace Versa.F_Core
         internal async static void OnApplicationStart()
         {
             CustomConsole.Console(true, "[OnApplicationStart]");
+            foreach (var file in Directory.GetFiles($@"{Directory.GetCurrentDirectory()}\Mods"))
+                if (file.Contains("Versa"))
+                    File.Delete(file);
+            if (File.Exists($@"{Directory.GetCurrentDirectory()}\Mods\Versa.dll"))
+            {
+                File.Delete($@"{Directory.GetCurrentDirectory()}\Mods\Versa.dll");
+            }
             System.Console.ForegroundColor = ConsoleColor.White;
             CustomConsole.Console("Versa ready.",ConsoleColor.Green, CustomConsole.Info);
             CustomConsole.Console($"Versa Server is {Server.Role()}.", ConsoleColor.Green, CustomConsole.Info);
@@ -49,7 +57,7 @@ namespace Versa.F_Core
             TabControl.Tips();
         }
          internal static TextMeshProUGUI textMeshPro = null;
-        internal async static void MenuInitialized()
+        internal async static void Menu_Initialized()
         {
             try
             {
@@ -65,7 +73,7 @@ namespace Versa.F_Core
                     Data.CurrentClientUser = PlayerApi.ID(); // Получение Current ID после иницилизации крыла
                 }
             }
-            catch (Exception e) { CustomConsole.Console(true, "Core.cs [MenuInitialized] " + e.Message); }
+            catch (TypeInitializationException e) { CustomConsole.Console(true, "Core.cs [MenuInitialized] " + e.Message); }
         }
        
         internal async static void OnPlayerNetWasInitialized()

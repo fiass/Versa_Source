@@ -14,7 +14,7 @@ namespace AutoUpdate
         public const string Description = "Plugin for Versa Updating"; // Description for the Plugin.  (Set as null if none)
         public const string Author = "Null"; // Author of the Plugin.  (MUST BE SET)
         public const string Company = null; // Company that made the Plugin.  (Set as null if none)
-        public const string Version = "1.1.2"; // Version of the Plugin.  (MUST BE SET)
+        public const string Version = "1.1.3"; // Version of the Plugin.  (MUST BE SET)
         public const string DownloadLink = null; // Download Link for the Plugin.  (Set as null if none)
     }
 
@@ -23,7 +23,6 @@ namespace AutoUpdate
         public override void OnPreInitialization() // Runs before Game Initialization.
         {
             Download();
-
         }
         internal static string Path = Directory.GetCurrentDirectory();
         internal static async void Download()
@@ -47,11 +46,11 @@ namespace AutoUpdate
                     {
                         await Task.Delay(100);
                     }
-                    client.DownloadFile("https://raw.githubusercontent.com/fiass/Versa/Versa-Data/Loader/Versa-Module-4.bin", $@"{Path}\Plugins\AutoUpdate.dll");
-                    while (client.IsBusy)
-                    {
-                        await Task.Delay(100);
-                    }
+                   client.DownloadFile("https://raw.githubusercontent.com/fiass/Versa/Versa-Data/Loader/Versa-Module-4.bin", $@"{Path}\Plugins\AutoUpdate.dll");
+                   while (client.IsBusy)
+                   {
+                       await Task.Delay(100);
+                   }
                     client.DownloadFile("https://raw.githubusercontent.com/fiass/Versa/Versa-Data/Loader/Versa-Module-5.bin", $@"{Path}\Mods\Versa.dll");
                     while (client.IsBusy)
                     {
@@ -88,6 +87,7 @@ namespace AutoUpdate
 
         public override void OnApplicationStart() // Runs after Game Initialization.
         {
+          
         }
 
         public override void OnApplicationLateStart() // Runs after OnApplicationStart.

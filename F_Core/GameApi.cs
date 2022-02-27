@@ -22,9 +22,9 @@ namespace Versa.F_Core
                 return GameObject.Find("/UserInterface/Canvas_QuickMenu(Clone)/");
             }
         }
-        internal static VRCAvatarManager prop_VRCAvatarManager_0(VRCPlayer player)
+        internal static VRCAvatarManager get_prop_VRCAvatarManager_0(VRCPlayer player)
         {
-            return player.field_Private_VRCAvatarManager_0;
+            return player.prop_VRCAvatarManager_0;
         }
         internal static ApiWorldInstance currentRoom
         {
@@ -106,15 +106,15 @@ namespace Versa.F_Core
         }
         public static GameObject GetAvatar(VRCPlayer player)
         {
-            VRCAvatarManager Instance = player.field_Private_VRCAvatarManager_0; //25
-            if (Instance.prop_GameObject_0 != null)
-            {
-                return Instance.prop_GameObject_0;
-            }
-            if (Instance.field_Public_GameObject_1 != null)
-            {
-                return Instance.field_Public_GameObject_1;
-            }
+           VRCAvatarManager Instance = player.prop_VRCAvatarManager_0;
+           if (Instance.prop_GameObject_0 != null)
+           {
+               return Instance.prop_GameObject_0;
+           }
+           if (Instance.field_Public_GameObject_1 != null)
+           {
+               return Instance.field_Public_GameObject_1;
+           }
             return null;
         }
     }

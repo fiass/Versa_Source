@@ -111,7 +111,7 @@ namespace Versa.F_Module
                         }
                     }
                     catch { CustomConsole.Console(true, $"User: {user.prop_APIUser_0.displayName} not in WhiteList" ); }
-                    Il2CppArrayBase<Renderer> componentsInChildren = F_Core.GameApi.prop_VRCAvatarManager_0(user.prop_VRCPlayer_0).GetComponentsInChildren<Renderer>(true);
+                    Il2CppArrayBase<Renderer> componentsInChildren = F_Core.GameApi.get_prop_VRCAvatarManager_0(user.prop_VRCPlayer_0).GetComponentsInChildren<Renderer>(true);
                     for (int i = 0; i < componentsInChildren.Count; i++)
                     {
                         Renderer renderer = componentsInChildren[i];

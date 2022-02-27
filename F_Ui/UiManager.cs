@@ -53,18 +53,18 @@ namespace Versa.F_Ui
                     if (_b != null)
                     {
                         CustomConsole.Console(true, "Menu was open");
+
                         try
                         {
-                            Initialize();
+                            Initialize_ui();
                         }
-                        catch (Exception e)
-                        { CustomConsole.Console(true, "UiManager.cs [Initialize] " + e.Message); }
+                        catch (TypeInitializationException e) { CustomConsole.Console(true, "UiManager.cs [Initialize] " + e.Message); }
+
                         try
                         {
-                            Core.MenuInitialized();
+                            Core.Menu_Initialized();
                         }
-                        catch (Exception e)
-                        { CustomConsole.Console(true, "UiManager.cs [MenuInitialized] " + e.Message); }
+                        catch (TypeInitializationException e) { CustomConsole.Console(true, "UiManager.cs [MenuInitialized] " + e.Message); }
 
                         _a = false;
                     }
@@ -74,13 +74,14 @@ namespace Versa.F_Ui
                 yield return new WaitForSeconds(0.5f);
             }
         }
-        internal static void Initialize()
+        private static void Initialize_ui()
         {
             VersaStateListener LaunchPad = null;
             VersaStateListener LeftWing = null;
             VersaStateListener RightWing = null;
             VersaStateListener SelectedUser = null;
-           try {  ClassInjector.RegisterTypeInIl2Cpp<VersaStateListener>(); } catch (Exception e) { CustomConsole.Console(true, "RegisterTypeInIl2Cpp [VersaStateListener] " + e.Message); }
+
+            try { ClassInjector.RegisterTypeInIl2Cpp<VersaStateListener>(); } catch (Exception e) { CustomConsole.Console(true, "RegisterTypeInIl2Cpp [VersaStateListener] " + e.Message); }
             try { LaunchPad = UiPath.Canvas_QuickMenu_Clone.AddComponent<VersaStateListener>(); } catch (Exception e) { CustomConsole.Console(true, "VersaStateListener [Canvas_QuickMenu_Clone] " + e.Message); }
             try { LeftWing = UiPath.LeftWing.AddComponent<VersaStateListener>(); } catch (Exception e) { CustomConsole.Console(true, "VersaStateListener [LeftWing] " + e.Message); }
             try { RightWing = UiPath.RightWing.AddComponent<VersaStateListener>(); } catch (Exception e) { CustomConsole.Console(true, "VersaStateListener [RightWing] " + e.Message); }

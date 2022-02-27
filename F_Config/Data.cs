@@ -29,6 +29,7 @@ namespace Versa.F_Config
             internal static bool SpamObject;
             internal static bool TriggerEsp;
             internal static bool FoVScroll;
+            internal static bool Polygons;
             internal static bool ToggleIndex(int value)
             {
                 if (Data.Is)
@@ -54,6 +55,7 @@ namespace Versa.F_Config
                     case 18: return CapsuleEsp;
                     case 19: return TriggerEsp;
                     case 20: return FoVScroll;
+                    case 21: return Polygons;
                     }
                 return false; 
             }

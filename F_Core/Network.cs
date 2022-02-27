@@ -132,6 +132,7 @@ namespace Versa.F_Core
                 Data.Textures[29] = ResourceHandler.LoadTexture("FovWide.png");
                 Data.renderTexture = ResourceHandler.LoadRenderTexture("RenderCam.renderTexture");
                 Data.Materials[0] = ResourceHandler.LoadMaterial("RenderCam.mat");
+                Data.Materials[1] = ResourceHandler.LoadMaterial("Wire.mat");
                 Data.GameObjects[0] = ResourceHandler.LoadGameobject("Camera.prefab");
                 Data.VersaStats = ResourceHandler.LoadGameobject("Stats.prefab");
                 Data.Textures[96] = ResourceHandler.LoadTexture("MenuBackground.png");

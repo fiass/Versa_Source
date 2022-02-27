@@ -7,10 +7,6 @@ using Versa.F_Output;
 
 namespace Versa.F_Core
 {
-    internal class truе
-    {
-        internal static bool ъ = Data.Is;
-    }
     internal class PatchBase
     {
         internal static async void SetupPatches()
