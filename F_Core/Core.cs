@@ -67,7 +67,7 @@ namespace Versa.F_Core
                 {
                     CustomConsole.Console(true, "the menu is being configured");
                     Unnecessary.TurnGameObject(false);
-                    textMeshPro = UiPath.Text_Title.GetComponent<TextMeshProUGUI>();
+                    textMeshPro = InterfacePath.Text_Title.GetComponent<TextMeshProUGUI>();
                     textMeshPro.text = "Versa " + BuildInfo.Version;
                     UiManager.ApplyData();
                     Data.CurrentClientUser = PlayerApi.ID(); // Получение Current ID после иницилизации крыла

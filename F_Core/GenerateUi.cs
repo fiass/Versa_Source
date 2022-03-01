@@ -38,17 +38,17 @@ namespace Versa.F_Core
             Network.DownloadIconPack();
             try
             {
-                SetIcon((ColorMenu[0] = UiPath.BackgroundLayer02.GetComponent<Image>()), Data.Textures[96]);
-                SetIcon((ColorMenu[1] = UiPath.BackgroundLeft.GetComponent<Image>()), Data.Textures[96]);
-                SetIcon((ColorMenu[2] = UiPath.BackgroundRight.GetComponent<Image>()), Data.Textures[96]);
-                SetIcon((ColorMenu[3] = UiPath.Page0.GetComponent<Image>()), Data.Textures[96]);
-                SetIcon((ColorMenu[4] = UiPath.Page1.GetComponent<Image>()), Data.Textures[96]);
-                SetIcon((ColorMenu[5] = UiPath.Page2.GetComponent<Image>()), Data.Textures[96]);
-                SetIcon((ColorMenu[6] = UiPath.Page3.GetComponent<Image>()), Data.Textures[96]);
-                SetIcon((ColorMenu[7] = UiPath.Page4.GetComponent<Image>()), Data.Textures[96]);
-                SetIcon((ColorMenu[8] = UiPath.Page5.GetComponent<Image>()), Data.Textures[96]);
-                SetIcon((ColorMenu[9] = UiPath.Page6.GetComponent<Image>()), Data.Textures[96]);
-                SetIcon((ColorMenu[10] = UiPath.Background.GetComponent<Image>()), Data.Textures[96]);
+                SetIcon((ColorMenu[0] = InterfacePath.BackgroundLayer02.GetComponent<Image>()), Data.Textures[96]);
+                SetIcon((ColorMenu[1] = InterfacePath.BackgroundLeft.GetComponent<Image>()), Data.Textures[96]);
+                SetIcon((ColorMenu[2] = InterfacePath.BackgroundRight.GetComponent<Image>()), Data.Textures[96]);
+                SetIcon((ColorMenu[3] = InterfacePath.Page0.GetComponent<Image>()), Data.Textures[96]);
+                SetIcon((ColorMenu[4] = InterfacePath.Page1.GetComponent<Image>()), Data.Textures[96]);
+                SetIcon((ColorMenu[5] = InterfacePath.Page2.GetComponent<Image>()), Data.Textures[96]);
+                SetIcon((ColorMenu[6] = InterfacePath.Page3.GetComponent<Image>()), Data.Textures[96]);
+                SetIcon((ColorMenu[7] = InterfacePath.Page4.GetComponent<Image>()), Data.Textures[96]);
+                SetIcon((ColorMenu[8] = InterfacePath.Page5.GetComponent<Image>()), Data.Textures[96]);
+                SetIcon((ColorMenu[9] = InterfacePath.Page6.GetComponent<Image>()), Data.Textures[96]);
+                SetIcon((ColorMenu[10] = InterfacePath.Background.GetComponent<Image>()), Data.Textures[96]);
 
                 foreach (var color in ColorMenu)
                 {

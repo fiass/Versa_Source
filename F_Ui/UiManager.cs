@@ -82,9 +82,9 @@ namespace Versa.F_Ui
             VersaStateListener SelectedUser = null;
 
             try { ClassInjector.RegisterTypeInIl2Cpp<VersaStateListener>(); } catch (Exception e) { CustomConsole.Console(true, "RegisterTypeInIl2Cpp [VersaStateListener] " + e.Message); }
-            try { LaunchPad = UiPath.Canvas_QuickMenu_Clone.AddComponent<VersaStateListener>(); } catch (Exception e) { CustomConsole.Console(true, "VersaStateListener [Canvas_QuickMenu_Clone] " + e.Message); }
-            try { LeftWing = UiPath.LeftWing.AddComponent<VersaStateListener>(); } catch (Exception e) { CustomConsole.Console(true, "VersaStateListener [LeftWing] " + e.Message); }
-            try { RightWing = UiPath.RightWing.AddComponent<VersaStateListener>(); } catch (Exception e) { CustomConsole.Console(true, "VersaStateListener [RightWing] " + e.Message); }
+            try { LaunchPad = InterfacePath.Canvas_QuickMenu.AddComponent<VersaStateListener>(); } catch (Exception e) { CustomConsole.Console(true, "VersaStateListener [Canvas_QuickMenu_Clone] " + e.Message); }
+            try { LeftWing = InterfacePath.LeftWing.AddComponent<VersaStateListener>(); } catch (Exception e) { CustomConsole.Console(true, "VersaStateListener [LeftWing] " + e.Message); }
+            try { RightWing = InterfacePath.RightWing.AddComponent<VersaStateListener>(); } catch (Exception e) { CustomConsole.Console(true, "VersaStateListener [RightWing] " + e.Message); }
             try { SelectedUser = GameApi.Menu_SelectedUser_Local.AddComponent<VersaStateListener>(); } catch (Exception e) { CustomConsole.Console(true, "VersaStateListener [Menu_SelectedUser_Local] " + e.Message); }
 
             LeftWing.OnEnabledMethod = () => Data.LeftWing = true;

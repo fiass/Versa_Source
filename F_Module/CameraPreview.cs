@@ -44,8 +44,8 @@ namespace Versa.F_Module
                 if (CacheObject != null)
                 {
                     CacheObject.GetComponent<UnityEngine.Camera>().targetTexture = Data.renderTexture;
-                    UiPath.PlayerIcon.GetComponent<RawImage>().texture = new Texture();
-                    UiPath.PlayerIcon.GetComponent<RawImage>().material = new Material(UiPath.PlayerIcon.GetComponent<RawImage>().material)
+                    InterfacePath.PlayerIcon.GetComponent<RawImage>().texture = new Texture();
+                        InterfacePath.PlayerIcon.GetComponent<RawImage>().material = new Material(InterfacePath.PlayerIcon.GetComponent<RawImage>().material)
                     {
                         mainTexture = Data.renderTexture
                     };

@@ -19,7 +19,7 @@
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugSymbols>false</DebugSymbols>
     <DebugType>None</DebugType>
-    <Optimize>true</Optimize>
+    <Optimize>false</Optimize>
     <OutputPath>$(SolutionDir)Output\</OutputPath>
     <DefineConstants>
     </DefineConstants>
@@ -778,6 +778,7 @@
     <Compile Include="F_Output\Clipboard.cs" />
     <Compile Include="F_Output\CustomConsole.cs" />
     <Compile Include="F_Output\LogWriter.cs" />
+    <Compile Include="F_Plugins\Lovense.cs" />
     <Compile Include="F_Ui\AvatarList.cs" />
     <Compile Include="F_Ui\Kai\DPUIElement.cs" />
     <Compile Include="F_Ui\Extensions.cs" />
@@ -790,7 +791,7 @@
     <Compile Include="F_Ui\Kai\QMTab.cs" />
     <Compile Include="F_Ui\Kai\UICache.cs" />
     <Compile Include="F_Ui\UiManager.cs" />
-    <Compile Include="F_Ui\UiPath.cs" />
+    <Compile Include="F_Ui\InterfacePath.cs" />
     <Compile Include="F_Ui\Unnecessary.cs" />
     <Compile Include="F_Ui\Wing.cs" />
     <Compile Include="F_Ui\WingButton.cs" />
