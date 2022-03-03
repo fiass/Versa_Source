@@ -30,6 +30,7 @@ namespace Versa.F_Config
             internal static bool TriggerEsp;
             internal static bool FoVScroll;
             internal static bool Polygons;
+            internal static bool Seri;
             internal static bool ToggleIndex(int value)
             {
                 if (Data.Is)
@@ -56,6 +57,7 @@ namespace Versa.F_Config
                     case 19: return TriggerEsp;
                     case 20: return FoVScroll;
                     case 21: return Polygons;
+                    case 22: return Seri;
                     }
                 return false; 
             }

@@ -82,6 +82,7 @@ namespace Versa.F_Core
                 WingPage Highlights = Settings.CreateNestedPage("HighlightsFX", 0, Data.Textures[1]);
                 WingPage VersaUI = Settings.CreateNestedPage("VersaUI", 2, Data.Textures[1]);
                 WingPage Capsule = Settings.CreateNestedPage("CapsuleFX", 1, Data.Textures[1]);
+                WingPage Player = Tools.CreateNestedPage("VideoPlayer", 4, Data.Textures[31]);
 
                 #region NextPage
                 WingPage NextSettings = Settings.CreateNestedPage("Next Page", "Settings 2", 6, Data.Textures[1]);
@@ -200,9 +201,20 @@ namespace Versa.F_Core
                 Preview.SetAction(() => Data.PoVPreview = Preview.State(Preview, Data.PoVPreview, () => CameraPreview.State(true), () => CameraPreview.State(false)));
                 MelonLoader.MelonCoroutines.Start(Preview.StateUpdate(Preview, 11));
 
-             // WingButton Polygons = Tools.CreateButton("Polygons", 3, Data.Textures[6], Data.Toggle.Polygons);
-             // Polygons.SetAction(() => Data.Toggle.Polygons = Polygons.State(Polygons, Data.Toggle.Polygons, () => F_Module.PolygonShow.Enable(), () => F_Module.PolygonShow.Disable()));
-             // MelonLoader.MelonCoroutines.Start(Polygons.StateUpdate(Polygons, 21));
+                WingButton Seri = Tools.CreateButton("Serialize", 3, Data.Textures[30], Data.Toggle.Seri);
+                Seri.SetAction(() => Data.Toggle.Seri = Seri.State(Seri, Data.Toggle.Seri));
+                MelonLoader.MelonCoroutines.Start(Seri.StateUpdate(Seri, 22));
+
+                WingButton Play = Player.CreateButton("Play", 0, Data.Textures[32]);
+                Play.SetAction(() => VideoPlayerControll.Play());
+
+
+                WingButton Pause = Player.CreateButton("Pause", 1, Data.Textures[33]);
+                Pause.SetAction(() => VideoPlayerControll.Pause());
+
+                // WingButton Polygons = Tools.CreateButton("Polygons", 3, Data.Textures[6], Data.Toggle.Polygons);
+                // Polygons.SetAction(() => Data.Toggle.Polygons = Polygons.State(Polygons, Data.Toggle.Polygons, () => F_Module.PolygonShow.Enable(), () => F_Module.PolygonShow.Disable()));
+                // MelonLoader.MelonCoroutines.Start(Polygons.StateUpdate(Polygons, 21));
 
                 WingButton FOVPlus = Camera.CreateButton("FoV+", 1, Data.Textures[8]);
                 FOVPlus.SetAction(() => F_Module.Camera.FoVPlus());

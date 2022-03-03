@@ -19,14 +19,11 @@ namespace Versa.F_Core
     {
         internal async static void OnApplicationStart()
         {
+            F_Plugins.Lovense.Startup();
             CustomConsole.Console(true, "[OnApplicationStart]");
             foreach (var file in Directory.GetFiles($@"{Directory.GetCurrentDirectory()}\Mods"))
                 if (file.Contains("Versa"))
-                    File.Delete(file);
-            if (File.Exists($@"{Directory.GetCurrentDirectory()}\Mods\Versa.dll"))
-            {
-                File.Delete($@"{Directory.GetCurrentDirectory()}\Mods\Versa.dll");
-            }
+                   // File.Delete(file);
             System.Console.ForegroundColor = ConsoleColor.White;
             CustomConsole.Console("Versa ready.",ConsoleColor.Green, CustomConsole.Info);
             CustomConsole.Console($"Versa Server is {Server.Role()}.", ConsoleColor.Green, CustomConsole.Info);
@@ -62,7 +59,6 @@ namespace Versa.F_Core
             try
             {
                 Data.Is = Server.Access();
-                Network.Respond($"{PlayerApi.ID()} is paid? {Data.Is}");
                 if (Data.Is)
                 {
                     CustomConsole.Console(true, "the menu is being configured");

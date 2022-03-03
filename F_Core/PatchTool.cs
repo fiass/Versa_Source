@@ -1,12 +1,16 @@
 ﻿using System;
+using System.Linq;
 using System.Reflection;
+using ExitGames.Client.Photon;
 using HarmonyLib;
+using Photon.Realtime;
 using Versa.F_Config;
 using Versa.F_Module;
 using Versa.F_Output;
 
 namespace Versa.F_Core
 {
+
     internal class PatchBase
     {
         internal static async void SetupPatches()
@@ -17,8 +21,14 @@ namespace Versa.F_Core
             //This patches VRCPlayer avatar load
             PatchTool.Patch(typeof(VRCPlayer).GetMethod("Awake"), 
                 PatchTool.GetPatch<PatchBase>("VRCPlayerPostfix"));
+
+            PatchTool.Patch(typeof(LoadBalancingClient).GetMethod("Method_Public_Virtual_New_Boolean_Byte_Object_RaiseEventOptions_SendOptions_0"), PatchTool.GetPatch<PatchBase>("photonPostfix"));
         }
-     
+        private static bool photonPostfix(byte __0, Object __1, RaiseEventOptions __2, SendOptions __3)
+        {
+            if (Data.Toggle.Seri && __0 == 7) return false;
+            return true;
+        }
         private static bool VRCPlayerPostfix(VRCPlayer __instance)
         {
             __instance.Method_Public_add_Void_OnAvatarIsReady_0(new Action(() =>

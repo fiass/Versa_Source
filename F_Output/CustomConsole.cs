@@ -11,7 +11,6 @@ namespace Versa.F_Output
     {
         internal static void Console(string text)
         {
-            System.Console.WriteLine("[VERSA] " + text);
             System.Console.ForegroundColor = ConsoleColor.Cyan;
             System.Console.Write("[");
             System.Console.ForegroundColor = ConsoleColor.Red;

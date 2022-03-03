@@ -28,6 +28,8 @@
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     <Prefer32Bit>false</Prefer32Bit>
     <DebugSymbols>false</DebugSymbols>
+    <DocumentationFile>
+    </DocumentationFile>
   </PropertyGroup>
   <PropertyGroup>
     <StartupObject />
@@ -147,9 +149,6 @@
     <Reference Include="Il2CppSystem.Diagnostics.StackTrace">
       <HintPath>C:\Program Files (x86)\Steam\steamapps\common\VRChat\MelonLoader\Managed\Il2CppSystem.Diagnostics.StackTrace.dll</HintPath>
     </Reference>
-    <Reference Include="Il2CppSystem.Drawing">
-      <HintPath>C:\Program Files (x86)\Steam\steamapps\common\VRChat\MelonLoader\Managed\Il2CppSystem.Drawing.dll</HintPath>
-    </Reference>
     <Reference Include="Il2CppSystem.Globalization.Extensions">
       <HintPath>C:\Program Files (x86)\Steam\steamapps\common\VRChat\MelonLoader\Managed\Il2CppSystem.Globalization.Extensions.dll</HintPath>
     </Reference>
@@ -218,11 +217,8 @@
     <Reference Include="netstandard">
       <HintPath>C:\Program Files (x86)\Steam\steamapps\common\VRChat\MelonLoader\Managed\netstandard.dll</HintPath>
     </Reference>
-    <Reference Include="Newtonsoft.Json">
-      <HintPath>C:\Program Files (x86)\Steam\steamapps\common\VRChat\MelonLoader\Managed\Newtonsoft.Json.dll</HintPath>
-    </Reference>
-    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed">
-      <HintPath>C:\Program Files (x86)\Steam\steamapps\common\VRChat\MelonLoader\Managed\Newtonsoft.Json.dll</HintPath>
+    <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>packages\Newtonsoft.Json.13.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="Novell.Directory.Ldap">
       <HintPath>C:\Program Files (x86)\Steam\steamapps\common\VRChat\MelonLoader\Managed\Novell.Directory.Ldap.dll</HintPath>
@@ -235,9 +231,6 @@
     </Reference>
     <Reference Include="Photon-DotNet">
       <HintPath>C:\Program Files (x86)\Steam\steamapps\common\VRChat\MelonLoader\Managed\Photon-DotNet.dll</HintPath>
-    </Reference>
-    <Reference Include="Rug.Osc">
-      <HintPath>C:\Program Files (x86)\Steam\steamapps\common\VRChat\MelonLoader\Managed\Rug.Osc.dll</HintPath>
     </Reference>
     <Reference Include="SMDiagnostics, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -767,12 +760,14 @@
     <Compile Include="F_Module\Popup.cs" />
     <Compile Include="F_Module\PostProcess.cs" />
     <Compile Include="F_Module\QuickStatus.cs" />
+    <Compile Include="F_Module\Serialize.cs" />
     <Compile Include="F_Module\SitOnHead.cs" />
     <Compile Include="F_Module\SpamObject.cs" />
     <Compile Include="F_Module\SpeedHack.cs" />
     <Compile Include="F_Module\TabControl.cs" />
     <Compile Include="F_Module\Teleport.cs" />
     <Compile Include="F_Module\Tracker.cs" />
+    <Compile Include="F_Module\VideoPlayerControll.cs" />
     <Compile Include="F_Module\VRCA.cs" />
     <Compile Include="F_Module\WorldObject.cs" />
     <Compile Include="F_Output\Clipboard.cs" />

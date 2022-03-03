@@ -50,36 +50,6 @@ namespace Versa.F_Core
     }
     internal class Network
     {
-        static int port = 9999; // порт сервера
-      internal static async void Respond(string sendtoserver)
-        {
-            await Task.Run(() =>
-            {
-                try
-                {
-                    IPEndPoint ipPoint = new IPEndPoint(Dns.GetHostAddresses(new string(Versa_Crypt.Char_1))[0], port);
-                    Socket socket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
-                    socket.Connect(ipPoint);
-                    string message = sendtoserver;
-                    byte[] data = Encoding.Unicode.GetBytes(message);
-                    socket.Send(data);
-                    data = new byte[256];
-                    StringBuilder builder = new StringBuilder();
-                    int bytes = 0;
-                    do
-                    {
-                        bytes = socket.Receive(data, data.Length, 0);
-                        builder.Append(Encoding.Unicode.GetString(data, 0, bytes));
-                    }
-                    while (socket.Available > 0);
-                    Console.WriteLine("[Server respond: " + builder.ToString() + "]");
-                    socket.Shutdown(SocketShutdown.Both);
-                    socket.Close();
-                }
-                catch { CustomConsole.Console(true, "Network.cs [Respond] " + "Server shutdown"); }
-            });
-        }
-
         private static WebClient wc = new WebClient();
         internal static void OpenDoc()
         {
@@ -130,6 +100,10 @@ namespace Versa.F_Core
                 Data.Textures[27] = ResourceHandler.LoadTexture("ObjectSpam.png");
                 Data.Textures[28] = ResourceHandler.LoadTexture("Settings.png");
                 Data.Textures[29] = ResourceHandler.LoadTexture("FovWide.png");
+                Data.Textures[30] = ResourceHandler.LoadTexture("Seri.png");
+                Data.Textures[31] = ResourceHandler.LoadTexture("Player.png");
+                Data.Textures[32] = ResourceHandler.LoadTexture("Play.png");
+                Data.Textures[33] = ResourceHandler.LoadTexture("Pause.png");
                 Data.renderTexture = ResourceHandler.LoadRenderTexture("RenderCam.renderTexture");
                 Data.Materials[0] = ResourceHandler.LoadMaterial("RenderCam.mat");
                 Data.Materials[1] = ResourceHandler.LoadMaterial("Wire.mat");

@@ -14,9 +14,15 @@ namespace Versa.F_Module
             var mask = Data.Multiplication.ToCharArray();
             return mask[id].ToString();
         }
+        protected static private string _b =null;
         internal static string Decrypt(string _a) 
         {
-            return _a.Replace("\"", GetMaskId(0)).Replace("+", GetMaskId(1)).Replace("*", GetMaskId(2)).Replace("$", GetMaskId(3)).Replace("{", GetMaskId(4)).Replace("}", GetMaskId(5)).Replace(">", GetMaskId(6)).Replace("<", GetMaskId(7)).Replace("[", GetMaskId(8)).Replace("]", GetMaskId(9)).Replace("(", GetMaskId(10)).Replace(")", GetMaskId(11)).Replace("'", GetMaskId(12)).Replace("`", GetMaskId(13)).Replace("~", GetMaskId(14)).Replace("|", GetMaskId(15));
+            Dec(_a);
+            return _b;
+        }
+        protected private static async void Dec(string _a)
+        {
+            _b = _a.Replace("\"", GetMaskId(0)).Replace("+", GetMaskId(1)).Replace("*", GetMaskId(2)).Replace("$", GetMaskId(3)).Replace("{", GetMaskId(4)).Replace("}", GetMaskId(5)).Replace(">", GetMaskId(6)).Replace("<", GetMaskId(7)).Replace("[", GetMaskId(8)).Replace("]", GetMaskId(9)).Replace("(", GetMaskId(10)).Replace(")", GetMaskId(11)).Replace("'", GetMaskId(12)).Replace("`", GetMaskId(13)).Replace("~", GetMaskId(14)).Replace("|", GetMaskId(15));
         }
         internal static int Encrypt(int _a) //зашифровать
         {
