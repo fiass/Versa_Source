@@ -76,7 +76,7 @@ namespace Versa.F_Core
             string temp = null;
             try
             {
-                temp = Menu_SelectedUser_Local.GetComponent<SelectedUserMenuQM>().field_Private_IUser_0.prop_String_0;
+                temp = Menu_SelectedUser_Local.GetComponent<MonoBehaviour1PublicBoRaGaObGaBuObToGaBuUnique>().field_Private_IUser_0.prop_String_0;
                 F_Output.CustomConsole.Console(true, "[SelectedUser_Id]");
             }
             catch (Exception e) { CustomConsole.Console(true, "GameApi.cs [SelectedUser_Id] " + e.Message); }

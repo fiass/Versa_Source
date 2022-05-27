@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.UI;
+using Versa.F_Config;
 using Versa.F_Output;
 using VRC.SDKBase;
 
@@ -30,6 +31,23 @@ namespace Versa.F_Module
                 catch (Exception e)
                 {
                     CustomConsole.Console(true, "Popup.cs [GoToWorld] " + e.Message);
+                }
+            }));
+        }
+        internal static void SetPolyLimit()
+        {
+            ShowUnityInputPopupWithCancel("Default value 500000 polygons", "", "Save", new Action<string, Il2CppSystem.Collections.Generic.List<KeyCode>, Text>((string s, Il2CppSystem.Collections.Generic.List<KeyCode> k, Text t) =>
+            {
+                try
+                {
+                    var res = Convert.ToInt32(s.Replace(" ", ""));
+                    if (res < 100000000)
+                    AntiCrash.PolygonLimits = res;
+                    Data.PolyLimit = res;
+                }
+                catch (Exception e)
+                {
+                    CustomConsole.Console(true, "Popup.cs [SetPolyLimit] " + e.Message);
                 }
             }));
         }

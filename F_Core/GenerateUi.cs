@@ -34,7 +34,7 @@ namespace Versa.F_Core
             var i = 1;
             i = (i++) * i;
             F_Output.CustomConsole.Console(true, "[IniUi started]");
-            ActivateScrollInQM();
+            //ActivateScrollInQM();
             Network.DownloadIconPack();
             try
             {
@@ -80,6 +80,7 @@ namespace Versa.F_Core
                 WingPage Settings = Versa.CreateNestedPage("Settings", 6, Data.Textures[28]);
                 WingPage Selected = Versa.CreateNestedPage("Selected", 5, Data.Textures[1]);
                 WingPage Highlights = Settings.CreateNestedPage("HighlightsFX", 0, Data.Textures[1]);
+                WingPage AnitCrash = Settings.CreateNestedPage("AnitCrash", 4, Data.Textures[1]);
                 WingPage VersaUI = Settings.CreateNestedPage("VersaUI", 2, Data.Textures[1]);
                 WingPage Capsule = Settings.CreateNestedPage("CapsuleFX", 1, Data.Textures[1]);
                 WingPage Player = Tools.CreateNestedPage("VideoPlayer", 4, Data.Textures[31]);
@@ -105,9 +106,12 @@ namespace Versa.F_Core
                 WorldLogs.SetAction(() => Data.WorldLog = WorldLogs.State(WorldLogs, Data.WorldLog));
                 MelonLoader.MelonCoroutines.Start(WorldLogs.StateUpdate(WorldLogs, 9));
 
-                WingButton AntiCrash = Settings.CreateButton("AntiCrash", 4, Data.Textures[23], Data.AntiCrash);
+                WingButton AntiCrash = AnitCrash.CreateButton("AntiCrash", 0, Data.Textures[23], Data.AntiCrash);
                 AntiCrash.SetAction(() => Data.AntiCrash = AntiCrash.State(AntiCrash, Data.AntiCrash, () => F_Module.AntiCrash.State(true), () => F_Module.AntiCrash.State(false)));
                 MelonLoader.MelonCoroutines.Start(AntiCrash.StateUpdate(AntiCrash, 14));
+
+                WingButton Polygon = AnitCrash.CreateButton("Poly-Limit", 1, Data.Textures[15]);
+                Polygon.SetAction(() => Popup.SetPolyLimit());
 
                 WingButton Documentation = Settings.CreateButton("Manual", 5, Data.Textures[50]);
                 Documentation.SetAction(() => Network.OpenDoc());
@@ -241,17 +245,17 @@ namespace Versa.F_Core
                 F_Output.CustomConsole.Console(true, "[OnWingInit finished]");
             }
         });
-        private static void ActivateScrollInQM()
-        {
-            F_Output.CustomConsole.Console(true, "[ActivateScrollInQM started]");
-            var scrollRect = QMCache.LaunchPadQmMenu.transform.Find("ScrollRect").gameObject.GetComponent<ScrollRect>();
-            var scrollbar = scrollRect.transform.Find("Scrollbar");
-            scrollbar.gameObject.SetActive(true);
-            scrollRect.enabled = true;
-            scrollRect.verticalScrollbar = scrollbar.GetComponent<Scrollbar>();
-            scrollRect.verticalScrollbarVisibility = ScrollRect.ScrollbarVisibility.Permanent;
-            scrollRect.viewport.GetComponent<RectMask2D>().enabled = true;
-            F_Output.CustomConsole.Console(true, "[ActivateScrollInQM finished]");
-        }
+     // private static void ActivateScrollInQM()
+     // {
+     //     F_Output.CustomConsole.Console(true, "[ActivateScrollInQM started]");
+     //     var scrollRect = QMCache.LaunchPadQmMenu.transform.Find("ScrollRect").gameObject.GetComponent<ScrollRect>();
+     //     var scrollbar = scrollRect.transform.Find("Scrollbar");
+     //     scrollbar.gameObject.SetActive(true);
+     //     scrollRect.enabled = true;
+     //     scrollRect.verticalScrollbar = scrollbar.GetComponent<Scrollbar>();
+     //     scrollRect.verticalScrollbarVisibility = ScrollRect.ScrollbarVisibility.Permanent;
+     //     scrollRect.viewport.GetComponent<RectMask2D>().enabled = true;
+     //     F_Output.CustomConsole.Console(true, "[ActivateScrollInQM finished]");
+     // }
     }
 }

@@ -17,15 +17,15 @@ namespace Versa.F_Ui
         private  static Il2CppSystem.Collections.Generic.List<JsonAvatar> Avatars { get; set; }
         private static Text HeaderText { get; set; }
         private static GameObject ListObject { get; set; }
-        private static UiAvatarList AviListBase { get; set; }
+        private static AvatarList AviListBase { get; set; }
         internal static async void Create()
         {
            // Load();
             ListObject = GameObject.Instantiate(UICache.FavoriteList, UICache.FavoriteList.transform.parent);
             ListObject.name = $"Favorite Versa List";
             ListObject.transform.SetSiblingIndex(UICache.FavoriteList.transform.GetSiblingIndex() + -1);
-            AviListBase = ListObject.GetComponent<UiAvatarList>();
-            AviListBase.field_Public_Category_0 = UiAvatarList.Category.SpecificList;
+            AviListBase = ListObject.GetComponent<AvatarList>();
+            AviListBase.field_Public_Category_0 = AvatarList.Category.SpecificList;
             AviListBase.hideWhenEmpty = false;
             AviListBase.clearUnseenListOnCollapse = true;
             HeaderText = ListObject.transform.Find("Button").gameObject.GetComponentInChildren<Text>();

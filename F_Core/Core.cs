@@ -117,6 +117,7 @@ namespace Versa.F_Core
             Data.Toggle.SpamObject = false;
             Data.Toggle.AntiCrash = Data.AntiCrash;
             Data.Toggle.FoVScroll = Data.FoVScroll;
+            AntiCrash.PolygonLimits = Data.PolyLimit;
 
             if (Data.WorldLog)
                 LogData.World();

@@ -18,7 +18,7 @@ namespace Versa.F_Ui
             UIObject.name = $"Page_{Name}";
             StyleElement TabStyle = UIObject.GetComponent<StyleElement>();
             TabStyle.field_Public_String_0 = Name.ToLower();
-            MenuTab NoFuckingClue = UIObject.GetComponent<MenuTab>();
+            MenuTab NoFuckingClue = UIObject.GetComponent<QMTab>();
             NoFuckingClue.field_Public_String_0 = $"QuickMenu{Name}";
             SetTooltip(Tooltip);
             Button btn = UIObject.GetComponent<Button>();

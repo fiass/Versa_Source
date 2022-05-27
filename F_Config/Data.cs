@@ -185,7 +185,21 @@ namespace Versa.F_Config
                 Prefs.Float.Save("FoV", value);
             }
         }
-        
+        internal static int PolyLimit
+        {
+            get
+            {
+                var temp = Prefs.Int.Load("PolyLimit");
+                if (temp != 0)
+                    return temp;
+                return 500000;
+            }
+            set
+            {
+                Prefs.Int.Save("PolyLimit", value);
+            }
+        }
+
         internal static bool WorldLog
         {
             get

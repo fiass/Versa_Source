@@ -104,13 +104,11 @@ namespace Versa.F_Module
                 {
                     try
                     {
-                        foreach (var whiteuser in Whitelist)
-                        {
-                            if (whiteuser.Contains(user.prop_APIUser_0.id))
+                        if (user.field_Private_APIUser_0.isFriend)
                                 return false;
-                        }
                     }
-                    catch { CustomConsole.Console(true, $"User: {user.prop_APIUser_0.displayName} not in WhiteList" ); }
+                    catch {  }
+                    CustomConsole.Console(true, $"User: {user.prop_APIUser_0.displayName} not you friends");
                     Il2CppArrayBase<Renderer> componentsInChildren = F_Core.GameApi.get_prop_VRCAvatarManager_0(user.prop_VRCPlayer_0).GetComponentsInChildren<Renderer>(true);
                     for (int i = 0; i < componentsInChildren.Count; i++)
                     {
